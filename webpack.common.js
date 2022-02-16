@@ -6,7 +6,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/assets/jsModules/index.js',
+    app: './src/assets/jsModules/hsl.js',
   },
   plugins: [
     new CleanWebpackPlugin(),

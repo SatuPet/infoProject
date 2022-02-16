@@ -1,0 +1,11 @@
+#stopName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#bussNumber {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
