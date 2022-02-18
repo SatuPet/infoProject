@@ -17,6 +17,7 @@
     <button
       type="button"
       class="btn btn-primary"
+      id="karanristi"
       data-bs-toggle="modal"
       data-bs-target="#hslModal"
     >
@@ -34,9 +35,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="hslModalLabel">
-              HSL Lähtevät Karaportti
-            </h5>
+            <p class="modal-title" id="hslModalLabel"></p>
             <button
               type="button"
               class="btn-close"
@@ -46,7 +45,7 @@
           </div>
           <div class="modal-body">
             <section id="hsl-page">
-              <div id="hsl-data"></div>
+              <table id="hsl-data"></table>
             </section>
           </div>
           <div class="modal-footer">

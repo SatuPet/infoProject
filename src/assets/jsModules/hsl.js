@@ -1,26 +1,21 @@
 console.log("hsl js file");
-const cors = "https://users.metropolia.fi/~ilkkamtk/proxy.php/?ur=";
+
 const apiUrl =
   "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
 const location = [(lat = 60.225528), (lon = 24.760625)]; //lat: ${location.lat}, lon: ${location.lon}
+const hslModalLabel = document.querySelector('#hslModalLabel');
 const hslPrint = document.querySelector("#hsl-data");
 
-/*  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({query: search}), // GraphQL search add to query
-  };
-  fetch(apiTransit, fetchOptions).then(function (answer) {
-    console.log('hsl json', answer);
-    return answer.json();
 
-  }).then(function (result) {;
-  }).catch(function (e) {
-    console.error(e.message);
-  }); */
-
+/**
+ * Fetches JSON data from APIs
+ *
+ * @param {string} url - api endpoint url
+ * @param {Object} options - request options
+ * @param {string} useProxy - optional proxy server
+ *
+ * @returns {Object} response json data
+ */
 const fetchData = async (url, options = {}, useProxy) => {
   // Construct new url if proxy in use
   if (useProxy === "allorigins") {
@@ -44,6 +39,12 @@ const fetchData = async (url, options = {}, useProxy) => {
   return jsonData;
 };
 
+/**
+ * Buss stop query
+ *
+ * @param {Number} id of buss stop
+ * @returns
+ */
 const getQueryForNextRidesByStopId = (id) => {
   return `{
       stop(id: "HSL:${id}") {
@@ -68,6 +69,7 @@ const getQueryForNextRidesByStopId = (id) => {
       }
     }`;
 };
+
 const HSLData = { apiUrl, getQueryForNextRidesByStopId };
 
 /**
@@ -81,21 +83,31 @@ const getBusses = (stopNumber) => {
     headers: { "Content-Type": "application/graphql" },
     body: HSLData.getQueryForNextRidesByStopId(stopNumber),
   }).then((response) => {
-    // TODO: loop results
+
     console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
+    const patterns = response.data.stop.stoptimesWithoutPatterns;
     const stop = response.data.stop;
-    let time = new Date(
-      (stop.stoptimesWithoutPatterns[0].realtimeArrival +
-        stop.stoptimesWithoutPatterns[0].serviceDay) *
-        1000
-    );
-    hslPrint.innerHTML = `<p>
-    <span id="stopName">${stop.name}</span> ${stop.code}
-        </p>`;
-    hslPrint.innerHTML += `<p>
-    <span id="bussNumber">${stop.stoptimesWithoutPatterns[0].trip.routeShortName}</span>
-    ${stop.stoptimesWithoutPatterns[0].headsign} saapuu ${time.getHours()}:${time.getMinutes()}
-        </p>`;
+    hslModalLabel.innerHTML = `
+    <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
+    hslPrint.innerHTML = '<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>';
+    for(let i = 0; i < patterns.length; i++){
+      console.log('chechking length ', i);
+
+      let time = new Date(
+        (patterns[i].realtimeArrival +
+          patterns[i].serviceDay) *
+          1000
+      );
+      let hours = time.getHours();
+      let minutes = (time.getMinutes() < 10) ?  '0' + time.getMinutes() : time.getMinutes();
+      hslPrint.innerHTML += `<tr>
+      <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+      <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
+          </tr>`;
+    }
+
+
   });
 };
-getBusses(2132207);
+document.getElementById('karanristi').addEventListener('click', getBusses(2132207));
+//getBusses(2132207);
