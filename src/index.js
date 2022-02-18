@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 window.addEventListener('scroll',(event) =>{
 
     let top = this.pageYOffset;
@@ -15,6 +14,3 @@ window.addEventListener('scroll',(event) =>{
     }
     
     });
-=======
-console.log('Hello Jasu!');
->>>>>>> 618158bc9c85b2a1a320cffa9334945096dfefe9
