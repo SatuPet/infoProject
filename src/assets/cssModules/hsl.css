@@ -19,6 +19,10 @@
   padding-top: 0.5rem;
   text-align: center;
 }
+
 td {
   border: 0.5rem solid white;
+}
+#ds-hsl-karaportti {
+  display: none;
 }

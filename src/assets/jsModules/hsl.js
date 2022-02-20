@@ -2,25 +2,21 @@ console.log("hsl js file");
 
 const apiUrl =
   "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
-const location = [(lat = 60.225528), (lon = 24.760625)]; //lat: ${location.lat}, lon: ${location.lon}
+
 const hslModalLabel = document.querySelector('#hslModalLabel');
 const hslPrint = document.querySelector("#hsl-data");
-
+const dsHslPrint = document.querySelector('#ds-hsl-karanristi-all-data');
 
 /**
  * Fetches JSON data from APIs
  *
- * @param {string} url - api endpoint url
- * @param {Object} options - request options
- * @param {string} useProxy - optional proxy server
+ * @param {string} url api endpoint url
+ * @param {Object} options request options
  *
  * @returns {Object} response json data
  */
-const fetchData = async (url, options = {}, useProxy) => {
-  // Construct new url if proxy in use
-  if (useProxy === "allorigins") {
-    url = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-  }
+const fetchData = async (url, options = {}) => {
+  console.log('fechin data');
   let jsonData;
   try {
     const response = await fetch(url, options);
@@ -28,10 +24,6 @@ const fetchData = async (url, options = {}, useProxy) => {
       throw new Error(`HTTP ${response.status} - ${response.statusText}`);
     }
     jsonData = await response.json();
-    // Allorigins returns json payload in data.contents property as a string
-    if (useProxy === "allorigins") {
-      jsonData = JSON.parse(jsonData.contents);
-    }
   } catch (error) {
     console.error("fetchData() error", error);
     jsonData = {};
@@ -43,7 +35,7 @@ const fetchData = async (url, options = {}, useProxy) => {
  * Buss stop query
  *
  * @param {Number} id of buss stop
- * @returns
+ * @returns next 5 busses
  */
 const getQueryForNextRidesByStopId = (id) => {
   return `{
@@ -70,29 +62,119 @@ const getQueryForNextRidesByStopId = (id) => {
     }`;
 };
 
+/**
+ * query to get busses of selected area
+ * TODO: not hard coded coordinates (Karaportti 2)
+ *
+ * @returns busses
+ */
+const getQueryByRadius = () => {
+ return `
+  {
+    stopsByRadius(lat:60.2241077, lon:24.7565312, radius:600) {
+      edges {
+        node {
+          stop {
+            gtfsId
+            name
+            code
+          stoptimesWithoutPatterns {
+            scheduledArrival
+            realtimeArrival
+            arrivalDelay
+            scheduledDeparture
+            realtimeDeparture
+            departureDelay
+            realtime
+            realtimeState
+            serviceDay
+            headsign
+            trip {
+              routeShortName
+              tripHeadsign
+            }
+          }
+          }
+          distance
+        }
+      }
+    }
+  }`;
+};
+
 const HSLData = { apiUrl, getQueryForNextRidesByStopId };
+const DsHslData = { apiUrl, getQueryByRadius };
 
 /**
- * Get busses from selected stop
+ * Get busses from selected area and print to page
+ */
+const getDsBusses = () => {
+
+  fetchData(DsHslData.apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/graphql" },
+    body: DsHslData.getQueryByRadius(),
+  }).then((response) => {
+    dsHslPrint.innerHTML = '<tr><th>Linja</th><th>Määränpää</th><th>Pysäkin nimi</th><th>Pysäkin numero</th><th>Lähtee</th></tr>';
+    const nodes = response.data.stopsByRadius.edges;
+    console.log('radius hsl nodes', nodes);
+
+    for (let u = 0; u < nodes.length; u++){
+      let patterns = nodes[u].node.stop.stoptimesWithoutPatterns;
+      console.log('inside of pattern ', patterns);
+      const stop = nodes[u].node.stop;
+
+      for(let i = 0; i < patterns.length; i++) {
+        let time = new Date(
+          (patterns[i].realtimeArrival +
+            patterns[i].serviceDay) *
+            1000
+        );
+        let hours = time.getHours();
+        let minutes = (time.getMinutes() < 10) ?  '0' + time.getMinutes() : time.getMinutes();
+        dsHslPrint.innerHTML += `<tr>
+        <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+        <td id="bussDestination">${patterns[i].headsign}</td>
+        <td id="stopName">${stop.name}</td>
+        <td><div id="stopCode">${stop.code}</div></td>
+        <td id="leavingTime">${hours}:${minutes}</td>
+            </tr>`;
+      }
+    }
+  });
+};
+
+/**
+ * Function to reload busses
+ */
+const getIntervalBusses = () => {
+  getDsBusses();
+};
+//setInterval(getIntervalBusses, 30000);
+getDsBusses();
+
+/**
+ * Get busses from selected stop and print in modal
  *
  * @param {Number} stopNumber get stop number from user
  */
-const getBusses = (stopNumber) => {
+ const getBusses = (stopNumber) => {
+   hslModalLabel.innerHTML = '';
+   hslPrint.innerHTML = '';
+   console.log('get busses clicked', stopNumber);
   fetchData(HSLData.apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/graphql" },
     body: HSLData.getQueryForNextRidesByStopId(stopNumber),
   }).then((response) => {
 
-    console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
+    //console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
     const patterns = response.data.stop.stoptimesWithoutPatterns;
     const stop = response.data.stop;
     hslModalLabel.innerHTML = `
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
     hslPrint.innerHTML = '<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>';
     for(let i = 0; i < patterns.length; i++){
-      console.log('chechking length ', i);
-
       let time = new Date(
         (patterns[i].realtimeArrival +
           patterns[i].serviceDay) *
@@ -105,9 +187,7 @@ const getBusses = (stopNumber) => {
       <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
           </tr>`;
     }
-
-
   });
 };
-document.getElementById('karanristi').addEventListener('click', getBusses(2132207));
-//getBusses(2132207);
+
+export { getBusses };

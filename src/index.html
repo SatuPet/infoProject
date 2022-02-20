@@ -11,55 +11,116 @@
     />
     <link rel="stylesheet" href="./assets/cssModules/styles.css" />
     <link rel="stylesheet" href="./assets/cssModules/hsl.css" />
+    <link rel="stylesheet" href="./assets/cssModules/ds.css" />
   </head>
   <body>
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      id="karanristi"
-      data-bs-toggle="modal"
-      data-bs-target="#hslModal"
-    >
-      HSL modal
-    </button>
-
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="hslModal"
-      tabindex="-1"
-      aria-labelledby="hslModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <p class="modal-title" id="hslModalLabel"></p>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <section id="hsl-page">
-              <table id="hsl-data"></table>
-            </section>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Sulje
-            </button>
+    <section id="pwa-hsl-modal">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="karanristiEast"
+        data-bs-toggle="modal"
+        data-bs-target="#hslModal"
+      >
+        HSL Karanristi itään
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="karanristiWest"
+        data-bs-toggle="modal"
+        data-bs-target="#hslModal"
+      >
+        HSL Karanristi länteen
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="landerannantie"
+        data-bs-toggle="modal"
+        data-bs-target="#hslModal"
+      >
+        HSL Lähderannantie itään
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="karamalmensWest"
+        data-bs-toggle="modal"
+        data-bs-target="#hslModal"
+      >
+        HSL Karamalmin koulu länteen
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="karamalmensEast"
+        data-bs-toggle="modal"
+        data-bs-target="#hslModal"
+      >
+        HSL Karamalminkoulu itään
+      </button>
+
+      <div
+        class="modal fade"
+        id="hslModal"
+        tabindex="-1"
+        aria-labelledby="hslModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title" id="hslModalLabel"></p>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <section id="hsl-page">
+                <table id="hsl-data"></table>
+              </section>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Sulje
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section>
+      <header>
+        <h3 id="ds-hsl-karaportti">HSL KARAPORTTI LÄHTEVÄT</h3>
+      </header>
+      <div id="hsl-timetable">
+
+        <article id="ds-hsl-karaportti">
+          <p id="karanristi-all"></p>
+          <div id="ds-hsl-page">
+            <table id="ds-hsl-karanristi-all-data"></table>
+          </div>
+        </article>
+
+
+
+      </div>
+    </section>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
