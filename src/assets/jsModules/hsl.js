@@ -3,9 +3,9 @@ console.log("hsl js file");
 const apiUrl =
   "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
 
-const hslModalLabel = document.querySelector('#hslModalLabel');
+const hslModalLabel = document.querySelector("#hslModalLabel");
 const hslPrint = document.querySelector("#hsl-data");
-const dsHslPrint = document.querySelector('#ds-hsl-karanristi-all-data');
+const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
  * Fetches JSON data from APIs
@@ -16,7 +16,7 @@ const dsHslPrint = document.querySelector('#ds-hsl-karanristi-all-data');
  * @returns {Object} response json data
  */
 const fetchData = async (url, options = {}) => {
-  console.log('fechin data');
+  console.log("fechin data");
   let jsonData;
   try {
     const response = await fetch(url, options);
@@ -69,7 +69,7 @@ const getQueryForNextRidesByStopId = (id) => {
  * @returns busses
  */
 const getQueryByRadius = () => {
- return `
+  return `
   {
     stopsByRadius(lat:60.2241077, lon:24.7565312, radius:600) {
       edges {
@@ -108,38 +108,54 @@ const DsHslData = { apiUrl, getQueryByRadius };
 /**
  * Get busses from selected area and print to page
  */
+let hslDsArray = [];
 const getDsBusses = () => {
-
   fetchData(DsHslData.apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/graphql" },
     body: DsHslData.getQueryByRadius(),
   }).then((response) => {
-    dsHslPrint.innerHTML = '<tr><th>Linja</th><th>Määränpää</th><th>Pysäkin nimi</th><th>Pysäkin numero</th><th>Lähtee</th></tr>';
+    dsHslPrint.innerHTML =
+      "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkin nimi</th><th>Pysäkin numero</th><th>Lähtee</th></tr>";
     const nodes = response.data.stopsByRadius.edges;
-    console.log('radius hsl nodes', nodes);
+    console.log("radius hsl nodes", nodes);
 
-    for (let u = 0; u < nodes.length; u++){
+    for (let u = 0; u < nodes.length; u++) {
       let patterns = nodes[u].node.stop.stoptimesWithoutPatterns;
-      console.log('inside of pattern ', patterns);
+      console.log("inside of pattern ", patterns);
       const stop = nodes[u].node.stop;
 
-      for(let i = 0; i < patterns.length; i++) {
+      for (let i = 0; i < patterns.length; i++) {
         let time = new Date(
-          (patterns[i].realtimeArrival +
-            patterns[i].serviceDay) *
-            1000
+          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
         );
         let hours = time.getHours();
-        let minutes = (time.getMinutes() < 10) ?  '0' + time.getMinutes() : time.getMinutes();
-        dsHslPrint.innerHTML += `<tr>
+        let minutes =
+          time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
+
+        hslDsArray.push({
+          sorttime: `${patterns[i].realtimeArrival}`,
+          oneLine: `<tr>
         <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
         <td id="bussDestination">${patterns[i].headsign}</td>
         <td id="stopName">${stop.name}</td>
         <td><div id="stopCode">${stop.code}</div></td>
         <td id="leavingTime">${hours}:${minutes}</td>
-            </tr>`;
+            </tr>`,
+        });
       }
+    }
+    //sorting busses
+    hslDsArray.sort(function (a, b) {
+      return a.sorttime - b.sorttime;
+    });
+    let maxPrintValue = 10; // max lines print in screen
+    for (const line of hslDsArray) {
+      if (maxPrintValue === 0) {
+        break;
+      }
+      dsHslPrint.innerHTML += line.oneLine;
+      maxPrintValue--;
     }
   });
 };
@@ -158,30 +174,29 @@ getDsBusses();
  *
  * @param {Number} stopNumber get stop number from user
  */
- const getBusses = (stopNumber) => {
-   hslModalLabel.innerHTML = '';
-   hslPrint.innerHTML = '';
-   console.log('get busses clicked', stopNumber);
+const getBusses = (stopNumber) => {
+  hslModalLabel.innerHTML = "";
+  hslPrint.innerHTML = "";
+  console.log("get busses clicked", stopNumber);
   fetchData(HSLData.apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/graphql" },
     body: HSLData.getQueryForNextRidesByStopId(stopNumber),
   }).then((response) => {
-
     //console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
     const patterns = response.data.stop.stoptimesWithoutPatterns;
     const stop = response.data.stop;
     hslModalLabel.innerHTML = `
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
-    hslPrint.innerHTML = '<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>';
-    for(let i = 0; i < patterns.length; i++){
+    hslPrint.innerHTML =
+      "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
+    for (let i = 0; i < patterns.length; i++) {
       let time = new Date(
-        (patterns[i].realtimeArrival +
-          patterns[i].serviceDay) *
-          1000
+        (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
       );
       let hours = time.getHours();
-      let minutes = (time.getMinutes() < 10) ?  '0' + time.getMinutes() : time.getMinutes();
+      let minutes =
+        time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
       hslPrint.innerHTML += `<tr>
       <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
       <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
