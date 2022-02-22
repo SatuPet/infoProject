@@ -1,0 +1,28 @@
+
+.modal-body {
+  margin-left: 1rem;
+}
+.modal-title p {
+  margin: 0;
+}
+#stopName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#bussNumber {
+  background-color: blue;
+  color: white;
+  height: 2.5rem;
+  width: 4rem;
+  border-radius: 0.3rem;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+td {
+  border: 0.5rem solid white;
+}
+.ds-hsl-karaportti {
+  display: none;
+}

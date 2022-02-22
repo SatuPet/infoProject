@@ -1,7 +1,26 @@
-import {weather} from './assets/jsModules/test';
+import {weather} from './assets/jsModules/weather';
+import {getBusses} from './assets/jsModules/hsl';
 
 weather();
 
+document.getElementById('karanristiEast').addEventListener('click', () => {
+  getBusses(2132208);
+});
+document.getElementById('karanristiWest').addEventListener('click', () => {
+  getBusses(2132207);
+});
+document.getElementById('landerannantie').addEventListener('click', () => {
+  getBusses(2133225);
+});
+document.getElementById('karamalmensWest').addEventListener('click', () => {
+  getBusses(2132225);
+});
+document.getElementById('karamalmensEast').addEventListener('click', () => {
+  getBusses(2132226);
+});
+//getBusses(2132207);
+
+/*
 window.addEventListener('scroll', (event) => {
 
   let top = this.pageYOffset;
@@ -19,3 +38,4 @@ window.addEventListener('scroll', (event) => {
   }
 
 });
+*/
