@@ -42,6 +42,10 @@ body {
   padding: 0.5em;
   font-family: var(--titleFont);
 }
+.buttonGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .navbar-dark .navbar-nav .nav-link{
   color: black;
 }
@@ -51,29 +55,38 @@ body {
 .navbar-dark .navbar-nav .nav-link:active{
   background-color: #E5E5E5;
 }
-.toggle.btn-lg{
-  margin-left: 10em;
-  min-width: 9rem !important;
-  min-height: 3.815rem !important;
-  border-radius: 35px
+.checkButton1 {
+  justify-self: left;
+  align-self: end;
 }
-.btn-light{
-  border-radius: 50%;
+.form-switch .form-check-input{
+  background-color: var(--orange);
 }
-.toggle-on.btn-lg{
-  font-size: 2em;
-  background: #ff5000;
-  color: #F1F1F1;
-  padding: 0%;
+
+.form-check-input:checked{
+  background-color: var(--grey);
+  border-color: var(--grey);
 }
-.toggle-off.btn-lg{
-  font-size: 2em;
-  background: #53565a;
-  color: #F1F1F1;
-  padding: 0%;
+.form-check-input:active, .form-check-input:focus{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.label{
+  background: var(--grey);
+}
+.checkButton2{
+  justify-self: left;
+  align-self: flex-start;
 }
 .darkMode{
   margin-top: 10%;
+  justify-self: left;
+  align-self: end;
+}
+.inEnglish{
+  justify-self: left;
+  align-self: end;
 }
 .darkMode, .inEnglish{
   font-size: 10vw;
@@ -98,7 +111,7 @@ body {
   z-index: -1;
   position: relative;
   grid-template-columns:
-    repeat(2, 1fr);
+  repeat(2, 1fr);
   grid-template-rows:
     repeat(10, 1fr);
 }
