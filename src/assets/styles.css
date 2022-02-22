@@ -63,11 +63,7 @@ body {
   background-color: var(--orange);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 1%29'/%3e%3c/svg%3e");
 }
-/* .form-switch:active, .form-switch:focus{
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-} */
+
 .form-check-input:checked{
   background-color: var(--grey);
   border-color: var(--grey);
@@ -80,36 +76,10 @@ body {
 .label{
   background: var(--grey);
 }
-/* .label:active, .label:focus{
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-} */
 .checkButton2{
   justify-self: left;
   align-self: flex-start;
 }
-/* .toggle.btn-lg{
-  margin-left: 10em;
-  min-width: 9rem !important;
-  min-height: 3.815rem !important;
-  border-radius: 35px
-}
-.btn-light{
-  border-radius: 50%;
-}
-.toggle-on.btn-lg{
-  font-size: 2em;
-  background: #ff5000;
-  color: #F1F1F1;
-  padding: 0%;
-}
-.toggle-off.btn-lg{
-  font-size: 2em;
-  background: #53565a;
-  color: #F1F1F1;
-  padding: 0%;
-} */
 .darkMode{
   margin-top: 10%;
   justify-self: left;
