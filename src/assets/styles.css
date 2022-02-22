@@ -110,6 +110,10 @@ body {
   display: grid;
   z-index: -1;
   position: relative;
+  grid-template-columns:
+  repeat(2, 1fr);
+  grid-template-rows:
+  repeat(10,1fr);
 }
 .bi-keyboard{
   justify-self: right;
