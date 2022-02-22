@@ -1,3 +1,6 @@
+import {weather} from './assets/jsModules/test';
+
+weather();
 
 // parallax Y postition moving
 window.addEventListener('scroll',(event) =>{
@@ -27,3 +30,6 @@ window.addEventListener('scroll',(event) =>{
 
  
      
+
+
+
