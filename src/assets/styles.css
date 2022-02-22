@@ -6,13 +6,90 @@
   --background: #F1F1F1;
   --orange: #ff5000;
   --grey: #53565a;
-  --mainFont:'Roboto Slab', serif;
-  --headFont:'Open Sans', sans-serif;
+  --headFont:'Roboto Slab', serif;
+  --titleFont:'Open Sans', sans-serif;
   --regularFont:'Baloo Tamma 2', cursive;
 }
 body {
   background-color:var(--background);
 }
+
+.navbar-toggler-icon{
+  font-size: 3em;
+}
+.navbar-dark .navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 80, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.metroMeno{
+  color: var(--grey); 
+  font-size: 4em;
+  font-family: var(--headFont);
+}
+.navbar-collapse{
+  background-color: #D0D0D0;
+  margin-right: 20%;
+  box-shadow: 25px 15px 25px #888888;
+}
+.navbar-toggler .navbar-toggler:hover{
+  border: none;
+}
+.navbar-dark .navbar-toggler{
+  border-color: transparent;
+  color: transparent;
+}
+.nav-item{
+  font-size: 8vh;
+  padding: 0.5em;
+  font-family: var(--titleFont);
+}
+.navbar-dark .navbar-nav .nav-link{
+  color: black;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+  color: var(--orange);
+}
+.navbar-dark .navbar-nav .nav-link:active{
+  background-color: #E5E5E5;
+}
+.toggle.btn-lg{
+  margin-left: 10em;
+  min-width: 9rem !important;
+  min-height: 3.815rem !important;
+  border-radius: 35px
+}
+.btn-light{
+  border-radius: 50%;
+}
+.toggle-on.btn-lg{
+  font-size: 2em;
+  background: #ff5000;
+  color: #F1F1F1;
+  padding: 0%;
+}
+.toggle-off.btn-lg{
+  font-size: 2em;
+  background: #53565a;
+  color: #F1F1F1;
+  padding: 0%;
+}
+.darkMode{
+  margin-top: 10%;
+}
+.darkMode, .inEnglish{
+  font-size: 10vw;
+  color: black;
+}
+.koronaHeadInfo{
+  font-size: 3em;
+  margin-top: 10%;
+  font-family: var(--titleFont);
+}
+.koronaInfo{
+  font-size: 2em;
+  font-family: var(--regularFont);
+}
+
+
 
 .background{
   width: 100vw;
@@ -71,5 +148,3 @@ body {
   justify-self: left;
   align-self: center;
 }
-
-

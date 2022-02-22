@@ -1,7 +1,8 @@
+
+// parallax Y postition moving
 window.addEventListener('scroll',(event) =>{
 
     let top = this.pageYOffset;
-    
     const icons = document.querySelectorAll("[data-type='parallax']");
     let icon, speed, yPosition;
     
@@ -14,3 +15,15 @@ window.addEventListener('scroll',(event) =>{
     }
     
     });
+
+    //navbar collapse moving back when you touch somewere else
+    const closeNavbar = () => {
+        $('.navbar-collapse').collapse('hide');
+    };
+
+    document.querySelector('.background').addEventListener('click',closeNavbar);
+    document.querySelector('.metroMeno').addEventListener('click',closeNavbar);
+    
+
+ 
+     
