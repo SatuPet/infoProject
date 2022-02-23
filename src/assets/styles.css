@@ -12,18 +12,37 @@
 }
 body {
   background-color:var(--background);
+  width: 100%;
+  height: 70rem;
+  background-size: 100% 100%;
+  background-image: url(testi2.svg);
+  background-repeat: repeat-y;
 }
+/* .background{
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  position: relative;
+} */
+/* .bgImage{
+  background-image: url(testi2.svg);
+  background-repeat: repeat-y;
+  width: 200vw;
+  height: 100vh;
+} */
 
 .navbar-toggler-icon{
-  font-size: 3em;
+  font-size: 6vw;
+  align-self: flex-start;
 }
 .navbar-dark .navbar-toggler-icon{
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 80, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .metroMeno{
   color: var(--grey); 
-  font-size: 4em;
+  font-size: 6vw;
   font-family: var(--headFont);
+  align-self: flex-end;
 }
 .navbar-collapse{
   background-color: #D0D0D0;
@@ -91,18 +110,14 @@ body {
 
 
 
-.background{
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  z-index: -1;
-  position: relative;
-  grid-template-columns:
+
+
+  /* grid-template-columns:
     repeat(2, 1fr);
   grid-template-rows:
-    repeat(10,);
-}
-.bi-keyboard{
+    repeat(10,); */
+
+/* .bi-keyboard{
   justify-self: right;
   align-self: flex-start;
 }
@@ -147,4 +162,4 @@ body {
 .bi-card-checklist{
   justify-self: left;
   align-self: center;
-}
+} */
