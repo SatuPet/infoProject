@@ -12,7 +12,7 @@
   }
   .ds-layer {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 500px;
     grid-template-rows: auto;
     grid-gap: 2rem;
     grid-template-areas:
@@ -45,10 +45,6 @@
   #pwa-hsl-modal {
     display: none;
   }
-  .hsl-block {
-    height: 500px;
-    grid-area: hsl;
-  }
   .time-block {
     grid-area: time;
     width: 100%;
@@ -66,8 +62,9 @@
     font-size: 5rem;
   }
   .weather-block {
+    display: block;
     grid-area: weather;
-    width: 80%;
+    width: 100%;
     background-color: #00a0e1;
     color: white;
     border: 0.1rem solid #53565a;
@@ -75,8 +72,8 @@
     text-align: center;
   }
   #weather-flex {
-    margin-left: 3rem;
     display: flex;
+    justify-content: center;
   }
   .temperature {
     font-size: 3rem;
@@ -87,6 +84,7 @@
   }
   .menu-block {
     grid-area: menu;
+    height: 100%;
     background-color: white;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
@@ -96,18 +94,38 @@
     width: 30%;
     margin: 1rem auto;
   }
-  .banner-block {
-    grid-area: banner;
+  .hsl-block {
+    height: 100%;
+    width: 100%;
+    grid-area: hsl;
+
+  }
+  #map-box {
+    display: block;
+    max-width: 320px;
+    margin-right: 0.5rem;
+    background-color: white;
+  }
+  #map-pic {
+    width: 320px;
+
+    object-fit: cover;
+  }
+  #hsl-timetable {
+    display: flex;
+    width: 100%;
+    font-size: 1.7rem;
   }
   th {
     text-align: center;
-
+    border-bottom: 0.7rem solid #91c6db;
   }
   td {
-    border: 0.5rem solid #00a0e1;
+    border: 0.7rem solid #00a0e1;
+
   }
   #bussDestination {
-    width: 15rem;
+    font-size: 1.3rem;
   }
   #stopName {
     font-weight: normal;
@@ -123,31 +141,49 @@
     padding: 1rem;
     width: auto;
   }
+  #bussNumber {
+    background-color: #00a0e1;
+    color: white;
+    height: 2.5rem;
+    width: 4rem;
+    padding-top: 0;
+    font-weight: bold;
+    text-align: center;
+  }
+  #leavingTime {
+      min-width: 150px;
+      text-align: center;
+      background-color: #53565a;
+  }
+  .banner-block {
+    grid-area: banner;
+  }
+  /* scrolling banner*/
+  .scroll-info {
+    height: 100px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #ff5000;
+    color: white;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+  }
+  .scroll-info p {
+    font-size: 3.5rem;
+    position: absolute;
+    width: 8000px; /* this is how long the texts are */
+    height: 100%;
+    margin: 0;
+    line-height: 90px;
+    text-align: center;
+    /* Starting position */
+    transform: translateX(30%);
+    /* Apply animation to this element */
+    animation: scroll-left 35s linear infinite;
+  }
 }
-/* scrolling banner*/
-.scroll-info {
-  height: 100px;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  background: #ff5000;
-  color: white;
-  border: 0.1rem solid #53565a;
-  border-radius: 0.5rem;
-}
-.scroll-info p {
-  font-size: 3.5rem;
-  position: absolute;
-  width: 8000px; /* this is how long the texts are */
-  height: 100%;
-  margin: 0;
-  line-height: 90px;
-  text-align: center;
-  /* Starting position */
-  transform: translateX(30%);
-  /* Apply animation to this element */
-  animation: scroll-left 35s linear infinite;
-}
+
 /* Move it (define the animation) */
 @keyframes scroll-left {
   0% {
