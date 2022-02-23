@@ -5,18 +5,9 @@ weather();
 // parallax Y postition moving
 window.addEventListener('scroll',(event) =>{
 
-    let top = this.scrollY;
-    const icons = document.querySelectorAll("[data-type='parallax']");
-    let icon, speed, yPosition;
-    
-    for (let i = 0; i < icons.length; i++) {
-        icon = icons[i];
-        speed = icon.getAttribute('data-speed');
-        const yPosition = -(top * speed / 100);
-        icon.setAttribute('style', 'transform: translate3d(0px, ' + yPosition + 'px, 0px)');
-    
-    }
-    
+    let top = window.scrollY /2;
+    const background = document.querySelector("body");
+    background.style.backgroundPositionY = top+"px";
     });
 
     //navbar collapse moving back when you touch somewere else
@@ -24,8 +15,8 @@ window.addEventListener('scroll',(event) =>{
         $('.navbar-collapse').collapse('hide');
     };
 
-    document.querySelector('.background').addEventListener('click',closeNavbar);
-    document.querySelector('.metroMeno').addEventListener('click',closeNavbar);
+    // document.querySelector('.background').addEventListener('click',closeNavbar);
+    // document.querySelector('.metroMeno').addEventListener('click',closeNavbar);
     
 
  
