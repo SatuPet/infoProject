@@ -111,7 +111,7 @@ const getDsBusses = () => {
   useApiData().getHslDataByRadius(getQueryByRadius()).
     then((response) => {
       dsHslPrint.innerHTML =
-        '<tr><th>Linja</th><th>Määränpää</th><th>Pysäkin nimi</th><th>Pysäkin numero</th><th>Lähtee</th></tr>';
+        '<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Numero</th><th>Lähtee</th></tr>';
       const nodes = response.data.stopsByRadius.edges;
       console.log('radius hsl nodes', nodes);
 
@@ -146,7 +146,7 @@ const getDsBusses = () => {
       hslDsArray.sort(function(a, b) {
         return a.sorttime - b.sorttime;
       });
-      let maxPrintValue = 10; // max lines print in screen
+      let maxPrintValue = 8; // max lines print in screen
       for (const line of hslDsArray) {
         if (maxPrintValue === 0) {
           break;

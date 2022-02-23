@@ -1,22 +1,110 @@
+@media screen and (max-width: 800px) {
+  .ds-layer {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 800px) {
   body {
-    margin: 10%;
+    margin: 0;
     padding: 0;
+
   }
-  #ds-hsl-karaportti {
-    display: block;
-  }
-  #hsl-timetable {
+  .ds-layer {
     display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    grid-template-areas:
+    "time weather menu"
+    "hsl hsl menu"
+    "banner banner banner";
+  }
+  .ds-background {
+    background-image: url("../images/kauppatori.jpeg") !important;
+    height: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
+  .ds-canvas {
+    background-color: rgba(220, 220, 220, 0.5);
+    margin: 3%;
+    padding: 2%;
+    border-radius: 0.5rem;
+  }
+  .pwa-layer {
+    display: none;
   }
   #pwa-hsl-modal {
     display: none;
   }
-  th {
+  .hsl-block {
+    height: 500px;
+    grid-area: hsl;
+  }
+  .time-block {
+    grid-area: time;
+    width: 100%;
+    height: 100%;
+    background-color: #53565a;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+  }
+  .time-block p {
+    margin: auto;
+    font-size: 5rem;
+  }
+  .weather-block {
+    grid-area: weather;
+    width: 80%;
+    background-color: #00a0e1;
+    color: white;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
     text-align: center;
   }
+  #weather-flex {
+    margin-left: 3rem;
+    display: flex;
+  }
+  .temperature {
+    font-size: 3rem;
+    padding-top: 1rem;
+  }
+  #campus-name {
+    font-size: 2rem;
+  }
+  .menu-block {
+    grid-area: menu;
+    background-color: white;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+  }
+  .ds-metropolia-logo {
+    display: block;
+    width: 30%;
+    margin: 1rem auto;
+  }
+  .banner-block {
+    grid-area: banner;
+  }
+  th {
+    text-align: center;
+
+  }
   td {
-    border: 0.5rem solid white;
+    border: 0.5rem solid #00a0e1;
   }
   #bussDestination {
     width: 15rem;
@@ -24,14 +112,48 @@
   #stopName {
     font-weight: normal;
   }
-#stopCode {
+  #stopCode {
     text-align: center;
   }
-  article {
-    border: 0.2rem solid lightgray;
-    border-radius: 0.3rem;
-    padding: 0.6rem;
-    margin: 0.2rem;
+  #hsl-timetable {
+    color: white;
+    background-color: #00a0e1;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+    padding: 1rem;
     width: auto;
+  }
+}
+/* scrolling banner*/
+.scroll-info {
+  height: 100px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #ff5000;
+  color: white;
+  border: 0.1rem solid #53565a;
+  border-radius: 0.5rem;
+}
+.scroll-info p {
+  font-size: 3.5rem;
+  position: absolute;
+  width: 8000px; /* this is how long the texts are */
+  height: 100%;
+  margin: 0;
+  line-height: 90px;
+  text-align: center;
+  /* Starting position */
+  transform: translateX(30%);
+  /* Apply animation to this element */
+  animation: scroll-left 35s linear infinite;
+}
+/* Move it (define the animation) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
