@@ -1,7 +1,9 @@
 import {weather} from './assets/jsModules/weather';
 import {getBusses} from './assets/jsModules/hsl';
+import {getDateTime} from './assets/jsModules/ds';
 
 weather();
+getDateTime();
 
 // parallax Y postition moving
 window.addEventListener('scroll', (event) => {

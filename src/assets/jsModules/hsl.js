@@ -1,8 +1,8 @@
-import {useApiData} from './ApiHooks';
+import { useApiData } from "./ApiHooks";
 
-const hslModalLabel = document.querySelector('#hslModalLabel');
-const hslPrint = document.querySelector('#hsl-data');
-const dsHslPrint = document.querySelector('#ds-hsl-karanristi-all-data');
+const hslModalLabel = document.querySelector("#hslModalLabel");
+const hslPrint = document.querySelector("#hsl-data");
+const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
  * Fetches JSON data from APIs
@@ -100,35 +100,36 @@ const getQueryByRadius = () => {
   }`;
 };
 
-const HSLData = {getQueryForNextRidesByStopId};
-const DsHslData = {getQueryByRadius};
+const HSLData = { getQueryForNextRidesByStopId };
+const DsHslData = { getQueryByRadius };
 
 /**
  * Get busses from selected area and print to page
  */
 let hslDsArray = [];
 const getDsBusses = () => {
-  useApiData().getHslDataByRadius(getQueryByRadius()).
-    then((response) => {
+  useApiData()
+    .getHslDataByRadius(getQueryByRadius())
+    .then((response) => {
       dsHslPrint.innerHTML =
-        '<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Numero</th><th>Lähtee</th></tr>';
+        "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Numero</th><th>Lähtee</th></tr>";
       const nodes = response.data.stopsByRadius.edges;
-      console.log('radius hsl nodes', nodes);
+      console.log("radius hsl nodes", nodes);
 
       for (let u = 0; u < nodes.length; u++) {
         let patterns = nodes[u].node.stop.stoptimesWithoutPatterns;
-        console.log('inside of pattern ', patterns);
+        console.log("inside of pattern ", patterns);
         const stop = nodes[u].node.stop;
 
         for (let i = 0; i < patterns.length; i++) {
           let time = new Date(
-            (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000,
+            (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
           );
           let hours = time.getHours();
           let minutes =
-            time.getMinutes() < 10 ?
-              '0' + time.getMinutes() :
-              time.getMinutes();
+            time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes();
 
           hslDsArray.push({
             sorttime: `${patterns[i].realtimeArrival}`,
@@ -143,7 +144,7 @@ const getDsBusses = () => {
         }
       }
       //sorting busses
-      hslDsArray.sort(function(a, b) {
+      hslDsArray.sort(function (a, b) {
         return a.sorttime - b.sorttime;
       });
       let maxPrintValue = 8; // max lines print in screen
@@ -155,15 +156,9 @@ const getDsBusses = () => {
         maxPrintValue--;
       }
     });
+  setInterval(getDsBusses, 15000);
 };
 
-/**
- * Function to reload busses
- */
-const getIntervalBusses = () => {
-  getDsBusses();
-};
-//setInterval(getIntervalBusses, 30000);
 getDsBusses();
 
 /**
@@ -173,27 +168,27 @@ getDsBusses();
  */
 
 const getBusses = (stopNumber) => {
-  hslModalLabel.innerHTML = '';
-  hslPrint.innerHTML = '';
-  console.log('get busses clicked', stopNumber);
+  hslModalLabel.innerHTML = "";
+  hslPrint.innerHTML = "";
+  console.log("get busses clicked", stopNumber);
 
-  useApiData().
-    getHslDataByStop(HSLData.getQueryForNextRidesByStopId(stopNumber)).
-    then((response) => {
+  useApiData()
+    .getHslDataByStop(HSLData.getQueryForNextRidesByStopId(stopNumber))
+    .then((response) => {
       //console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
       const patterns = response.data.stop.stoptimesWithoutPatterns;
       const stop = response.data.stop;
       hslModalLabel.innerHTML = `
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
       hslPrint.innerHTML =
-        '<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>';
+        "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
       for (let i = 0; i < patterns.length; i++) {
         let time = new Date(
-          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000,
+          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
         );
         let hours = time.getHours();
         let minutes =
-          time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
+          time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
         hslPrint.innerHTML += `<tr>
       <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
       <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
@@ -202,4 +197,4 @@ const getBusses = (stopNumber) => {
     });
 };
 
-export {getBusses, getQueryByRadius, getQueryForNextRidesByStopId};
+export { getBusses, getQueryByRadius, getQueryForNextRidesByStopId };

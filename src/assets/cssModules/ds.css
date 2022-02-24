@@ -1,5 +1,5 @@
 @media screen and (max-width: 800px) {
-  .ds-layer {
+  .ds-background, iframe, .ds-canvas, .ds-layer {
     display: none;
   }
 }
@@ -8,17 +8,6 @@
   body {
     margin: 0;
     padding: 0;
-
-  }
-  .ds-layer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 500px;
-    grid-template-rows: auto;
-    grid-gap: 2rem;
-    grid-template-areas:
-    "time weather menu"
-    "hsl hsl menu"
-    "banner banner banner";
   }
   .ds-background {
     background-image: url("../images/kauppatori.jpeg") !important;
@@ -32,9 +21,28 @@
     background-size: cover;
     position: relative;
     overflow: hidden;
+    z-index: -1;
+  }
+  iframe {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+  }
+  .ds-layer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 500px;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    grid-template-areas:
+    "time weather menu"
+    "hsl hsl menu"
+    "banner banner banner";
   }
   .ds-canvas {
-    background-color: rgba(220, 220, 220, 0.5);
+    background-color: rgba(220, 220, 220, 1);
     margin: 3%;
     padding: 2%;
     border-radius: 0.5rem;
@@ -56,6 +64,7 @@
     align-items: center;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
+    z-index: 1;
   }
   .time-block p {
     margin: auto;
@@ -70,6 +79,7 @@
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
     text-align: center;
+    z-index: 1;
   }
   #weather-flex {
     display: flex;
@@ -88,6 +98,7 @@
     background-color: white;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
+    z-index: 1;
   }
   .ds-metropolia-logo {
     display: block;
@@ -98,7 +109,7 @@
     height: 100%;
     width: 100%;
     grid-area: hsl;
-
+    z-index: 1;
   }
   #map-box {
     display: block;
@@ -157,6 +168,7 @@
   }
   .banner-block {
     grid-area: banner;
+    z-index: 1;
   }
   /* scrolling banner*/
   .scroll-info {
