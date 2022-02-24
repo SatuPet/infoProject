@@ -156,9 +156,14 @@ const getDsBusses = () => {
         maxPrintValue--;
       }
     });
-  setInterval(getDsBusses, 15000);
-};
 
+};
+const hslTimer = () => {
+  dsHslPrint.innerHTML = '';
+  hslDsArray = [];
+  getDsBusses();
+};
+setInterval(hslTimer, 30000);
 getDsBusses();
 
 /**
