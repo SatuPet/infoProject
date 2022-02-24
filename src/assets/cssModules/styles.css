@@ -15,7 +15,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url(iconBg.svg);
+  background-image: url(/assets/img/iconBg.svg);
   background-repeat: repeat-y;
   background-position-x: center;
   margin-top: 25vw;

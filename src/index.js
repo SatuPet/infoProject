@@ -20,6 +20,7 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('karamalmensEast').addEventListener('click', () => {
     getBusses(2132226);
   });
+});
 //getBusses(2132207);
 
 
@@ -43,4 +44,3 @@ const closeNavbar = () => {
 
 document.querySelector('body').addEventListener('click', closeNavbar);
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
-});
