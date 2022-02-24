@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -14,9 +15,10 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url(/assets/img/iconBg.svg);
+  background-image: url(iconBg.svg);
   background-repeat: repeat-y;
   background-position-x: center;
+  margin-top: 25vw;
 }
 .navbar-dark{
   background-color: var(--background); 
@@ -47,7 +49,7 @@ body {
   background-color: #D0D0D0;
   margin-right: 20%;
   box-shadow: 25px 15px 25px #888888;
-
+  margin-top: -20vw;
 }
 .linkMarginTop{
   margin-top: 3em ;
