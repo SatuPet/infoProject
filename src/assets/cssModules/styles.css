@@ -21,7 +21,7 @@ body {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 80, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .metroMeno{
-  color: var(--grey); 
+  color: var(--grey);
   font-size: 4em;
   font-family: var(--headFont);
 }
@@ -113,7 +113,7 @@ body {
   grid-template-columns:
   repeat(2, 1fr);
   grid-template-rows:
-  repeat(10,1fr);
+    repeat(10, 1fr);
 }
 .bi-keyboard{
   justify-self: right;
@@ -126,7 +126,6 @@ body {
 .bi-pencil{
   justify-self: left;
   align-self: center;
-  
 }
 .bi-clock{
   justify-self: center;
@@ -135,8 +134,6 @@ body {
 .bi-calculator-fill{
   justify-self: left;
   align-self: flex-end;
-  margin-left: -20%;
-  
 }
 .bi-calendar-check{
   justify-self: right;
@@ -149,13 +146,10 @@ body {
 .bi-pen{
   justify-self: center;
   align-self: center;
-  margin-left: 75%;
-  
 }
 .bi-clipboard-data{
   justify-self: left;
   align-self: flex-start;
-  margin-left: -30%;
 }
 .bi-card-checklist{
   justify-self: left;

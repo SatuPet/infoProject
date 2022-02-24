@@ -16,7 +16,7 @@ const doFetch = async (url, options = {}) => {
   }
 };
 
-// Fetch the weather
+// Function for all the API calls
 const useApiData = () => {
   // Function for fetching the weather data with given city parameter
   const getWeatherData = async (city) => {
@@ -30,7 +30,35 @@ const useApiData = () => {
       alert(e.message);
     }
   };
-  return {getWeatherData};
+
+  const getHslDataByRadius = async (radius) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: { "Content-Type": "application/graphql" },
+      body: radius,
+    };
+    try {
+      return await doFetch(
+        ApiConfig.hslApiUrl, fetchOptions);
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
+  const getHslDataByStop = async (query) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: { "Content-Type": "application/graphql" },
+      body: query,
+    };
+    try {
+      return await doFetch(
+        ApiConfig.hslApiUrl, fetchOptions);
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+  return {getWeatherData, getHslDataByRadius, getHslDataByStop};
 };
 
 export {useApiData};
