@@ -60,7 +60,7 @@ const changeDarkMode = () => {
             // Creating the darkmode css style sheet and adding it to DOM
             darkModeStyleSheet = document.createElement('link');
             darkModeStyleSheet.rel = 'stylesheet';
-            darkModeStyleSheet.href = "assets/darkMode.css";
+            darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
             document.head.appendChild(darkModeStyleSheet);
 
             // Saving preference to storage
@@ -92,7 +92,7 @@ const setTheme = () => {
           // Creating the darkmode css style sheet and adding it to DOM
           darkModeStyleSheet = document.createElement('link');
           darkModeStyleSheet.rel = 'stylesheet';
-          darkModeStyleSheet.href = "assets/darkMode.css";
+          darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
           document.head.appendChild(darkModeStyleSheet);
           document.getElementById("flexSwitchCheckDefault1").checked = true;
       }
