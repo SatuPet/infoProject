@@ -42,7 +42,7 @@ const closeNavbar = () => {
   bsCollapse.hide();
 };
 
-// document.querySelector('body').addEventListener('click', closeNavbar);
+document.querySelector('.main').addEventListener('click', closeNavbar);
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 
