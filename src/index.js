@@ -46,7 +46,7 @@ document.querySelector('.main').addEventListener('click', closeNavbar);
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 
-
+//darkMode ->
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
 
