@@ -1,0 +1,247 @@
+
+/* HSL KARTTA */
+.info{
+    display: grid;
+    background-color: transparent;
+    border: transparent;
+    box-shadow: 10px 10px 10px #888888;
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vw;
+    color: var(--orange);
+    position: relative;
+    font-size: 11vw;
+    justify-content: center;
+    align-content: space-evenly;
+  }
+  
+  .hslMaps{
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 85%;
+    height: auto; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #fff;
+    border-radius: 35px;
+    box-shadow: 25px 15px 25px #888888;
+  }
+  #hslModal{
+    margin-top: 20vw;
+  }
+  
+  .bi-geo-alt-fill{
+    color: var(--orange);
+    font-size: 11vw;
+    top: -53vw;
+    left: 21vw;
+    position: relative;
+  }
+  .bi-markdown-fill{
+    color: var(--orange);
+    font-size: 11vw;
+    top: -96vw;
+    left: 55vw;
+    position: relative;
+  }
+  .bi-pin-map-fill{
+    color: var(--orange);
+    font-size: 11vw;
+    top: -70vw;
+    left: 66vw;
+    position: relative;
+  }
+  
+  /* KARAMALMIN PYSÄKIT */
+  #landerannantie{
+    top: -109vw;
+    left: 40vw;
+  }
+  #karanristiWest{
+    top: -90vw;
+    left: 65vw;
+  }
+  #karanristiEast{
+    top: -114vw;
+    left: 29vw;
+  }
+  #karamalmensEast{
+    top: -68vw;
+    left: 54vw;
+  }
+  #karamalmensWest{
+    top: -90vw;
+    left: 62vw;
+  }
+  
+  /* ARABIAN PYSÄKIT */
+  #ara5{
+    color: #007AC9;
+    top: -121vw;
+    left: 56vw;
+  }
+  #ara6{
+    color: #007AC9;
+    top: -101vw;
+    left: 73vw;
+  }
+  #ara7{
+    color: #007AC9;
+    top: -121vw;
+    left: 47vw;
+  }
+  #ara8{
+    color: #007AC9;
+    top: -91vw;
+    left: 25vw;
+  }
+  #ara9{
+    color: #007AC9;
+    top: -105vw;
+    left: 40vw;
+  }
+  #ara1{
+    color: #008151;
+    top: -97vw;
+    left: 32vw;
+  }
+  #ara2{
+    color: #008151;
+    top: -94vw;
+    left: 33vw;
+  }
+  #ara3{
+    color: #007AC9;
+    top: -114vw;
+    left: 43vw;
+  }
+  #ara4{
+    color: #008151;
+    top: -142vw;
+    left: 62vw;
+  }
+  
+  /* MYLLYPURON PYSÄKIT */
+  #mylly1{
+    color: #004dff;
+    top: -106vw;
+    left: 70vw;
+  }
+  #mylly2{
+    color: #004dff;
+    top: -106vw;
+    left: 60vw;
+  }
+  #mylly3{
+    color: #004dff;
+    top: -131vw;
+    left: 46vw;
+  }
+  #mylly4{
+    color: #004dff;
+    top: -147vw;
+    left: 28vw;
+  }
+  #mylly5{
+    top: -136vw;
+    left: 35vw;
+  }
+  #mylly6{
+    color: #004dff;
+    top: -131vw;
+    left: 18vw;
+  }
+  #mylly7{
+    color: #004dff;
+    top: -120vw;
+    left: 28vw;
+  }
+  
+  /* MYRTSIN PYSÄKIT */
+  
+  #myrtsi1{
+    color: #8C4799;
+    top: -144vw;
+    left: 75vw;
+  }
+  #myrtsi2{
+    color: #004dff;
+    top: -80vw;
+    left: 77vw;
+  }
+  #myrtsi3{
+    color: #004dff;
+    top: -106vw;
+    left: 70vw;
+  }
+  #myrtsi4{
+    color: #004dff;
+    top: -141vw;
+    left: 37vw;
+  }
+  #myrtsi5{
+    color: #004dff;
+    top: -112vw;
+    left: 30vw;
+  }
+
+
+
+  /* TOISEN MAPIN CSS */
+
+/* .map{
+  display: grid;
+  background-image: url(/assets/img/map.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 85%;
+  height: 85vh; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #fff;
+  border-radius: 35px;
+}
+.karaMapGrid{
+  display: grid;
+  grid-template-columns:
+  repeat(8, 1fr);
+  grid-template-rows: 
+  repeat(10, 1fr);
+}
+.infoButton1{
+  grid-column: 4;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
+}
+.infoButton2{
+  color: #004dff;
+  grid-column: 6;
+  grid-row: 5;
+  justify-self: center;
+  align-self: center;
+}
+.infoButton3{
+  color: #000;
+  grid-column: 2;
+  grid-row: 4;
+  justify-self: center;
+  align-self: center;
+}
+.infoButton4{
+  color: #fff;
+  grid-column: 2;
+  grid-row: 5;
+  justify-self: center;
+  align-self: center;
+}
+.infoButton5{
+  grid-column: 6;
+  grid-row: 7;
+  justify-self: center;
+  align-self: center;
+} 
+ */
