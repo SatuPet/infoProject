@@ -8,7 +8,6 @@
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
-    color: var(--orange);
     position: relative;
     font-size: 11vw;
     justify-content: center;
@@ -30,160 +29,117 @@
   #hslModal{
     margin-top: 20vw;
   }
-  
-  .bi-geo-alt-fill{
-    color: var(--orange);
-    font-size: 11vw;
-    top: -53vw;
-    left: 21vw;
-    position: relative;
-  }
-  .bi-markdown-fill{
-    color: var(--orange);
-    font-size: 11vw;
-    top: -96vw;
-    left: 55vw;
-    position: relative;
-  }
-  .bi-pin-map-fill{
-    color: var(--orange);
-    font-size: 11vw;
-    top: -70vw;
-    left: 66vw;
-    position: relative;
-  }
+
   
   /* KARAMALMIN PYSÄKIT */
   #landerannantie{
+    color: #004dff;
     top: -109vw;
     left: 40vw;
   }
   #karanristiWest{
+    color: #004dff;
     top: -90vw;
     left: 65vw;
   }
   #karanristiEast{
+    color: #004dff;
     top: -114vw;
     left: 29vw;
   }
   #karamalmensEast{
+    color: #004dff;
     top: -68vw;
     left: 54vw;
   }
   #karamalmensWest{
+    color: #004dff;
     top: -90vw;
     left: 62vw;
   }
   
   /* ARABIAN PYSÄKIT */
-  #ara5{
-    color: #007AC9;
-    top: -121vw;
-    left: 56vw;
-  }
-  #ara6{
-    color: #007AC9;
-    top: -101vw;
-    left: 73vw;
-  }
-  #ara7{
-    color: #007AC9;
-    top: -121vw;
-    left: 47vw;
-  }
-  #ara8{
-    color: #007AC9;
-    top: -91vw;
-    left: 25vw;
-  }
-  #ara9{
-    color: #007AC9;
-    top: -105vw;
-    left: 40vw;
-  }
-  #ara1{
-    color: #008151;
-    top: -97vw;
-    left: 32vw;
-  }
-  #ara2{
-    color: #008151;
-    top: -94vw;
+  #KaironkatuNorth{
+    color: #004dff;
+    top: -143vw;
     left: 33vw;
   }
-  #ara3{
-    color: #007AC9;
-    top: -114vw;
-    left: 43vw;
+  #KaironkatuSouth{
+    color: #004dff;
+    top: -115vw;
+    left: 16vw;
   }
-  #ara4{
+  #Arabianranta{
+    color: #004dff;
+    top: -98vw;
+    left: 80vw;
+  }
+  #ArabianrantaSpora{
     color: #008151;
-    top: -142vw;
-    left: 62vw;
+    top: -43vw;
+    left: 54vw;
   }
+
   
   /* MYLLYPURON PYSÄKIT */
-  #mylly1{
+  #LiikuntamyllyWest{
     color: #004dff;
-    top: -106vw;
-    left: 70vw;
+    top: -113vw;
+    left: 77vw;
   }
-  #mylly2{
+  #LiikuntamyllyWEast{
     color: #004dff;
-    top: -106vw;
-    left: 60vw;
+    top: -110vw;
+    left: 66vw;
   }
-  #mylly3{
+  #MyllypuronTervAs{
     color: #004dff;
-    top: -131vw;
-    left: 46vw;
+    top: -156vw;
+    left: 30vw;
   }
-  #mylly4{
+  #MyllypuronMetroasema{
+    color: var(--orange);
+    background-color: #fff;
+    top: -141vw;
+    left: 26vw;
+  }
+  #MyllypuroMEast{
     color: #004dff;
-    top: -147vw;
-    left: 28vw;
-  }
-  #mylly5{
     top: -136vw;
-    left: 35vw;
+    left: 29vw;
   }
-  #mylly6{
+  #MyllypuroMWest{
     color: #004dff;
-    top: -131vw;
-    left: 18vw;
-  }
-  #mylly7{
-    color: #004dff;
-    top: -120vw;
-    left: 28vw;
+    top: -123vw;
+    left: 24vw;
   }
   
   /* MYRTSIN PYSÄKIT */
   
-  #myrtsi1{
+  #MyyrmakiJunaAsema{
     color: #8C4799;
-    top: -144vw;
+    top: -134vw;
     left: 75vw;
   }
-  #myrtsi2{
+  #LeiritieEast{
     color: #004dff;
-    top: -80vw;
-    left: 77vw;
+    top: -85vw;
+    left: 80vw;
   }
-  #myrtsi3{
+  #LeiritieWest{
     color: #004dff;
-    top: -106vw;
+    top: -113vw;
     left: 70vw;
   }
-  #myrtsi4{
+  #Raappavuorentie{
     color: #004dff;
-    top: -141vw;
-    left: 37vw;
+    top: -166vw;
+    left: 20vw;
   }
-  #myrtsi5{
+  #Honkasuo{
     color: #004dff;
-    top: -112vw;
-    left: 30vw;
+    top: -117vw;
+    left: 10vw;
   }
 
 
