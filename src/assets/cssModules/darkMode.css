@@ -1,49 +1,37 @@
 body {
-    background-color: #222;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-image: url(/assets/img/darkIconBg.svg);
-    background-repeat: repeat-y;
-    background-position-x: center;
-    margin-top: 25vw;
-  }
-  .navbar-dark{
-    background-color: #222; 
-    border-bottom: 1px solid rgb(36, 36, 36);
-  }
-  .metroMeno{
-    color: var(--background); 
-    font-size: 6vw;
-    font-family: var(--headFont);
-    margin: 2%;
-  }
-  .collapseText{
-    position: fixed;
-    background-color: #333;
-    margin-right: 20%;
-    box-shadow: 25px 15px 25px #222;
-    margin-top: -20vw;
-  }
-  .nav-link{
-    color: var(--background);
-  }
-  .nav-link:active{
-    background-color: var(--grey);
-  }
-  .darkMode, .inEnglish{
-    font-size: 5vw;
-    color: var(--background);
-    margin: 0;
-  }
-  .koronaHeadInfo{
-    font-size: 3vh;
-    margin-top: 10vw;
-    font-family: var(--titleFont);
-    color: var(--background);
-  }
-  .koronaInfo{
-    font-size: 2vh;
-    font-family: var(--regularFont);
-    color: var(--background);
-  }
+  background-color: #222;
+  background-image: url(/assets/img/darkIconBg.svg);
+}
+.navbar-dark{
+  background-color: #222; 
+  border-bottom: 1px solid rgb(36, 36, 36);
+}
+.metroMeno{
+  color: var(--background); 
+}
+.collapseText{
+  background-color: #333;
+  box-shadow: 25px 15px 25px #222;
+}
+.nav-link{
+  color: var(--background);
+}
+.nav-link:active{
+  background-color: var(--grey);
+}
+.darkMode, .inEnglish{
+  color: var(--background);
+}
+.koronaHeadInfo{
+  color: var(--background);
+}
+.koronaInfo{
+  color: var(--background);
+}
+.traffic{
+  color: var(--background);
+}
+.hslMaps{
+  filter: brightness(80%);
+  box-shadow: 25px 15px 25px #222;
+}
