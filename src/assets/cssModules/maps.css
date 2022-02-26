@@ -1,5 +1,24 @@
 
 /* HSL KARTTA */
+.trafficColors{
+  display: grid;
+  grid-template-columns:
+  repeat(2, 1fr);
+  grid-template-rows: 
+  repeat(2, 1fr);
+}
+.trafficIcons{
+  font-size: 7vw;
+  display: flex;
+}
+.traffic{
+  font-size: 4vw;
+  color: var(--grey);
+  font-family: var(--regularFont);
+}
+.trafficGrid{
+  justify-self: center;
+}
 .info{
     display: grid;
     background-color: transparent;
@@ -12,6 +31,7 @@
     font-size: 11vw;
     justify-content: center;
     align-content: space-evenly;
+    background-color: #fff;
   }
   
   .hslMaps{
@@ -99,7 +119,6 @@
   }
   #MyllypuronMetroasema{
     color: var(--orange);
-    background-color: #fff;
     top: -141vw;
     left: 26vw;
   }
