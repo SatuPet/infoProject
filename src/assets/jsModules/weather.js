@@ -6,7 +6,10 @@ let wind = document.querySelectorAll('.wind');
 let temperature = document.querySelectorAll('.temperature');
 let image = document.querySelectorAll('.image');
 
-const weather = () => {
+/**
+ * Old weather API
+ */
+/* const weather = () => {
   const getWeather = useApiData().getWeatherData('espoo');
   getWeather.then(function(data) {
     console.log(city.length);
@@ -23,6 +26,30 @@ const weather = () => {
         '@2x.png" alt="weatherImg">';
     }
   });
+}; */
+
+/**
+ *
+ * @param {Number} lat latitude of campus
+ * @param {Number} lon longitude of campus
+ */
+const weather = (lat, lon) => {
+  const getWeather = useApiData().getWeatherData(lat, lon);
+  getWeather.then(function (data) {
+    const weatherData = data.data[0];
+    for (let i = 0; i < city.length; i++) {
+
+    console.log('',weatherData);
+    city[i].innerHTML = `${weatherData.city_name}`;
+    clouds[i].innerHTML = `${weatherData.weather.description}`;
+    wind[i].innerHTML = `${weatherData.wind_spd} m/s`;
+    temperature[i].innerHTML = `${weatherData.temp} °C`;
+    const imgCode = `${weatherData.weather.icon}`;
+    image[i].innerHTML =
+      '<img src="./assets/weather-icons/' + imgCode + '.png" alt="weatherImg">';
+    }
+  });
 };
+
 
 export {weather};

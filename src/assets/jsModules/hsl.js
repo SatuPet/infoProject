@@ -112,13 +112,13 @@ const getDsBusses = () => {
     .getHslDataByRadius(getQueryByRadius())
     .then((response) => {
       dsHslPrint.innerHTML =
-        "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Numero</th><th>Lähtee</th></tr>";
+        "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
       const nodes = response.data.stopsByRadius.edges;
-      console.log("radius hsl nodes", nodes);
+      //console.log("radius hsl nodes", nodes);
 
       for (let u = 0; u < nodes.length; u++) {
         let patterns = nodes[u].node.stop.stoptimesWithoutPatterns;
-        console.log("inside of pattern ", patterns);
+        //console.log("inside of pattern ", patterns);
         const stop = nodes[u].node.stop;
 
         for (let i = 0; i < patterns.length; i++) {
@@ -137,10 +137,9 @@ const getDsBusses = () => {
         <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
         <td id="bussDestination">${patterns[i].headsign}</td>
         <td id="stopName">${stop.name}</td>
-        <td><div id="stopCode">${stop.code}</div></td>
         <td id="leavingTime">${hours}:${minutes}</td>
             </tr>`,
-          });
+          }); // <td><div id="stopCode">${stop.code}</div></td>
         }
       }
       //sorting busses

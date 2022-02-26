@@ -2,7 +2,7 @@ import {weather} from './assets/jsModules/weather';
 import {getBusses} from './assets/jsModules/hsl';
 import {getDateTime} from './assets/jsModules/ds';
 
-weather();
+weather(60.2241077, 24.7565312);
 getDateTime();
 
 // parallax Y postition moving

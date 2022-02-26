@@ -8,6 +8,8 @@
   body {
     margin: 0;
     padding: 0;
+    max-width: 1920px;
+    max-height: 1080px;
   }
   .ds-background {
     background-image: url("../images/kauppatori.jpeg");
@@ -33,7 +35,7 @@
   }
   .ds-layer {
     display: grid;
-    grid-template-columns: 2fr 1fr 500px;
+    grid-template-columns: 1fr 2fr 500px;
     grid-template-rows: auto;
     grid-gap: 2rem;
     grid-template-areas:
@@ -74,28 +76,54 @@
     margin: auto;
     font-size: 5rem;
   }
-  .weather-block {
+/*   .location-block {
+    grid-area: location;
     display: block;
-    grid-area: weather;
     width: 100%;
-    background-color: #00a0e1;
-    color: white;
+    height: 100%;
+    background-color: white;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
     text-align: center;
+  } */
+  .weather-block {
+    display: flex;
+    grid-area: weather;
+    width: 100%;
+    background-color: #e4e4e4;
+    color: black;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
     z-index: 1;
+  }
+  .location-area {
+    width: 55%;
+    text-align: center;
+  }
+  .ds-metropolia-logo {
+    display: block;
+    width: 60%;
+    margin: 1rem 0 0 1rem;
+  }
+  #campus-name {
+    font-size: 3rem;
+    padding: 0;
+
+    color: #ff5000;
   }
   #weather-flex {
     display: flex;
     justify-content: center;
+
+  }
+  .weather .image img {
+    height: 150px;
   }
   .temperature {
-    font-size: 3rem;
-    padding-top: 1rem;
+    font-size: 4rem;
+    margin-top: 2rem;
   }
-  #campus-name {
-    font-size: 2rem;
-  }
+
   .menu-block {
     grid-area: menu;
     height: 100%;
@@ -104,11 +132,7 @@
     border-radius: 0.5rem;
     z-index: 1;
   }
-  .ds-metropolia-logo {
-    display: block;
-    width: 30%;
-    margin: 1rem auto;
-  }
+
   .hsl-block {
     height: 100%;
     width: 100%;
@@ -118,7 +142,7 @@
   #hsl-timetable {
     display: flex;
     width: 100%;
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
   #ds-hsl-karanristi-all-data {
     display: block;
@@ -133,14 +157,14 @@
 
   }
   #bussDestination {
-    font-size: 1.8rem;
-    min-width: 450px;
+    font-size: 2rem;
+    min-width: 500px;
     padding-left: 2rem;
   }
   #stopName {
     font-weight: normal;
-    font-size: 1.5rem;
-    min-width: 230px;
+    font-size: 2rem;
+    min-width: 300px;
   }
   #stopCode {
     text-align: center;
@@ -167,6 +191,7 @@
       min-width: 150px;
       text-align: center;
       background-color: #53565a;
+
   }
   .banner-block {
     grid-area: banner;
@@ -194,7 +219,7 @@
     /* Starting position */
     transform: translateX(30%);
     /* Apply animation to this element */
-    animation: scroll-left 35s linear infinite;
+    animation: scroll-left 40s linear infinite;
   }
 }
 
