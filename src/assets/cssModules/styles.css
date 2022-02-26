@@ -50,6 +50,7 @@ body {
   margin-right: 20%;
   box-shadow: 25px 15px 25px #888888;
   margin-top: -20vw;
+  z-index: 5;
 }
 .linkMarginTop{
   margin-top: 3em ;

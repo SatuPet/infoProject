@@ -1,6 +1,23 @@
-
-/* MAP */
-
+/* HSL KARTTA */
+.trafficColors{
+  display: grid;
+  grid-template-columns:
+  repeat(2, 1fr);
+  grid-template-rows: 
+  repeat(2, 1fr);
+}
+.trafficIcons{
+  font-size: 7vw;
+  display: flex;
+}
+.traffic{
+  font-size: 4vw;
+  color: var(--grey);
+  font-family: var(--regularFont);
+}
+.trafficGrid{
+  justify-self: center;
+}
 .info{
     display: grid;
     background-color: transparent;
@@ -9,11 +26,11 @@
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
-    color: var(--orange);
     position: relative;
     font-size: 11vw;
     justify-content: center;
     align-content: space-evenly;
+    background-color: #fff;
   }
   
   .hslMaps{
@@ -28,29 +45,117 @@
     border-radius: 35px;
     box-shadow: 25px 15px 25px #888888;
   }
-  
-  /* KARAMALMIN PYSÄKIT */
-  
   #hslModal{
     margin-top: 20vw;
   }
+
+  
+  /* KARAMALMIN PYSÄKIT */
   #landerannantie{
+    color: #004dff;
     top: -109vw;
     left: 40vw;
   }
   #karanristiWest{
+    color: #004dff;
     top: -90vw;
     left: 65vw;
   }
   #karanristiEast{
+    color: #004dff;
     top: -114vw;
     left: 29vw;
   }
   #karamalmensEast{
+    color: #004dff;
     top: -68vw;
     left: 54vw;
   }
   #karamalmensWest{
+    color: #004dff;
     top: -90vw;
     left: 62vw;
+  }
+  
+  /* ARABIAN PYSÄKIT */
+  #KaironkatuNorth{
+    color: #004dff;
+    top: -143vw;
+    left: 33vw;
+  }
+  #KaironkatuSouth{
+    color: #004dff;
+    top: -115vw;
+    left: 16vw;
+  }
+  #Arabianranta{
+    color: #004dff;
+    top: -98vw;
+    left: 80vw;
+  }
+  #ArabianrantaSpora{
+    color: #008151;
+    top: -43vw;
+    left: 54vw;
+  }
+
+  
+  /* MYLLYPURON PYSÄKIT */
+  #LiikuntamyllyWest{
+    color: #004dff;
+    top: -113vw;
+    left: 77vw;
+  }
+  #LiikuntamyllyWEast{
+    color: #004dff;
+    top: -110vw;
+    left: 66vw;
+  }
+  #MyllypuronTervAs{
+    color: #004dff;
+    top: -156vw;
+    left: 30vw;
+  }
+  #MyllypuronMetroasema{
+    color: var(--orange);
+    top: -141vw;
+    left: 26vw;
+  }
+  #MyllypuroMEast{
+    color: #004dff;
+    top: -136vw;
+    left: 29vw;
+  }
+  #MyllypuroMWest{
+    color: #004dff;
+    top: -123vw;
+    left: 24vw;
+  }
+  
+  /* MYRTSIN PYSÄKIT */
+  
+  #MyyrmakiJunaAsema{
+    color: #8C4799;
+    top: -134vw;
+    left: 75vw;
+  }
+  #LeiritieEast{
+    color: #004dff;
+    top: -85vw;
+    left: 80vw;
+  }
+  #LeiritieWest{
+    color: #004dff;
+    top: -113vw;
+    left: 70vw;
+  }
+  #Raappavuorentie{
+    color: #004dff;
+    top: -166vw;
+    left: 20vw;
+  }
+  #Honkasuo{
+    color: #004dff;
+    top: -117vw;
+    left: 10vw;
   }

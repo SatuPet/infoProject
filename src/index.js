@@ -5,6 +5,7 @@ weather();
 
 // parallax Y postition moving
 window.addEventListener('scroll', (event) => {
+  // KARAMALMI
   document.getElementById('karanristiEast').addEventListener('click', () => {
     getBusses(2132208);
   });
@@ -20,8 +21,58 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('karamalmensEast').addEventListener('click', () => {
     getBusses(2132226);
   });
+
+    // ARABIA
+  document.getElementById('KaironkatuNorth').addEventListener('click', () => {
+    getBusses(1230102);
+  });
+  document.getElementById('KaironkatuSouth').addEventListener('click', () => {
+    getBusses(1230101);
+  });
+  document.getElementById('Arabianranta').addEventListener('click', () => {
+    getBusses(1232102);
+  });
+  document.getElementById('ArabianrantaSpora').addEventListener('click', () => {
+    getBusses(1230407);
+  });
+
+  // MYLLYPURO
+  document.getElementById('LiikuntamyllyWest').addEventListener('click', () => {
+    getBusses(1454111);
+  });
+  document.getElementById('LiikuntamyllyWEast').addEventListener('click', () => {
+    getBusses(1454112);
+  });
+  document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
+    getBusses(1454138);
+  });
+  document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
+    getBusses(1454601), getBusses(1454602);;
+  });
+  document.getElementById('MyllypuroMEast').addEventListener('click', () => {
+    getBusses(1454140);
+  });
+  document.getElementById('MyllypuroMWest').addEventListener('click', () => {
+    getBusses(1454141);
+  });
+
+  // MYYRMÄKI
+  document.getElementById('MyyrmakiJunaAsema').addEventListener('click', () => {
+    getBusses(4150551), getBusses(4150501);
+  });
+  document.getElementById('LeiritieEast').addEventListener('click', () => {
+    getBusses(4150201);
+  });
+  document.getElementById('LeiritieWest').addEventListener('click', () => {
+    getBusses(4150296);
+  });
+  document.getElementById('Raappavuorentie').addEventListener('click', () => {
+    getBusses(4150228);
+  });
+  document.getElementById('Honkasuo').addEventListener('click', () => {
+    getBusses(4150269);
+  });
 });
-//getBusses(2132207);
 
 
 
