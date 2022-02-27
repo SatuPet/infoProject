@@ -12,23 +12,20 @@
 }
 body {
   background-color:var(--background);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url(/assets/img/iconBg.svg);
+  background-repeat: repeat-y;
+  background-position-x: center;
+  margin-top: 25vw;
 }
-
-.navbar-toggler-icon{
-  font-size: 3em;
+.navbar-dark{
+  background-color: var(--background);
+  border-bottom: 1px solid #53565a;
 }
 .navbar-dark .navbar-toggler-icon{
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 80, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-.metroMeno{
-  color: var(--grey);
-  font-size: 4em;
-  font-family: var(--headFont);
-}
-.navbar-collapse{
-  background-color: #D0D0D0;
-  margin-right: 20%;
-  box-shadow: 25px 15px 25px #888888;
 }
 .navbar-toggler .navbar-toggler:hover{
   border: none;
@@ -37,122 +34,93 @@ body {
   border-color: transparent;
   color: transparent;
 }
+ .navbar-toggler-icon{
+  font-size: 6vw;
+  align-self: flex-start;
+}
+.metroMeno{
+  color: var(--grey);
+  font-size: 6vw;
+  font-family: var(--headFont);
+  margin: 2%;
+}
+.collapseText{
+  position: fixed;
+  background-color: #D0D0D0;
+  margin-right: 20%;
+  box-shadow: 25px 15px 25px #888888;
+  margin-top: -20vw;
+  z-index: 5;
+}
+.linkMarginTop{
+  margin-top: 3em ;
+}
 .nav-item{
-  font-size: 8vh;
-  padding: 0.5em;
+  font-size: 6vw;
+  padding: 1vw;
   font-family: var(--titleFont);
 }
-.buttonGrid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.nav-link{
+  color: #000;
 }
-.navbar-dark .navbar-nav .nav-link{
-  color: black;
-}
-.navbar-dark .navbar-nav .nav-link:hover{
+.nav-link:hover{
   color: var(--orange);
 }
-.navbar-dark .navbar-nav .nav-link:active{
+.nav-link:active{
   background-color: #E5E5E5;
 }
-.checkButton1 {
-  justify-self: left;
-  align-self: end;
+.darkMode{
+  margin-top: 10%;
+}
+.darkMode, .inEnglish{
+  font-size: 5vw;
+  color: black;
+  margin: 0;
+}
+.toggleFlex{
+  display: flex;
+
+}
+.form-switch{
+  margin-left: 9vw;
 }
 .form-switch .form-check-input{
   background-color: var(--orange);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
-
+.form-switch .form-check-input:focus{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+}
 .form-check-input:checked{
   background-color: var(--grey);
   border-color: var(--grey);
 }
-.form-check-input:active, .form-check-input:focus{
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-.label{
-  background: var(--grey);
-}
-.checkButton2{
-  justify-self: left;
-  align-self: flex-start;
-}
-.darkMode{
-  margin-top: 10%;
-  justify-self: left;
-  align-self: end;
-}
-.inEnglish{
-  justify-self: left;
-  align-self: end;
-}
-.darkMode, .inEnglish{
-  font-size: 10vw;
-  color: black;
+.form-check-input:focus{
+  outline: none;
+  box-shadow: none;
+  border: transparent;
 }
 .koronaHeadInfo{
-  font-size: 3em;
-  margin-top: 10%;
+  font-size: 3vh;
+  margin-top: 10vw;
   font-family: var(--titleFont);
+  color: #000;
 }
 .koronaInfo{
-  font-size: 2em;
+  font-size: 2vh;
   font-family: var(--regularFont);
+  color: #000;
 }
 
-
-
-.background{
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  z-index: -1;
-  position: relative;
-  grid-template-columns:
-  repeat(2, 1fr);
-  grid-template-rows:
-    repeat(10, 1fr);
+.lounchMenu{
+  margin-bottom: 20%;
+  background-color: #fff;
+  width: 85%;
+  height: 80vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #fff;
+  border-radius: 35px;
+  box-shadow: 25px 15px 25px #888888;
 }
-.bi-keyboard{
-  justify-self: right;
-  align-self: flex-start;
-}
-.bi-mortarboard{
-  justify-self: right;
-  align-self: flex-start;
-}
-.bi-pencil{
-  justify-self: left;
-  align-self: center;
-}
-.bi-clock{
-  justify-self: center;
-  align-self: center;
-}
-.bi-calculator-fill{
-  justify-self: left;
-  align-self: flex-end;
-}
-.bi-calendar-check{
-  justify-self: right;
-  align-self: flex-start;
-}
-.bi-camera-reels{
-  justify-self: center;
-  align-self: center;
-}
-.bi-pen{
-  justify-self: center;
-  align-self: center;
-}
-.bi-clipboard-data{
-  justify-self: left;
-  align-self: flex-start;
-}
-.bi-card-checklist{
-  justify-self: left;
-  align-self: center;
-}
-

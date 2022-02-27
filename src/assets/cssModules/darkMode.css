@@ -1,0 +1,37 @@
+body {
+  background-color: #222;
+  background-image: url(/assets/img/darkIconBg.svg);
+}
+.navbar-dark{
+  background-color: #222; 
+  border-bottom: 1px solid rgb(36, 36, 36);
+}
+.metroMeno{
+  color: var(--background); 
+}
+.collapseText{
+  background-color: #333;
+  box-shadow: 25px 15px 25px #222;
+}
+.nav-link{
+  color: var(--background);
+}
+.nav-link:active{
+  background-color: var(--grey);
+}
+.darkMode, .inEnglish{
+  color: var(--background);
+}
+.koronaHeadInfo{
+  color: var(--background);
+}
+.koronaInfo{
+  color: var(--background);
+}
+.traffic{
+  color: var(--background);
+}
+.hslMaps{
+  filter: brightness(80%);
+  box-shadow: 25px 15px 25px #222;
+}
