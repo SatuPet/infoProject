@@ -162,7 +162,7 @@ const hslTimer = () => {
   hslDsArray = [];
   getDsBusses();
 };
-setInterval(hslTimer, 30000);
+//setInterval(hslTimer, 30000);
 getDsBusses();
 
 /**

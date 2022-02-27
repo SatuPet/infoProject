@@ -2,7 +2,13 @@ import {weather} from './assets/jsModules/weather';
 import {getBusses} from './assets/jsModules/hsl';
 import {getDateTime} from './assets/jsModules/ds';
 
-weather(60.2241077, 24.7565312);
+weather(60.2241077, 24.7565312); //TODO setInterval 1 hour
+// Campus coords:
+// 60.2241077, 24.7565312 Karaportti HSL radius: 600
+// 60.2094084, 24.9809358 Arabia  HSL radius: 500
+// 60.2588793, 24.8488313 Myyrmäki HSL radius: 400
+// 60.2234938, 25.0757339 Myllypuro HSL radius: 520
+
 getDateTime();
 
 // parallax Y postition moving
