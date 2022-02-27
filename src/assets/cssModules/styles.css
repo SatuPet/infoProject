@@ -112,3 +112,16 @@ body {
   color: #000;
 }
 
+.lounchMenu{
+  margin-bottom: 20%;
+  background-color: #fff;
+  width: 85%;
+  height: 80vh; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #fff;
+  border-radius: 35px;
+  box-shadow: 25px 15px 25px #888888;
+}
+
