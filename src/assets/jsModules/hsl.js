@@ -66,10 +66,10 @@ const getQueryForNextRidesByStopId = (id) => {
  *
  * @returns busses
  */
-const getQueryByRadius = () => {
+const getQueryByRadius = (lat, lon, radius) => {
   return `
   {
-    stopsByRadius(lat:60.2241077, lon:24.7565312, radius:600) {
+    stopsByRadius(lat:${lat}, lon:${lon}, radius:${radius}) {
       edges {
         node {
           stop {
@@ -107,9 +107,11 @@ const DsHslData = { getQueryByRadius };
  * Get busses from selected area and print to page
  */
 let hslDsArray = [];
-const getDsBusses = () => {
+const getDsBusses = (lat, lon, radius) => {
+  dsHslPrint.innerHTML = '';
+  hslDsArray = [];
   useApiData()
-    .getHslDataByRadius(getQueryByRadius())
+    .getHslDataByRadius(getQueryByRadius(lat, lon, radius))
     .then((response) => {
       dsHslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
@@ -163,7 +165,7 @@ const hslTimer = () => {
   getDsBusses();
 };
 //setInterval(hslTimer, 30000);
-getDsBusses();
+getDsBusses(60.2241077, 24.7565312, 600);
 
 /**
  * Get busses from selected stop and print in modal
@@ -201,4 +203,4 @@ const getBusses = (stopNumber) => {
     });
 };
 
-export { getBusses, getQueryByRadius, getQueryForNextRidesByStopId };
+export { getBusses, getDsBusses, getQueryByRadius, getQueryForNextRidesByStopId };

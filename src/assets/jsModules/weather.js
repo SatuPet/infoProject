@@ -43,7 +43,7 @@ const weather = (lat, lon) => {
     city[i].innerHTML = `${weatherData.city_name}`;
     clouds[i].innerHTML = `${weatherData.weather.description}`;
     wind[i].innerHTML = `${weatherData.wind_spd} m/s`;
-    temperature[i].innerHTML = `${weatherData.temp} °C`;
+    temperature[i].innerHTML = `  ${weatherData.temp} °C`;
     const imgCode = `${weatherData.weather.icon}`;
     image[i].innerHTML =
       '<img src="./assets/weather-icons/' + imgCode + '.png" alt="weatherImg">';

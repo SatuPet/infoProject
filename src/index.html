@@ -35,7 +35,7 @@
                 <a class="nav-link" href="#">Karamalmin Kampus</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Mellunmäen Kampus</a>
+                <a class="nav-link" href="#">Myyrmäen Kampus</a>
               </li>
               <li class="nav-item mb-4">
                 <a class="nav-link" href="#">Myllypuron Kampus</a>
@@ -112,7 +112,7 @@
     </div>
       </div>
 
-      <section>
+     <section>
 
 
       <!-- LOUNCH -->
@@ -233,7 +233,7 @@
             <i class="bi bi-info-circle-fill"></i>
           </button>
         </section>
-      </section>
+   </section>
     </div>
     <div class="ds-background">
       <iframe
@@ -257,7 +257,42 @@
               src="./assets/images/metropolia_s_oranssi.png"
               alt="metropolia logo"
             />
-              <p id="campus-name">Karamalmi</p>
+            <!-- Campus name trigger modal -->
+            <p  id="campus-name"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Karamalmi
+            </p>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Valitse kampus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="navbar-nav ">
+                      <li class="nav-item linkMarginTop">
+                        <a class="nav-link" id="arabia-campus">Arabian Kampus </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="karamalmi-campus">Karamalmin Kampus</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="myllypuro-campus">Myllypuron Kampus</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="myyrmaki-campus">Myyrmäen Kampus</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             </div>
             <div class="weather">
               <p class="city" style="display: none"></p>
