@@ -37,12 +37,8 @@ const weather = (lat, lon) => {
   const getWeather = useApiData().getWeatherData(lat, lon);
   getWeather.then(function (data) {
     const weatherData = data.data[0];
-    for (let i = 0; i < city.length; i++) {
-
+    for (let i = 0; i < temperature.length; i++) {
     console.log('',weatherData);
-    city[i].innerHTML = `${weatherData.city_name}`;
-    clouds[i].innerHTML = `${weatherData.weather.description}`;
-    wind[i].innerHTML = `${weatherData.wind_spd} m/s`;
     temperature[i].innerHTML = `  ${weatherData.temp} °C`;
     const imgCode = `${weatherData.weather.icon}`;
     image[i].innerHTML =

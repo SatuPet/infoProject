@@ -160,22 +160,6 @@ const getDsBusses = (lat, lon, radius) => {
 };
 
 /**
- *
- * @param {Number} campusLat latitude of campus
- * @param {Number} campusLon longitude of campus
- * @param {Number} campusRad stop range from kampus
- */
-const hslTimer = (campusLat, campusLon, campusRad) => {
-  getDsBusses(campusLat, campusLon, campusRad);
-  const printBusses = () => {
-    //console.log("inner koords", campusLat, campusLon, campusRad);
-    getDsBusses(campusLat, campusLon, campusRad);
-  };
-  setInterval(printBusses, 30000);
-};
-hslTimer(60.2241077, 24.7565312, 600); //default Karamalmi
-
-/**
  * Get busses from selected stop and print in modal
  *
  * @param {Number} stopNumber get stop number from user
@@ -211,9 +195,4 @@ const getBusses = (stopNumber) => {
     });
 };
 
-export {
-  getBusses,
-  hslTimer,
-  getQueryByRadius,
-  getQueryForNextRidesByStopId,
-};
+export { getBusses, getDsBusses, getQueryByRadius, getQueryForNextRidesByStopId };

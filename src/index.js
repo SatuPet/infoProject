@@ -2,7 +2,23 @@ import {weather} from './assets/jsModules/weather';
 import {getBusses} from './assets/jsModules/hsl';
 import {getDateTime} from './assets/jsModules/ds';
 
-weather(60.2241077, 24.7565312); //TODO setInterval 1 hour
+
+let weatherInterval;
+/**
+ * Weather timer 1 hour
+ * @param {Number} campusLat latitude of campus
+ * @param {Number} campusLon longitude of campus
+ */
+const weatherTimer = (campusLat, campusLon) => {
+  clearInterval(weatherInterval);
+  weather(campusLat, campusLon);
+  const printWeather = () => {
+    weather(campusLat, campusLon);
+  };
+  weatherInterval = setInterval(printWeather, 3600000);
+};
+weatherTimer(60.2241077, 24.7565312); //default Karamalmi
+
 // Campus coords:
 // 60.2241077, 24.7565312 Karaportti HSL radius: 600
 // 60.2094084, 24.9809358 Arabia  HSL radius: 500
@@ -91,13 +107,13 @@ window.addEventListener('scroll',(event) =>{
   const background = document.querySelector("body");
   background.style.backgroundPositionY = top+"px";
   });
-  
+
 //navbar collapse moving back when you touch somewere else
 const menuToggle = document.getElementById('navbarToggleExternalContent');
 const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
 
 const closeNavbar = () => {
- 
+
   bsCollapse.hide();
 };
 
@@ -114,7 +130,7 @@ const changeDarkMode = () => {
     if (darkModeSetting === null) {
         localStorage.setItem('darkModeSetting', 'whitemode');
     } else {
-        
+
         if (darkModeSetting == 'whitemode') {
             // Creating the darkmode css style sheet and adding it to DOM
             darkModeStyleSheet = document.createElement('link');
@@ -146,7 +162,7 @@ const setTheme = () => {
   if (darkModeSetting === null) {
       localStorage.setItem('darkModeSetting', 'whitemode');
   } else {
-      
+
       if (darkModeSetting == 'darkmode') {
           // Creating the darkmode css style sheet and adding it to DOM
           darkModeStyleSheet = document.createElement('link');
