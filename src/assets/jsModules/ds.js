@@ -1,4 +1,4 @@
-import {getDsBusses} from './hsl';
+import {hslTimer} from './hsl';
 
 console.log("hello from ds.js");
 const timebox = document.getElementById("date-time");
@@ -27,22 +27,22 @@ const getDateTime = () => {
 document.getElementById("arabia-campus").addEventListener("click", () => {
   console.log("name clicked");
   nameOfCampus.innerHTML = 'Arabia';
-  getDsBusses(60.2094084, 24.9809358, 500);
+  hslTimer(60.2094084, 24.9809358, 500);
 });
 document.getElementById("karamalmi-campus").addEventListener("click", () => {
   console.log("name clicked");
   nameOfCampus.innerHTML = 'Karamalmi';
-  getDsBusses(60.2241077, 24.7565312, 600);
+  hslTimer(60.2241077, 24.7565312, 600);
 });
 document.getElementById("myllypuro-campus").addEventListener("click", () => {
   console.log("name clicked");
   nameOfCampus.innerHTML = 'Myllypuro';
-  getDsBusses(60.2234938, 25.0757339, 400);
+  hslTimer(60.2234938, 25.0757339, 400);
 });
 document.getElementById("myyrmaki-campus").addEventListener("click", () => {
   console.log("name clicked");
   nameOfCampus.innerHTML = 'Myyrmäki';
-  getDsBusses(60.2588793, 24.8488313, 520);
+  hslTimer(60.2588793, 24.8488313, 520);
 });
 
 export { getDateTime };

@@ -108,7 +108,7 @@ const DsHslData = { getQueryByRadius };
  */
 let hslDsArray = [];
 const getDsBusses = (lat, lon, radius) => {
-  dsHslPrint.innerHTML = '';
+  dsHslPrint.innerHTML = "";
   hslDsArray = [];
   useApiData()
     .getHslDataByRadius(getQueryByRadius(lat, lon, radius))
@@ -157,15 +157,23 @@ const getDsBusses = (lat, lon, radius) => {
         maxPrintValue--;
       }
     });
+};
 
+/**
+ *
+ * @param {Number} campusLat latitude of campus
+ * @param {Number} campusLon longitude of campus
+ * @param {Number} campusRad stop range from kampus
+ */
+const hslTimer = (campusLat, campusLon, campusRad) => {
+  getDsBusses(campusLat, campusLon, campusRad);
+  const printBusses = () => {
+    //console.log("inner koords", campusLat, campusLon, campusRad);
+    getDsBusses(campusLat, campusLon, campusRad);
+  };
+  setInterval(printBusses, 30000);
 };
-const hslTimer = () => {
-  dsHslPrint.innerHTML = '';
-  hslDsArray = [];
-  getDsBusses();
-};
-//setInterval(hslTimer, 30000);
-getDsBusses(60.2241077, 24.7565312, 600);
+hslTimer(60.2241077, 24.7565312, 600); //default Karamalmi
 
 /**
  * Get busses from selected stop and print in modal
@@ -203,4 +211,9 @@ const getBusses = (stopNumber) => {
     });
 };
 
-export { getBusses, getDsBusses, getQueryByRadius, getQueryForNextRidesByStopId };
+export {
+  getBusses,
+  hslTimer,
+  getQueryByRadius,
+  getQueryForNextRidesByStopId,
+};
