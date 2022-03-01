@@ -1,0 +1,226 @@
+@media screen and (max-width: 1730px) {
+  .ds-background, iframe, .ds-canvas, .ds-layer {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1730px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  iframe {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+  }
+  .ds-layer {
+    display: grid;
+    grid-template-columns: 1fr 2fr 500px;
+    grid-template-rows: auto;
+    grid-gap: 2%;
+    grid-template-areas:
+    "time weather menu"
+    "hsl hsl menu"
+    "banner banner banner";
+
+  }
+  .ds-canvas {
+    display: block;
+    background-color: rgba(220, 220, 220, 0.5);
+    height: 95%;
+    width: 95%;
+    margin: 3% auto;
+    padding: 1% 1% 2.8% 1%;
+    border-radius: 0.5rem;
+  }
+  .pwa-layer {
+    display: none;
+  }
+  #pwa-hsl-modal {
+    display: none;
+  }
+  .time-block {
+    grid-area: time;
+    width: 100%;
+    height: 100%;
+    background-color: #53565a;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+
+  }
+  .time-block p {
+    margin: auto;
+    font-size: 5rem;
+  }
+  .weather-block {
+    display: flex;
+    grid-area: weather;
+    width: 100%;
+    background-color: #e4e4e4;
+    color: black;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+
+  }
+  .location-area {
+    width: 80%;
+    text-align: center;
+  }
+  .ds-metropolia-logo {
+    display: block;
+    width: 70%;
+    margin: 1rem 0 0 1rem;
+  }
+  #campus-name {
+    font-size: 3rem;
+    padding: 0;
+    color: #ff5000;
+  }
+  #campus-name:hover {
+    color: #00a0e1;
+    cursor: pointer;
+  }
+  #weather-flex {
+    display: flex;
+    justify-content: center;
+
+  }.weather {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .weather .image img {
+    height: 150px;
+    margin-right: 1rem;
+  }
+  .temperature {
+    font-size: 4rem;
+    margin-top: 2rem;
+  }
+
+  .menu-block {
+    grid-area: menu;
+    height: 100%;
+    background-color: white;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+  }
+
+  .hsl-block {
+    height: 100%;
+    width: 100%;
+    grid-area: hsl;
+  }
+  #hsl-timetable {
+    display: flex;
+    width: 100%;
+    height: 585px;
+    font-size: 2rem;
+  }
+  #ds-hsl-karanristi-all-data {
+    display: block;
+    margin: auto;
+  }
+  th {
+    text-align: center;
+    border-bottom: 0.7rem solid #91c6db;
+  }
+  td {
+    border: 0.7rem solid #00a0e1;
+
+  }
+  #bussDestination {
+    font-size: 2rem;
+    min-width: 500px;
+    padding-left: 2rem;
+  }
+  #stopName {
+    font-weight: normal;
+    font-size: 2rem;
+    min-width: 300px;
+  }
+  #stopCode {
+    text-align: center;
+    min-width: 200px;
+  }
+  #hsl-timetable {
+    color: white;
+    background-color: #00a0e1;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: auto;
+  }
+  #bussNumber {
+    background-color: #00a0e1;
+    color: white;
+    height: 2.5rem;
+    width: 4rem;
+    padding-top: 0;
+    font-weight: bold;
+    text-align: center;
+  }
+  #leavingTime {
+      min-width: 150px;
+      text-align: center;
+      background-color: #53565a;
+
+  }
+  .banner-block {
+    grid-area: banner;
+    z-index: 1;
+  }
+  /* scrolling banner*/
+  .scroll-info {
+    height: 100px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #ff5000;
+    color: white;
+    border: 0.1rem solid #53565a;
+    border-radius: 0.5rem;
+  }
+  .scroll-info p {
+    font-size: 3.5rem;
+    position: absolute;
+    width: 8000px; /* this is how long the texts are */
+    height: 100%;
+    margin: 0;
+    line-height: 90px;
+    text-align: center;
+    /* Starting position */
+    transform: translateX(30%);
+    /* Apply animation to this element */
+    animation: scroll-left 40s linear infinite;
+  }
+}
+
+/* Move it (define the animation) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* DS modal */
+.linkMarginTop{
+  margin-top: 0;
+}
+.nav-item{
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
