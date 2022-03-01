@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="assets/cssModules/maps.css">
   </head>
 <body>
-
+  <!--pwa layer starts-->
+  <div class="pwa-layer">
     <header>
       <nav class="navbar navbar-dark fixed-top" >
         <div class="container-fluid">
@@ -23,6 +24,12 @@
           </button>
           <p class="metroMeno">MetroMeno</p>
           <p style="font-size: 6vw; margin: 2%;"> SÄÄ</p>
+          <div class="pwa-weather">
+            <div id="pwa-weather-flex">
+              <div class="image"></div>
+              <p class="temperature"></p>
+            </div>
+          </div>
         </div>
       </nav>
       <div class="collapse" id="navbarToggleExternalContent">
@@ -111,8 +118,7 @@
       </div>
     </div>
   </div>
-</section>
-<section>
+
   <header>
     <h3 class="ds-hsl-karaportti">HSL KARAPORTTI LÄHTEVÄT</h3>
   </header>
@@ -242,7 +248,102 @@
         <i class="bi bi-info-circle-fill"></i>
       </button>
     </section>
+    </div>
+    <!--pwa layer ends-->
+    <!--ds layer starts-->
+    <div class="ds-background">
+      <iframe
+        src="https://www.youtube.com/embed/LMZQ7eFhm58?autoplay=1&mute=1&wmode=transparent&amp;rel=0"
+        title="YouTube video player"
+        frameborder="0"
+        allow="autoplay;"
+        allowfullscreen
+      >
+      </iframe>
+      <div class="ds-canvas">
+        <div class="ds-layer">
+          <section class="time-block">
+            <p id="date-time">--:--</p>
+          </section>
 
+          <section class="weather-block">
+            <div class="location-area">
+              <img
+              class="ds-metropolia-logo"
+              src="./assets/images/metropolia_s_oranssi.png"
+              alt="metropolia logo"
+            />
+            <!-- Campus name trigger modal -->
+            <p  id="campus-name"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Karamalmi
+            </p>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Valitse kampus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="navbar-nav ">
+                      <li class="nav-item linkMarginTop">
+                        <a class="nav-link" id="arabia-campus">Arabian Kampus </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="karamalmi-campus">Karamalmin Kampus</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="myllypuro-campus">Myllypuron Kampus</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="myyrmaki-campus">Myyrmäen Kampus</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+            <div class="weather">
+              <div id="weather-flex">
+                <div class="image"></div>
+                <p class="temperature"></p>
+              </div>
+            </div>
+          </section>
+          <section class="menu-block">
+            <h1>Ruokalalasta Karaportta</h1>
+            <p>Tuskaa L, G</p>
+            <p>Perunamuumia L</p>
+          </section>
+          <section class="hsl-block">
+            <div id="hsl-timetable">
+              <!-- <h3>HSL KARAPORTTI LÄHTEVÄT</h3> -->
+              <table id="ds-hsl-karanristi-all-data"></table>
+            </div>
+          </section>
+          <section class="banner-block">
+            <div class="scroll-info">
+              <p>
+                Korona ohjeistus: Kampukselle saa tulla vain terveenä.
+                Metropoliassa suositamme vahvasti kaikkia käyttämään
+                kasvomaskeja kaikissa tilanteissa kampuksillamme. Maskeja voi
+                kysyä kampusten aulapalveluista. Lisäksi noudatetaan kaikki
+                turvallisuusohjeita: turvavälit, käsien peseminen, käsidesin
+                käyttäminen ja hihaan aivastaminen.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!--ds layer ends-->
     <script type="text/javascript" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
