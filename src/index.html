@@ -29,16 +29,16 @@
         <div class="collapseText p-4">
           <ul class="navbar-nav ">
             <li class="nav-item linkMarginTop">
-              <a class="nav-link" href="#">Arabian Kampus </a>
+              <a class="nav-link arabiaButton" href="#">Arabian Kampus </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Karamalmin Kampus</a>
+              <a class="nav-link karamalmiButton" href="#">Karamalmin Kampus</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Mellunmäen Kampus</a>
+              <a class="nav-link myllypuroButton" href="#">Myllypuron Kampus</a>
             </li>
             <li class="nav-item mb-4">
-              <a class="nav-link" href="#">Myllypuron Kampus</a>
+              <a class="nav-link myyrmakiButton" href="#">Myyrmäen Kampus</a>
             </li>
             <li class="nav-item toggleFlex">
             <p class="darkMode">Dark Mode
@@ -143,14 +143,16 @@
       </div>
     </section>
 
+    <div class="trafficColors">
+      <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: #004dff;"><p class="traffic">&nbsp;Bussi</p></i>
+      <i class="bi bi-info-circle-fill trafficIcons" style="color: #008151;"><p class="traffic">&nbsp;Raitiovaunu</p></i>
+      <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: var(--orange);"><p class="traffic">&nbsp;Metro</p></i>
+      <i class="bi bi-info-circle-fill trafficIcons" style="color: #8C4799;"><p class="traffic">&nbsp;Juna</p></i>
+    </div>
+
     <!-- KARAMALMI -->
-    <section class="main">
-      <div class="trafficColors">
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: #004dff;"><p class="traffic">&nbsp;Bussi</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #008151;"><p class="traffic">&nbsp;Raitiovaunu</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: var(--orange);"><p class="traffic">&nbsp;Metro</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #8C4799;"><p class="traffic">&nbsp;Juna</p></i>
-      </div>
+
+    <section class="main karamalmiMap map">
       <img class="hslMaps" src="/assets/img/karaMap.png" alt="map" width="500" height="500">
   
       <button class="info" id="landerannantie" data-bs-toggle="modal" data-bs-target="#hslModal">
@@ -171,13 +173,7 @@
     </section>
   
     <!-- ARABIA -->
-    <section class="main">
-      <div class="trafficColors">
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: #004dff;"><p class="traffic">&nbsp;Bussi</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #008151;"><p class="traffic">&nbsp;Raitiovaunu</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: var(--orange);"><p class="traffic">&nbsp;Metro</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #8C4799;"><p class="traffic">&nbsp;Juna</p></i>
-      </div>
+    <section class="main arabiaMap map">
       <img class="hslMaps" src="/assets/img/araMap.png" alt="map" width="500" height="500">
   
       <button class="info" id="KaironkatuNorth" data-bs-toggle="modal" data-bs-target="#hslModal">
@@ -196,13 +192,7 @@
   
     <!-- MYLLYPURO -->
   
-    <section class="main">
-      <div class="trafficColors">
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: #004dff;"><p class="traffic">&nbsp;Bussi</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #008151;"><p class="traffic">&nbsp;Raitiovaunu</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: var(--orange);"><p class="traffic">&nbsp;Metro</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #8C4799;"><p class="traffic">&nbsp;Juna</p></i>
-      </div>
+    <section class="main myllypuroMap map">
       <img class="hslMaps" src="/assets/img/myllyMap.png" alt="map" width="500" height="500">
   
       <button class="info" id="LiikuntamyllyWest" data-bs-toggle="modal" data-bs-target="#hslModal">
@@ -227,13 +217,7 @@
   
     <!-- MYYRMÄKI -->
   
-    <section class="main">
-      <div class="trafficColors">
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: #004dff;"><p class="traffic">&nbsp;Bussi</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #008151;"><p class="traffic">&nbsp;Raitiovaunu</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons trafficGrid" style="color: var(--orange);"><p class="traffic">&nbsp;Metro</p></i>
-        <i class="bi bi-info-circle-fill trafficIcons" style="color: #8C4799;"><p class="traffic">&nbsp;Juna</p></i>
-      </div>
+    <section class="main myyrmakiMap map">
       <img class="hslMaps" src="/assets/img/myrtsiMap.png" alt="map" width="500" height="500">
   
       <button class="info" id="MyyrmakiJunaAsema" data-bs-toggle="modal" data-bs-target="#hslModal">

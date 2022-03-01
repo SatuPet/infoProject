@@ -48,6 +48,9 @@
   #hslModal{
     margin-top: 20vw;
   }
+  .karamalmiMap, .arabiaMap, .myllypuroMap, .myyrmakiMap{
+   display: none;
+  }
 
   
   /* KARAMALMIN PYSÄKIT */

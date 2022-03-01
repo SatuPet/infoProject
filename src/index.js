@@ -151,6 +151,55 @@ const setTheme = () => {
   }
 };
 
+// const hideAllMaps = document.querySelectorAll('.map');
+const changeKaramalmiCampus = document.querySelector('.karamalmiMap');
+const changeArabiaCampus = document.querySelector('.arabiaMap');
+const changeMyllypuroCampus = document.querySelector('.myllypuroMap');
+const changeMyyrmakiCampus = document.querySelector('.myyrmakiMap');
+
+// const hideMaps = () => {
+//   hideAllMaps.style.display = "none";
+//   changeKaramalmiCampus.style.display = "none";
+//   changeArabiaCampus.style.display = "none";
+//   changeMyllypuroCampus.style.display = "none";
+//   changeMyyrmakiCampus.style.display = "none";
+//   changeKaramalmiCampus.hide();
+//   changeArabiaCampus.hide();
+//   changeMyllypuroCampus.hide();
+//   changeMyyrmakiCampus.hide();
+// };
+
+const karamalmiCampus = () => {
+  changeKaramalmiCampus.style.display = "block";
+  changeArabiaCampus.style.display = "none";
+  changeMyllypuroCampus.style.display = "none";
+  changeMyyrmakiCampus.style.display = "none";
+};
+document.querySelector('.karamalmiButton').addEventListener('click', karamalmiCampus);
+
+const arabiaCampus = () => {
+  changeArabiaCampus.style.display = "block";
+  changeKaramalmiCampus.style.display = "none";
+  changeMyllypuroCampus.style.display = "none";
+  changeMyyrmakiCampus.style.display = "none";
+};
+document.querySelector('.arabiaButton').addEventListener('click', arabiaCampus);
+
+const myllypuroCampus = () => {
+  changeMyllypuroCampus.style.display = "block";
+  changeKaramalmiCampus.style.display = "none";
+  changeArabiaCampus.style.display = "none";
+  changeMyyrmakiCampus.style.display = "none";
+};
+document.querySelector('.myllypuroButton').addEventListener('click', myllypuroCampus);
+
+const myyrmakiCampus = () => {
+  changeMyyrmakiCampus.style.display = "block";
+  changeKaramalmiCampus.style.display = "none";
+  changeMyllypuroCampus.style.display = "none";
+  changeArabiaCampus.style.display = "none";
+};
+document.querySelector('.myyrmakiButton').addEventListener('click', myyrmakiCampus);
 
 const init = () => {
   setTheme();
