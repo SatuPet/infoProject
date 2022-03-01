@@ -25,7 +25,13 @@ const useApiData = () => {
     };
     try {
       return await doFetch(
-        ApiConfig.weatherApiUrl + city + ApiConfig.weatherApiKey, fetchOptions);
+        ApiConfig.weatherApiUrl +
+          "lat=" +
+          lat +
+          "&lon=" +
+          lon +
+          ApiConfig.weatherApiKey,
+        fetchOptions);
     } catch (e) {
       alert(e.message);
     }
