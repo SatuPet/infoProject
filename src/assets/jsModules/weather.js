@@ -1,8 +1,5 @@
 import {useApiData} from './ApiHooks';
 
-let city = document.querySelectorAll('.city');
-let clouds = document.querySelectorAll('.clouds');
-let wind = document.querySelectorAll('.wind');
 let temperature = document.querySelectorAll('.temperature');
 let image = document.querySelectorAll('.image');
 

@@ -136,10 +136,10 @@ const getDsBusses = (lat, lon, radius) => {
           hslDsArray.push({
             sorttime: `${patterns[i].realtimeArrival}`,
             oneLine: `<tr>
-        <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
-        <td id="bussDestination">${patterns[i].headsign}</td>
-        <td id="stopName">${stop.name}</td>
-        <td id="leavingTime">${hours}:${minutes}</td>
+              <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+              <td id="bussDestination">${patterns[i].headsign}</td>
+              <td id="stopName">${stop.name}</td>
+              <td id="leavingTime">${hours}:${minutes}</td>
             </tr>`,
           }); // <td><div id="stopCode">${stop.code}</div></td>
         }
@@ -149,12 +149,24 @@ const getDsBusses = (lat, lon, radius) => {
         return a.sorttime - b.sorttime;
       });
       let maxPrintValue = 8; // max lines print in screen
-      for (const line of hslDsArray) {
+      /* for (const line of hslDsArray) {
         if (maxPrintValue === 0) {
           break;
         }
         dsHslPrint.innerHTML += line.oneLine;
         maxPrintValue--;
+      } */
+
+      const timedFunction = (i) => {
+        setTimeout(() => {
+          console.log("number: ", i);
+          console.log('busse: ', hslDsArray[i]);
+          dsHslPrint.innerHTML += `${hslDsArray[i].oneLine}`;
+        }, 1000 * i);
+      };
+
+      for (let i = 0; i < maxPrintValue; i++) {
+        timedFunction(i);
       }
     });
 };
