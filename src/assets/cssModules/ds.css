@@ -127,7 +127,7 @@
   }
   #ds-hsl-karanristi-all-data {
     display: block;
-    margin: auto;
+    margin: 0 auto;
   }
   th {
     text-align: center;
@@ -198,7 +198,7 @@
     /* Starting position */
     transform: translateX(30%);
     /* Apply animation to this element */
-    animation: scroll-left 40s linear infinite;
+    animation: scroll-left 50s linear infinite;
   }
   /* Move it (define the animation) */
   @keyframes scroll-left {
