@@ -1,5 +1,8 @@
 @media screen and (max-width: 1730px) {
-  .ds-background, iframe, .ds-canvas, .ds-layer {
+  .ds-background,
+  iframe,
+  .ds-canvas,
+  .ds-layer {
     display: none;
   }
 }
@@ -23,10 +26,9 @@
     grid-template-rows: auto;
     grid-gap: 2%;
     grid-template-areas:
-    "time weather menu"
-    "hsl hsl menu"
-    "banner banner banner";
-
+      "time weather menu"
+      "hsl hsl menu"
+      "banner banner banner";
   }
   .ds-canvas {
     display: block;
@@ -54,7 +56,6 @@
     align-items: center;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
-
   }
   .time-block p {
     margin: auto;
@@ -68,7 +69,6 @@
     color: black;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;
-
   }
   .location-area {
     width: 80%;
@@ -91,8 +91,8 @@
   #weather-flex {
     display: flex;
     justify-content: center;
-
-  }.weather {
+  }
+  .weather {
     align-items: center;
     width: 100%;
     height: 100%;
@@ -135,7 +135,6 @@
   }
   td {
     border: 0.7rem solid #00a0e1;
-
   }
   #bussDestination {
     font-size: 2rem;
@@ -169,10 +168,9 @@
     text-align: center;
   }
   #leavingTime {
-      min-width: 150px;
-      text-align: center;
-      background-color: #53565a;
-
+    min-width: 150px;
+    text-align: center;
+    background-color: #53565a;
   }
   .banner-block {
     grid-area: banner;
@@ -202,25 +200,24 @@
     /* Apply animation to this element */
     animation: scroll-left 40s linear infinite;
   }
-}
-
-/* Move it (define the animation) */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(30%);
+  /* Move it (define the animation) */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(30%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
-  100% {
-    transform: translateX(-100%);
-  }
-}
 
-/* DS modal */
-.linkMarginTop{
-  margin-top: 0;
-}
-.nav-item{
-  font-size: 2rem;
-  padding: 1rem;
-  cursor: pointer;
-  text-align: left;
+  /* DS modal */
+  .linkMarginTop {
+    margin-top: 0;
+  }
+  .nav-item {
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: left;
+  }
 }
