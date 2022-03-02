@@ -48,7 +48,7 @@
   #hslModal{
     margin-top: 20vw;
   }
-.karamalmiMap .arabiaMap .myllypuroMap .myyrmakiMap{
+.karamalmiMap, .arabiaMap, .myllypuroMap, .myyrmakiMap{
   display: none;
 }
   
