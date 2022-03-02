@@ -169,6 +169,48 @@ const setTheme = () => {
   }
 };
 
+const hideAllMaps = document.querySelectorAll('.map');
+const changeKaramalmiCampus = document.querySelector('.karamalmiMap');
+const changeArabiaCampus = document.querySelector('.arabiaMap');
+const changeMyllypuroCampus = document.querySelector('.myllypuroMap');
+const changeMyyrmakiCampus = document.querySelector('.myyrmakiMap');
+
+const hideMaps = () => {
+  hideAllMaps.forEach(map => map.style.display = "none");
+};
+
+const karamalmiCampus = (event) => {
+  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelector('.karamalmiButton').classList.add('selected-nav-link');
+  hideMaps();
+  changeKaramalmiCampus.style.display = "block";
+};
+document.querySelector('.karamalmiButton').addEventListener('click', karamalmiCampus);
+
+const arabiaCampus = () => {
+  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelector('.arabiaButton').classList.add('selected-nav-link');
+  hideMaps();
+  changeArabiaCampus.style.display = "block";
+};
+document.querySelector('.arabiaButton').addEventListener('click', arabiaCampus);
+
+const myllypuroCampus = () => {
+  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelector('.myllypuroButton').classList.add('selected-nav-link');
+  hideMaps();
+  changeMyllypuroCampus.style.display = "block";
+};
+document.querySelector('.myllypuroButton').addEventListener('click', myllypuroCampus);
+
+const myyrmakiCampus = () => {
+  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelector('.myyrmakiButton').classList.add('selected-nav-link');
+  hideMaps();
+  changeMyyrmakiCampus.style.display = "block";
+};
+document.querySelector('.myyrmakiButton').addEventListener('click', myyrmakiCampus);
+
 
 const init = () => {
   setTheme();
