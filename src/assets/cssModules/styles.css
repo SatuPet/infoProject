@@ -21,7 +21,7 @@ body {
   margin-top: 25vw !important;
 }
 .navbar-dark{
-  background-color: var(--background); 
+  background-color: var(--background);
   border-bottom: 1px solid #53565a;
 }
 .navbar-dark .navbar-toggler-icon{
@@ -39,7 +39,7 @@ body {
   align-self: flex-start;
 }
 .metroMeno{
-  color: var(--grey); 
+  color: var(--grey);
   font-size: 6vw;
   font-family: var(--headFont);
   margin: 2%;
@@ -79,7 +79,7 @@ body {
 }
 .toggleFlex{
   display: flex;
- 
+
 }
 .form-switch{
   margin-left: 9vw;
@@ -116,7 +116,7 @@ body {
   margin-bottom: 20%;
   background-color: #fff;
   width: 85%;
-  height: 80vh; 
+  height: 80vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -124,4 +124,7 @@ body {
   border-radius: 35px;
   box-shadow: 25px 15px 25px #888888;
 }
-
+.pwa-weather .image img {
+  height: 50px;
+  margin-right: 1rem;
+}
