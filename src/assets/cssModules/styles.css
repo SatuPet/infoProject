@@ -44,6 +44,23 @@ body {
   font-family: var(--headFont);
   margin: 2%;
 }
+#pwa-weather-flex{
+  display: grid;
+  grid-template-columns: 20vw;
+}
+.pwa-weather .image img {
+  height: 50px;
+  width: 50px;
+  margin-right: 1rem;
+}
+.image{
+  justify-self: end;
+}
+.temperature{
+  font-size: var(--regularFont);
+  font-size: 4vw;
+  margin-bottom: 0;
+}
 .collapseText{
   position: fixed;
   background-color: #D0D0D0;
@@ -64,6 +81,9 @@ body {
   color: #000;
 }
 .nav-link:hover{
+  color: var(--orange);
+}
+.selected-nav-link{
   color: var(--orange);
 }
 .nav-link:active{
