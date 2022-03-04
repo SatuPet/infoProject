@@ -1,12 +1,12 @@
 import {useApiData} from './ApiHooks';
 
-let city = document.querySelectorAll('.city');
-let clouds = document.querySelectorAll('.clouds');
-let wind = document.querySelectorAll('.wind');
 let temperature = document.querySelectorAll('.temperature');
 let image = document.querySelectorAll('.image');
 
-const weather = ()  => {
+/**
+ * Old weather API
+ */
+/* const weather = () => {
   const getWeather = useApiData().getWeatherData('espoo');
   getWeather.then(function(data) {
     for (let i = 0; i < city.length; i++) {
@@ -22,6 +22,27 @@ const weather = ()  => {
         '@2x.png" alt="weatherImg">';
     }
   });
+}; */
+
+/**
+ *
+ * @param {Number} lat latitude of campus
+ * @param {Number} lon longitude of campus
+ */
+const weather = (lat, lon) => {
+  const getWeather = useApiData().getWeatherData(lat, lon);
+  getWeather.then(function (data) {
+    const weatherData = data.data[0];
+    for (let i = 0; i < temperature.length; i++) {
+    console.log('',weatherData);
+    temperature[i].innerHTML = `  ${weatherData.temp} °C`;
+    const imgCode = `${weatherData.weather.icon}`;
+    image[i].innerHTML =
+      '<img src="./assets/weather-icons/' + imgCode + '.png" alt="weatherImg">';
+    }
+  });
 };
 
+
 export {weather};
+

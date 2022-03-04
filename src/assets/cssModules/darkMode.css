@@ -9,6 +9,9 @@ body {
 .metroMeno{
   color: var(--background); 
 }
+.temperature{
+  color: var(--background);
+}  
 .collapseText{
   background-color: #333;
   box-shadow: 25px 15px 25px #222;
