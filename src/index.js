@@ -1,7 +1,9 @@
 import {weather} from './assets/jsModules/weather';
 import {getBusses} from './assets/jsModules/hsl';
+import {getMenus} from './assets/jsModules/lunchMenu';
 
 weather();
+getMenus();
 
 // parallax Y postition moving
 window.addEventListener('scroll', (event) => {
@@ -22,7 +24,7 @@ window.addEventListener('scroll', (event) => {
     getBusses(2132226);
   });
 
-    // ARABIA
+  // ARABIA
   document.getElementById('KaironkatuNorth').addEventListener('click', () => {
     getBusses(1230102);
   });
@@ -40,15 +42,18 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('LiikuntamyllyWest').addEventListener('click', () => {
     getBusses(1454111);
   });
-  document.getElementById('LiikuntamyllyWEast').addEventListener('click', () => {
-    getBusses(1454112);
-  });
+  document.getElementById('LiikuntamyllyWEast').
+    addEventListener('click', () => {
+      getBusses(1454112);
+    });
   document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
     getBusses(1454138);
   });
-  document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
-    getBusses(1454601), getBusses(1454602);;
-  });
+  document.getElementById('MyllypuronMetroasema').
+    addEventListener('click', () => {
+      getBusses(1454601), getBusses(1454602);
+      ;
+    });
   document.getElementById('MyllypuroMEast').addEventListener('click', () => {
     getBusses(1454140);
   });
@@ -74,83 +79,77 @@ window.addEventListener('scroll', (event) => {
   });
 });
 
-
-
 // "parallax" Y postition moving
-window.addEventListener('scroll',(event) =>{
+window.addEventListener('scroll', (event) => {
 
-  let top = window.scrollY /2;
-  const background = document.querySelector("body");
-  background.style.backgroundPositionY = top+"px";
-  });
-  
+  let top = window.scrollY / 2;
+  const background = document.querySelector('body');
+  background.style.backgroundPositionY = top + 'px';
+});
+
 //navbar collapse moving back when you touch somewere else
 const menuToggle = document.getElementById('navbarToggleExternalContent');
 const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
 
 const closeNavbar = () => {
- 
+
   bsCollapse.hide();
 };
 
 document.querySelector('.main').addEventListener('click', closeNavbar);
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
-
-
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
 
 const changeDarkMode = () => {
-    const darkModeSetting = localStorage.getItem('darkModeSetting');
-    if (darkModeSetting === null) {
-        localStorage.setItem('darkModeSetting', 'whitemode');
+  const darkModeSetting = localStorage.getItem('darkModeSetting');
+  if (darkModeSetting === null) {
+    localStorage.setItem('darkModeSetting', 'whitemode');
+  } else {
+
+    if (darkModeSetting == 'whitemode') {
+      // Creating the darkmode css style sheet and adding it to DOM
+      darkModeStyleSheet = document.createElement('link');
+      darkModeStyleSheet.rel = 'stylesheet';
+      darkModeStyleSheet.href = 'assets/cssModules/darkMode.css';
+      document.head.appendChild(darkModeStyleSheet);
+
+      // Saving preference to storage
+      localStorage.setItem('darkModeSetting', 'darkmode');
     } else {
-        
-        if (darkModeSetting == 'whitemode') {
-            // Creating the darkmode css style sheet and adding it to DOM
-            darkModeStyleSheet = document.createElement('link');
-            darkModeStyleSheet.rel = 'stylesheet';
-            darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
-            document.head.appendChild(darkModeStyleSheet);
+      if (darkModeStyleSheet != undefined) {
+        console.log(darkModeStyleSheet);
+        darkModeStyleSheet.remove();
+      }
 
-            // Saving preference to storage
-            localStorage.setItem('darkModeSetting', 'darkmode');
-        }
-        else {
-            if (darkModeStyleSheet != undefined) {
-                console.log(darkModeStyleSheet);
-                darkModeStyleSheet.remove();
-            }
-
-            // Saving preference to storage
-            localStorage.setItem('darkModeSetting', 'whitemode');
-        }
-
+      // Saving preference to storage
+      localStorage.setItem('darkModeSetting', 'whitemode');
     }
+
+  }
 
 };
 
-darkModeToggleButton.addEventListener('click',changeDarkMode);
+darkModeToggleButton.addEventListener('click', changeDarkMode);
 
 const setTheme = () => {
   const darkModeSetting = localStorage.getItem('darkModeSetting');
   if (darkModeSetting === null) {
-      localStorage.setItem('darkModeSetting', 'whitemode');
+    localStorage.setItem('darkModeSetting', 'whitemode');
   } else {
-      
-      if (darkModeSetting == 'darkmode') {
-          // Creating the darkmode css style sheet and adding it to DOM
-          darkModeStyleSheet = document.createElement('link');
-          darkModeStyleSheet.rel = 'stylesheet';
-          darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
-          document.head.appendChild(darkModeStyleSheet);
-          document.getElementById("flexSwitchCheckDefault1").checked = true;
-      }
+
+    if (darkModeSetting == 'darkmode') {
+      // Creating the darkmode css style sheet and adding it to DOM
+      darkModeStyleSheet = document.createElement('link');
+      darkModeStyleSheet.rel = 'stylesheet';
+      darkModeStyleSheet.href = 'assets/cssModules/darkMode.css';
+      document.head.appendChild(darkModeStyleSheet);
+      document.getElementById('flexSwitchCheckDefault1').checked = true;
+    }
 
   }
 };
-
 
 const init = () => {
   setTheme();

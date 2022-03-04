@@ -6,10 +6,9 @@ let wind = document.querySelectorAll('.wind');
 let temperature = document.querySelectorAll('.temperature');
 let image = document.querySelectorAll('.image');
 
-const weather = () => {
+const weather = ()  => {
   const getWeather = useApiData().getWeatherData('espoo');
   getWeather.then(function(data) {
-    console.log(city.length);
     for (let i = 0; i < city.length; i++) {
       city[i].innerHTML = `${data.name}`;
       clouds[i].innerHTML = `${data.weather[0].description}`;
