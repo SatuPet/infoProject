@@ -142,7 +142,9 @@ const getDsBusses = (lat, lon, radius) => {
             time.getMinutes() < 10
               ? "0" + time.getMinutes()
               : time.getMinutes();
-
+            if(patterns[i].headsign == null) {
+              continue;
+            }else{
           hslDsArray.push({
             sorttime: `${patterns[i].realtimeArrival}`,
             oneLine: `<tr>
@@ -153,6 +155,7 @@ const getDsBusses = (lat, lon, radius) => {
             </tr>`,
           }); // <td><div id="stopCode">${stop.code}</div></td>
         }
+      }
       }
       //sorting busses
       hslDsArray.sort(function (a, b) {
@@ -203,6 +206,11 @@ const getBusses = (stopNumber) => {
       hslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
       for (let i = 0; i < patterns.length; i++) {
+        if(patterns[i].headsign == null){
+          continue;
+        }else{
+
+
         let time = new Date(
           (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
         );
@@ -214,6 +222,7 @@ const getBusses = (stopNumber) => {
       <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
           </tr>`;
       }
+    }
     });
 };
 
