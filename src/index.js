@@ -175,10 +175,11 @@ const changeArabiaCampus = document.querySelector('.arabiaMap');
 const changeMyllypuroCampus = document.querySelector('.myllypuroMap');
 const changeMyyrmakiCampus = document.querySelector('.myyrmakiMap');
 
+//hide all hsl maps
 const hideMaps = () => {
   hideAllMaps.forEach(map => map.style.display = "none");
 };
-
+//choosing different campus
 const karamalmiCampus = (event) => {
   document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.karamalmiButton').classList.add('selected-nav-link');
@@ -242,6 +243,7 @@ const changeInEnglish = () => {
 
 inEnglishToggleButton.addEventListener('click',changeInEnglish);
 
+//switch language
 const setLanguage = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
