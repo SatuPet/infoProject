@@ -111,7 +111,7 @@ const closeNavbar = () => {
   bsCollapse.hide();
 };
 
-document.querySelector('.main').addEventListener('click', closeNavbar);
+document.querySelectorAll('.main').forEach( main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 
@@ -212,7 +212,56 @@ const myyrmakiCampus = () => {
 document.querySelector('.myyrmakiButton').addEventListener('click', myyrmakiCampus);
 
 
+
+const inEnglishToggleButton = document.querySelector('#flexSwitchCheckDefault2');
+
+const changeInEnglish = () => {
+    const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+    if (inEnglishSetting === null) {
+        localStorage.setItem('inEnglishSetting', 'inEnglish');
+    } else {
+
+        if (inEnglishSetting == 'inEnglish') {
+            document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').forEach(text => text.style.display = "none");
+            document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').forEach(text => text.style.display = "block");
+
+            // Saving preference to storage
+            localStorage.setItem('inEnglishSetting', 'inFinnish');
+        }
+        else {
+              document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"').forEach(text => text.style.display = "none");
+              document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"').forEach(text => text.style.display = "block");
+
+            // Saving preference to storage
+            localStorage.setItem('inEnglishSetting', 'inEnglish');
+        }
+
+    }
+
+};
+
+inEnglishToggleButton.addEventListener('click',changeInEnglish);
+
+const setLanguage = () => {
+  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+  if (inEnglishSetting === null) {
+      localStorage.setItem('inEnglishSetting', 'inFinnish');
+  } else {
+
+      if (inEnglishSetting == 'inFinnish') {
+          document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').forEach(text => text.style.display = "none");
+      }
+      else{
+        document.getElementById("flexSwitchCheckDefault2").checked = true;
+        document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"').forEach(text => text.style.display = "none");
+      }
+      
+
+  }
+};
+
 const init = () => {
   setTheme();
+  setLanguage();
 };
 init();
