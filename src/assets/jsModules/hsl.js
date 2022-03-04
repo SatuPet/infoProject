@@ -2,6 +2,8 @@ import { useApiData } from "./ApiHooks";
 
 const hslModalLabel = document.querySelector("#hslModalLabel");
 const hslPrint = document.querySelector("#hsl-data");
+const hslPrint1 = document.querySelector("#hsl-data-1");
+const hslPrint2 = document.querySelector("#hsl-data-2");
 const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
@@ -101,28 +103,27 @@ const getQueryByRadius = (lat, lon, radius) => {
 };
 
 const HSLData = { getQueryForNextRidesByStopId };
-const DsHslData = { getQueryByRadius };
+//const DsHslData = { getQueryByRadius };
 
 /**
  * Get busses from selected area and print to page
  */
 let hslDsArray = [];
-let language = 'en';
+let language = "en";
 const getDsBusses = (lat, lon, radius) => {
   dsHslPrint.innerHTML = "";
   hslDsArray = [];
   useApiData()
     .getHslDataByRadius(getQueryByRadius(lat, lon, radius))
     .then((response) => {
-
-      if(language === 'fi'){
+      if (language === "fi") {
         dsHslPrint.innerHTML =
-        "<tr><th>Line</th><th>Destination</th><th>Stop</th><th>Leaving</th></tr>";
-        language = 'en';
-      }else{
+          "<tr><th>Line</th><th>Destination</th><th>Stop</th><th>Leaving</th></tr>";
+        language = "en";
+      } else {
         dsHslPrint.innerHTML =
-        "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
-        language = 'fi';
+          "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
+        language = "fi";
       }
 
       const nodes = response.data.stopsByRadius.edges;
@@ -142,38 +143,31 @@ const getDsBusses = (lat, lon, radius) => {
             time.getMinutes() < 10
               ? "0" + time.getMinutes()
               : time.getMinutes();
-            if(patterns[i].headsign == null) {
-              continue;
-            }else{
-          hslDsArray.push({
-            sorttime: `${patterns[i].realtimeArrival}`,
-            oneLine: `<tr>
+          if (patterns[i].headsign == null) {
+            continue;
+          } else {
+            hslDsArray.push({
+              sorttime: `${patterns[i].realtimeArrival}`,
+              oneLine: `<tr>
               <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
               <td id="bussDestination">${patterns[i].headsign}</td>
               <td id="stopName">${stop.name}</td>
               <td id="leavingTime">${hours}:${minutes}</td>
             </tr>`,
-          }); // <td><div id="stopCode">${stop.code}</div></td>
+            }); // <td><div id="stopCode">${stop.code}</div></td>
+          }
         }
-      }
       }
       //sorting busses
       hslDsArray.sort(function (a, b) {
         return a.sorttime - b.sorttime;
       });
       let maxPrintValue = 8; // max lines print in screen
-      /* for (const line of hslDsArray) {
-        if (maxPrintValue === 0) {
-          break;
-        }
-        dsHslPrint.innerHTML += line.oneLine;
-        maxPrintValue--;
-      } */
 
+      //timed line printing (animation)
       const timedFunction = (i) => {
         setTimeout(() => {
-          console.log("number: ", i);
-          console.log('busse: ', hslDsArray[i]);
+          //console.log('busse: ', hslDsArray[i]);
           dsHslPrint.innerHTML += `${hslDsArray[i].oneLine}`;
         }, 1000 * i);
       };
@@ -189,10 +183,11 @@ const getDsBusses = (lat, lon, radius) => {
  *
  * @param {Number} stopNumber get stop number from user
  */
-
 const getBusses = (stopNumber) => {
   hslModalLabel.innerHTML = "";
   hslPrint.innerHTML = "";
+  hslPrint1.innerHTML = "";
+  hslPrint2.innerHTML = "";
   console.log("get busses clicked", stopNumber);
 
   useApiData()
@@ -206,24 +201,68 @@ const getBusses = (stopNumber) => {
       hslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
       for (let i = 0; i < patterns.length; i++) {
-        if(patterns[i].headsign == null){
+        if (patterns[i].headsign == null) {
           continue;
-        }else{
-
-
-        let time = new Date(
-          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
-        );
-        let hours = time.getHours();
-        let minutes =
-          time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
-        hslPrint.innerHTML += `<tr>
+        } else {
+          let time = new Date(
+            (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
+          );
+          let hours = time.getHours();
+          let minutes =
+            time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes();
+          hslPrint.innerHTML += `<tr>
       <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
       <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
           </tr>`;
+        }
       }
-    }
     });
 };
 
-export { getBusses, getDsBusses, getQueryByRadius, getQueryForNextRidesByStopId };
+const getStops = (stopNumber, tableNumber, stopName) => {
+    useApiData()
+      .getHslDataByStop(getQueryForNextRidesByStopId(stopNumber))
+      .then((response) => {
+       const patterns = response.data.stop.stoptimesWithoutPatterns;
+       hslModalLabel.innerHTML = `<span id="stopName">${stopName}</span>`;
+        tableNumber.innerHTML =
+          "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
+         for (let i = 0; i < patterns.length; i++) {
+          if (patterns[i].headsign == null) {
+            continue;
+          } else {
+            let time = new Date(
+              (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
+            );
+            let hours = time.getHours();
+            let minutes =
+              time.getMinutes() < 10
+                ? "0" + time.getMinutes()
+                : time.getMinutes();
+            tableNumber.innerHTML += `<tr>
+            <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+            <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
+        </tr>`;
+          }
+        }
+      });
+
+};
+
+const getTwoStops = (stop1, stop2, stopName) => {
+  hslPrint.innerHTML = '';
+  hslPrint1.innerHTML = "";
+  hslPrint2.innerHTML = "";
+  getStops(stop1, hslPrint1, stopName);
+  getStops(stop2, hslPrint2, stopName);
+};
+
+export {
+  getBusses,
+  getTwoStops,
+  getDsBusses,
+  getQueryByRadius,
+  getQueryForNextRidesByStopId,
+};

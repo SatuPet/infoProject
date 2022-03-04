@@ -1,5 +1,5 @@
 import {weather} from './assets/jsModules/weather';
-import {getBusses} from './assets/jsModules/hsl';
+import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getDateTime} from './assets/jsModules/ds';
 
 
@@ -65,7 +65,7 @@ window.addEventListener('scroll', (event) => {
     getBusses(1454138);
   });
   document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
-    getBusses(1454601), getBusses(1454602);;
+    getTwoStops(1454601,1454602, 'Myllypuron Metroasema');
   });
   document.getElementById('MyllypuroMEast').addEventListener('click', () => {
     getBusses(1454140);
@@ -76,7 +76,7 @@ window.addEventListener('scroll', (event) => {
 
   // MYYRMÄKI
   document.getElementById('MyyrmakiJunaAsema').addEventListener('click', () => {
-    getBusses(4150551), getBusses(4150501);
+    getTwoStops(4150551,4150501, 'Myyrmäen Juna-asema');
   });
   document.getElementById('LeiritieEast').addEventListener('click', () => {
     getBusses(4150201);

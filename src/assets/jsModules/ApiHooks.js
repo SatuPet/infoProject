@@ -2,7 +2,7 @@ import { ApiConfig } from "./ApiConfig";
 
 const doFetch = async (url, options = {}) => {
   const response = await fetch(url, options);
-  console.log("RESPONSE", response);
+  //console.log("RESPONSE", response);
   const json = await response.json();
   if (json.error) {
     // if API response contains error message (use Postman to get further details)
