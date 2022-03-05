@@ -194,18 +194,24 @@ const getBusses = (stopNumber) => {
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
       hslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
-      for (let i = 0; i < patterns.length; i++) {
-        let time = new Date(
-          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
-        );
-        let hours = time.getHours();
-        let minutes =
-          time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
-        hslPrint.innerHTML += `<tr>
-      <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
-      <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
-          </tr>`;
-      }
+        for (let i = 0; i < patterns.length; i++) {
+          if (patterns[i].headsign == null) {
+            continue;
+          } else {
+            let time = new Date(
+              (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
+            );
+            let hours = time.getHours();
+            let minutes =
+              time.getMinutes() < 10
+                ? "0" + time.getMinutes()
+                : time.getMinutes();
+            hslPrint.innerHTML += `<tr>
+        <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+        <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
+            </tr>`;
+          }
+        }
     });
 };
 

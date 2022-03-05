@@ -1,5 +1,5 @@
 import {weather} from './assets/jsModules/weather';
-import {getBusses} from './assets/jsModules/hsl';
+import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getDateTime} from './assets/jsModules/ds';
 
 
