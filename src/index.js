@@ -65,7 +65,7 @@ window.addEventListener('scroll', (event) => {
     getBusses(1454138);
   });
   document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
-    getBusses(1454601), getBusses(1454602);;
+    getTwoStops(1454601,1454602, 'Myllypuron Metroasema');
   });
   document.getElementById('MyllypuroMEast').addEventListener('click', () => {
     getBusses(1454140);
@@ -76,7 +76,7 @@ window.addEventListener('scroll', (event) => {
 
   // MYYRMÄKI
   document.getElementById('MyyrmakiJunaAsema').addEventListener('click', () => {
-    getBusses(4150551), getBusses(4150501);
+    getTwoStops(4150551,4150501, 'Myyrmäen Juna-asema');
   });
   document.getElementById('LeiritieEast').addEventListener('click', () => {
     getBusses(4150201);
@@ -257,7 +257,7 @@ const setLanguage = () => {
         document.getElementById("flexSwitchCheckDefault2").checked = true;
         document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"').forEach(text => text.style.display = "none");
       }
-      
+
 
   }
 };
