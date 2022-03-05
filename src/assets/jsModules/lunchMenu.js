@@ -1,7 +1,7 @@
 import {useApiData} from './ApiHooks';
 import {ApiConfig} from './ApiConfig';
 
-const selectedCampus = 'karamalmi';
+const selectedCampus = 'myyrmaki';
 
 const todayISODate = new Date().toISOString().split('T')[0];
 let today = new Date();
@@ -16,7 +16,6 @@ today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
   today2.getFullYear();
 const noFood = 'No menu for the day';
 
-// TODO take weekends into account
 const getMenus = () => {
   try {
     let data;
@@ -25,6 +24,7 @@ const getMenus = () => {
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
+        console.log(result);
         if (result.courses !== null || undefined) {
           parseSodexo(result.courses);
         } else addCoursesToList(noFood);
@@ -98,13 +98,15 @@ const parseFazer = (resultObject) => {
 };
 
 const addCoursesToList = (course) => {
-  let list = document.createElement('li');
-  list.innerText = course;
-  document.querySelector('#ul').appendChild(list);
-
-  let list2 = document.createElement('div');
-  document.querySelector('#ul').appendChild(list2);
-  list2.className = 'line';
+  const boxes = document.querySelectorAll('.lounchText');
+  boxes.forEach((item) => {
+    let list = document.createElement('li');
+    list.innerText = course;
+    let list2 = document.createElement('div');
+    list2.className = 'line';
+    item.append(list);
+    item.append(list2);
+  });
 };
 
 export {getMenus};
