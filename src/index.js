@@ -1,10 +1,9 @@
 import {weather} from './assets/jsModules/weather';
-import {getBusses} from './assets/jsModules/hsl';
+import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getMenus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
 
 
-weather();
 getMenus();
 let weatherInterval;
 /**
@@ -68,11 +67,9 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
     getBusses(1454138);
   });
-  document.getElementById('MyllypuronMetroasema').
-    addEventListener('click', () => {
-      getBusses(1454601), getBusses(1454602);
-      ;
-    });
+  document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
+    getTwoStops(1454601,1454602, 'Myllypuron Metroasema');
+  });
   document.getElementById('MyllypuroMEast').addEventListener('click', () => {
     getBusses(1454140);
   });
@@ -82,7 +79,7 @@ window.addEventListener('scroll', (event) => {
 
   // MYYRMÄKI
   document.getElementById('MyyrmakiJunaAsema').addEventListener('click', () => {
-    getBusses(4150551), getBusses(4150501);
+    getTwoStops(4150551,4150501, 'Myyrmäen Juna-asema');
   });
   document.getElementById('LeiritieEast').addEventListener('click', () => {
     getBusses(4150201);
@@ -99,7 +96,7 @@ window.addEventListener('scroll', (event) => {
 });
 
 // "parallax" Y postition moving
-window.addEventListener('scroll', (event) => {
+window.addEventListener('scroll',(event) =>{
 
   let top = window.scrollY /2;
   const background = document.querySelector("body");
@@ -115,7 +112,7 @@ const closeNavbar = () => {
   bsCollapse.hide();
 };
 
-document.querySelector('.main').addEventListener('click', closeNavbar);
+document.querySelectorAll('.main').forEach( main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
@@ -134,28 +131,29 @@ const changeDarkMode = () => {
             darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
             document.head.appendChild(darkModeStyleSheet);
 
-      // Saving preference to storage
-      localStorage.setItem('darkModeSetting', 'darkmode');
-    } else {
-      if (darkModeStyleSheet != undefined) {
-        console.log(darkModeStyleSheet);
-        darkModeStyleSheet.remove();
-      }
+            // Saving preference to storage
+            localStorage.setItem('darkModeSetting', 'darkmode');
+        }
+        else {
+            if (darkModeStyleSheet != undefined) {
+                console.log(darkModeStyleSheet);
+                darkModeStyleSheet.remove();
+            }
 
-      // Saving preference to storage
-      localStorage.setItem('darkModeSetting', 'whitemode');
+            // Saving preference to storage
+            localStorage.setItem('darkModeSetting', 'whitemode');
+        }
+
     }
-
-  }
 
 };
 
-darkModeToggleButton.addEventListener('click', changeDarkMode);
+darkModeToggleButton.addEventListener('click',changeDarkMode);
 
 const setTheme = () => {
   const darkModeSetting = localStorage.getItem('darkModeSetting');
   if (darkModeSetting === null) {
-    localStorage.setItem('darkModeSetting', 'whitemode');
+      localStorage.setItem('darkModeSetting', 'whitemode');
   } else {
 
       if (darkModeSetting == 'darkmode') {

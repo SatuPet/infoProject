@@ -2,6 +2,8 @@ import { useApiData } from "./ApiHooks";
 
 const hslModalLabel = document.querySelector("#hslModalLabel");
 const hslPrint = document.querySelector("#hsl-data");
+const hslPrint1 = document.querySelector("#hsl-data-1");
+const hslPrint2 = document.querySelector("#hsl-data-2");
 const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
@@ -132,16 +134,19 @@ const getDsBusses = (lat, lon, radius) => {
             time.getMinutes() < 10
               ? "0" + time.getMinutes()
               : time.getMinutes();
-
-          hslDsArray.push({
-            sorttime: `${patterns[i].realtimeArrival}`,
-            oneLine: `<tr>
-              <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
-              <td id="bussDestination">${patterns[i].headsign}</td>
-              <td id="stopName">${stop.name}</td>
-              <td id="leavingTime">${hours}:${minutes}</td>
-            </tr>`,
-          }); // <td><div id="stopCode">${stop.code}</div></td>
+          if (patterns[i].headsign == null) {
+            continue;
+          } else {
+            hslDsArray.push({
+              sorttime: `${patterns[i].realtimeArrival}`,
+              oneLine: `<tr>
+                  <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+                  <td id="bussDestination">${patterns[i].headsign}</td>
+                  <td id="stopName">${stop.name}</td>
+                  <td id="leavingTime">${hours}:${minutes}</td>
+                </tr>`,
+            }); // <td><div id="stopCode">${stop.code}</div></td>
+          }
         }
       }
       //sorting busses
@@ -160,7 +165,7 @@ const getDsBusses = (lat, lon, radius) => {
       const timedFunction = (i) => {
         setTimeout(() => {
           console.log("number: ", i);
-          console.log('busse: ', hslDsArray[i]);
+          console.log("busse: ", hslDsArray[i]);
           dsHslPrint.innerHTML += `${hslDsArray[i].oneLine}`;
         }, 1000 * i);
       };
@@ -180,6 +185,8 @@ const getDsBusses = (lat, lon, radius) => {
 const getBusses = (stopNumber) => {
   hslModalLabel.innerHTML = "";
   hslPrint.innerHTML = "";
+  hslPrint1.innerHTML = "";
+  hslPrint2.innerHTML = "";
   console.log("get busses clicked", stopNumber);
 
   useApiData()
@@ -193,18 +200,80 @@ const getBusses = (stopNumber) => {
       hslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
       for (let i = 0; i < patterns.length; i++) {
-        let time = new Date(
-          (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
-        );
-        let hours = time.getHours();
-        let minutes =
-          time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
-        hslPrint.innerHTML += `<tr>
-      <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
-      <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
-          </tr>`;
+        if (patterns[i].headsign == null) {
+          continue;
+        } else {
+          let time = new Date(
+            (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
+          );
+          let hours = time.getHours();
+          let minutes =
+            time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes();
+          hslPrint.innerHTML += `<tr>
+        <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+        <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
+            </tr>`;
+        }
       }
     });
 };
 
-export { getBusses, getDsBusses, getQueryByRadius, getQueryForNextRidesByStopId };
+/**
+ *  add 2 stops data in modal
+ * @param {Number} stopNumber stop number
+ * @param {Number} tableNumber stop number
+ * @param {String} stopName name of stop
+ */
+const getStops = (stopNumber, tableNumber, stopName) => {
+  useApiData()
+    .getHslDataByStop(getQueryForNextRidesByStopId(stopNumber))
+    .then((response) => {
+      const patterns = response.data.stop.stoptimesWithoutPatterns;
+      hslModalLabel.innerHTML = `<span id="stopName">${stopName}</span>`;
+      tableNumber.innerHTML =
+        "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
+      for (let i = 0; i < patterns.length; i++) {
+        if (patterns[i].headsign == null) {
+          continue;
+        } else {
+          let time = new Date(
+            (patterns[i].realtimeArrival + patterns[i].serviceDay) * 1000
+          );
+          let hours = time.getHours();
+          let minutes =
+            time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes();
+          tableNumber.innerHTML += `<tr>
+          <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+          <td id="bussLine">${patterns[i].headsign}</td><td id="leavingTime">${hours}:${minutes}</td>
+      </tr>`;
+        }
+      }
+    });
+};
+
+/**
+ * Get 2 stops data and send modal
+ *
+ * @param {Number} stop1
+ * @param {Number} stop2
+ * @param {String} stopName
+ */
+const getTwoStops = (stop1, stop2, stopName) => {
+  hslPrint.innerHTML = "";
+  hslPrint1.innerHTML = "";
+  hslPrint2.innerHTML = "";
+  getStops(stop1, hslPrint1, stopName);
+  getStops(stop2, hslPrint2, stopName);
+};
+
+export {
+  getBusses,
+  getTwoStops,
+  getDsBusses,
+  getQueryByRadius,
+  getQueryForNextRidesByStopId,
+};
