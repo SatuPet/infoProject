@@ -111,7 +111,7 @@ const closeNavbar = () => {
   bsCollapse.hide();
 };
 
-document.querySelector('.main').addEventListener('click', closeNavbar);
+document.querySelectorAll('.main').forEach( main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 
