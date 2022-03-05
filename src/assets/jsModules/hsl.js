@@ -134,16 +134,19 @@ const getDsBusses = (lat, lon, radius) => {
             time.getMinutes() < 10
               ? "0" + time.getMinutes()
               : time.getMinutes();
-
-          hslDsArray.push({
-            sorttime: `${patterns[i].realtimeArrival}`,
-            oneLine: `<tr>
-              <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
-              <td id="bussDestination">${patterns[i].headsign}</td>
-              <td id="stopName">${stop.name}</td>
-              <td id="leavingTime">${hours}:${minutes}</td>
-            </tr>`,
-          }); // <td><div id="stopCode">${stop.code}</div></td>
+              if (patterns[i].headsign == null) {
+                continue;
+              } else {
+                hslDsArray.push({
+                  sorttime: `${patterns[i].realtimeArrival}`,
+                  oneLine: `<tr>
+                  <td><div id="bussNumber">${patterns[i].trip.routeShortName}</div></td>
+                  <td id="bussDestination">${patterns[i].headsign}</td>
+                  <td id="stopName">${stop.name}</td>
+                  <td id="leavingTime">${hours}:${minutes}</td>
+                </tr>`,
+                }); // <td><div id="stopCode">${stop.code}</div></td>
+              }
         }
       }
       //sorting busses
