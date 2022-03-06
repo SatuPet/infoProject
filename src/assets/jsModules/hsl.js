@@ -195,10 +195,18 @@ const getBusses = (stopNumber) => {
       //console.log("hsl data", response.data.stop.stoptimesWithoutPatterns);
       const patterns = response.data.stop.stoptimesWithoutPatterns;
       const stop = response.data.stop;
-      hslModalLabel.innerHTML = `
+    hslModalLabel.innerHTML = `
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
-      hslPrint.innerHTML =
+    
+      const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+      if (inEnglishSetting == 'inEnglish') {
+        hslPrint.innerHTML =
+        "<tr><th>Line</th><th>Destination</th><th>Leave</th></tr>";
+      }
+      else {
+        hslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Lähtee</th></tr>";
+      }
       for (let i = 0; i < patterns.length; i++) {
         if (patterns[i].headsign == null) {
           continue;
