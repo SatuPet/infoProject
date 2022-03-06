@@ -2,9 +2,11 @@ import {weather} from './assets/jsModules/weather';
 import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getMenus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
-
+import {getReservations} from './assets/jsModules/classes';
 
 getMenus();
+// getReservations();
+
 let weatherInterval;
 /**
  * Weather timer 1 hour
@@ -67,9 +69,10 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
     getBusses(1454138);
   });
-  document.getElementById('MyllypuronMetroasema').addEventListener('click', () => {
-    getTwoStops(1454601,1454602, 'Myllypuron Metroasema');
-  });
+  document.getElementById('MyllypuronMetroasema').
+    addEventListener('click', () => {
+      getTwoStops(1454601, 1454602, 'Myllypuron Metroasema');
+    });
   document.getElementById('MyllypuroMEast').addEventListener('click', () => {
     getBusses(1454140);
   });
@@ -79,7 +82,7 @@ window.addEventListener('scroll', (event) => {
 
   // MYYRMÄKI
   document.getElementById('MyyrmakiJunaAsema').addEventListener('click', () => {
-    getTwoStops(4150551,4150501, 'Myyrmäen Juna-asema');
+    getTwoStops(4150551, 4150501, 'Myyrmäen Juna-asema');
   });
   document.getElementById('LeiritieEast').addEventListener('click', () => {
     getBusses(4150201);
@@ -96,12 +99,12 @@ window.addEventListener('scroll', (event) => {
 });
 
 // "parallax" Y postition moving
-window.addEventListener('scroll',(event) =>{
+window.addEventListener('scroll', (event) => {
 
-  let top = window.scrollY /2;
-  const background = document.querySelector("body");
-  background.style.backgroundPositionY = top+"px";
-  });
+  let top = window.scrollY / 2;
+  const background = document.querySelector('body');
+  background.style.backgroundPositionY = top + 'px';
+});
 
 //navbar collapse moving back when you touch somewere else
 const menuToggle = document.getElementById('navbarToggleExternalContent');
@@ -112,58 +115,58 @@ const closeNavbar = () => {
   bsCollapse.hide();
 };
 
-document.querySelectorAll('.main').forEach( main => main.addEventListener('click', closeNavbar));
+document.querySelectorAll('.main').
+  forEach(main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
 
 const changeDarkMode = () => {
-    const darkModeSetting = localStorage.getItem('darkModeSetting');
-    if (darkModeSetting === null) {
-        localStorage.setItem('darkModeSetting', 'whitemode');
+  const darkModeSetting = localStorage.getItem('darkModeSetting');
+  if (darkModeSetting === null) {
+    localStorage.setItem('darkModeSetting', 'whitemode');
+  } else {
+
+    if (darkModeSetting == 'whitemode') {
+      // Creating the darkmode css style sheet and adding it to DOM
+      darkModeStyleSheet = document.createElement('link');
+      darkModeStyleSheet.rel = 'stylesheet';
+      darkModeStyleSheet.href = 'assets/cssModules/darkMode.css';
+      document.head.appendChild(darkModeStyleSheet);
+
+      // Saving preference to storage
+      localStorage.setItem('darkModeSetting', 'darkmode');
     } else {
+      if (darkModeStyleSheet != undefined) {
+        console.log(darkModeStyleSheet);
+        darkModeStyleSheet.remove();
+      }
 
-        if (darkModeSetting == 'whitemode') {
-            // Creating the darkmode css style sheet and adding it to DOM
-            darkModeStyleSheet = document.createElement('link');
-            darkModeStyleSheet.rel = 'stylesheet';
-            darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
-            document.head.appendChild(darkModeStyleSheet);
-
-            // Saving preference to storage
-            localStorage.setItem('darkModeSetting', 'darkmode');
-        }
-        else {
-            if (darkModeStyleSheet != undefined) {
-                console.log(darkModeStyleSheet);
-                darkModeStyleSheet.remove();
-            }
-
-            // Saving preference to storage
-            localStorage.setItem('darkModeSetting', 'whitemode');
-        }
-
+      // Saving preference to storage
+      localStorage.setItem('darkModeSetting', 'whitemode');
     }
+
+  }
 
 };
 
-darkModeToggleButton.addEventListener('click',changeDarkMode);
+darkModeToggleButton.addEventListener('click', changeDarkMode);
 
 const setTheme = () => {
   const darkModeSetting = localStorage.getItem('darkModeSetting');
   if (darkModeSetting === null) {
-      localStorage.setItem('darkModeSetting', 'whitemode');
+    localStorage.setItem('darkModeSetting', 'whitemode');
   } else {
 
-      if (darkModeSetting == 'darkmode') {
-          // Creating the darkmode css style sheet and adding it to DOM
-          darkModeStyleSheet = document.createElement('link');
-          darkModeStyleSheet.rel = 'stylesheet';
-          darkModeStyleSheet.href = "assets/cssModules/darkMode.css";
-          document.head.appendChild(darkModeStyleSheet);
-          document.getElementById("flexSwitchCheckDefault1").checked = true;
-      }
+    if (darkModeSetting == 'darkmode') {
+      // Creating the darkmode css style sheet and adding it to DOM
+      darkModeStyleSheet = document.createElement('link');
+      darkModeStyleSheet.rel = 'stylesheet';
+      darkModeStyleSheet.href = 'assets/cssModules/darkMode.css';
+      document.head.appendChild(darkModeStyleSheet);
+      document.getElementById('flexSwitchCheckDefault1').checked = true;
+    }
 
   }
 };
@@ -176,87 +179,96 @@ const changeMyyrmakiCampus = document.querySelector('.myyrmakiMap');
 
 //hide all hsl maps
 const hideMaps = () => {
-  hideAllMaps.forEach(map => map.style.display = "none");
+  hideAllMaps.forEach(map => map.style.display = 'none');
 };
 //choosing different campus
 const karamalmiCampus = (event) => {
-  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelectorAll('.nav-link').
+    forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.karamalmiButton').classList.add('selected-nav-link');
   hideMaps();
-  changeKaramalmiCampus.style.display = "block";
+  changeKaramalmiCampus.style.display = 'block';
 };
-document.querySelector('.karamalmiButton').addEventListener('click', karamalmiCampus);
+document.querySelector('.karamalmiButton').
+  addEventListener('click', karamalmiCampus);
 
 const arabiaCampus = () => {
-  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelectorAll('.nav-link').
+    forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.arabiaButton').classList.add('selected-nav-link');
   hideMaps();
-  changeArabiaCampus.style.display = "block";
+  changeArabiaCampus.style.display = 'block';
 };
 document.querySelector('.arabiaButton').addEventListener('click', arabiaCampus);
 
 const myllypuroCampus = () => {
-  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelectorAll('.nav-link').
+    forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myllypuroButton').classList.add('selected-nav-link');
   hideMaps();
-  changeMyllypuroCampus.style.display = "block";
+  changeMyllypuroCampus.style.display = 'block';
 };
-document.querySelector('.myllypuroButton').addEventListener('click', myllypuroCampus);
+document.querySelector('.myllypuroButton').
+  addEventListener('click', myllypuroCampus);
 
 const myyrmakiCampus = () => {
-  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('selected-nav-link'));
+  document.querySelectorAll('.nav-link').
+    forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myyrmakiButton').classList.add('selected-nav-link');
   hideMaps();
-  changeMyyrmakiCampus.style.display = "block";
+  changeMyyrmakiCampus.style.display = 'block';
 };
-document.querySelector('.myyrmakiButton').addEventListener('click', myyrmakiCampus);
+document.querySelector('.myyrmakiButton').
+  addEventListener('click', myyrmakiCampus);
 
-
-
-const inEnglishToggleButton = document.querySelector('#flexSwitchCheckDefault2');
+const inEnglishToggleButton = document.querySelector(
+  '#flexSwitchCheckDefault2');
 
 const changeInEnglish = () => {
-    const inEnglishSetting = localStorage.getItem('inEnglishSetting');
-    if (inEnglishSetting === null) {
-        localStorage.setItem('inEnglishSetting', 'inEnglish');
+  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+  if (inEnglishSetting === null) {
+    localStorage.setItem('inEnglishSetting', 'inEnglish');
+  } else {
+
+    if (inEnglishSetting == 'inEnglish') {
+      document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
+        forEach(text => text.style.display = 'none');
+      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
+        forEach(text => text.style.display = 'block');
+
+      // Saving preference to storage
+      localStorage.setItem('inEnglishSetting', 'inFinnish');
     } else {
+      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
+        forEach(text => text.style.display = 'none');
+      document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
+        forEach(text => text.style.display = 'block');
 
-        if (inEnglishSetting == 'inEnglish') {
-            document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').forEach(text => text.style.display = "none");
-            document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').forEach(text => text.style.display = "block");
-
-            // Saving preference to storage
-            localStorage.setItem('inEnglishSetting', 'inFinnish');
-        }
-        else {
-              document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').forEach(text => text.style.display = "none");
-              document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').forEach(text => text.style.display = "block");
-
-            // Saving preference to storage
-            localStorage.setItem('inEnglishSetting', 'inEnglish');
-        }
-
+      // Saving preference to storage
+      localStorage.setItem('inEnglishSetting', 'inEnglish');
     }
+
+  }
 
 };
 
-inEnglishToggleButton.addEventListener('click',changeInEnglish);
+inEnglishToggleButton.addEventListener('click', changeInEnglish);
 
 //switch language
 const setLanguage = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
-      localStorage.setItem('inEnglishSetting', 'inFinnish');
+    localStorage.setItem('inEnglishSetting', 'inFinnish');
   } else {
 
-      if (inEnglishSetting == 'inFinnish') {
-          document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').forEach(text => text.style.display = "none");
-      }
-      else{
-        document.getElementById("flexSwitchCheckDefault2").checked = true;
-        document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').forEach(text => text.style.display = "none");
-      }
-
+    if (inEnglishSetting == 'inFinnish') {
+      document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
+        forEach(text => text.style.display = 'none');
+    } else {
+      document.getElementById('flexSwitchCheckDefault2').checked = true;
+      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
+        forEach(text => text.style.display = 'none');
+    }
 
   }
 };

@@ -1,16 +1,17 @@
-import { ApiConfig } from "./ApiConfig";
+import {ApiConfig} from './ApiConfig';
 import * as url from 'url';
+import {Buffer} from 'buffer';
 
 const doFetch = async (url, options = {}) => {
   const response = await fetch(url, options);
-  console.log("RESPONSE", response);
+  console.log('RESPONSE', response);
   const json = await response.json();
   if (json.error) {
     // if API response contains error message (use Postman to get further details)
-    throw new Error(json.message + ": " + json.error);
+    throw new Error(json.message + ': ' + json.error);
   } else if (!response.ok) {
     // if API response does not contain error message, but there is some other error
-    throw new Error("doFetch failed");
+    throw new Error('doFetch failed');
   } else {
     // if all goes well
     return json;
@@ -22,17 +23,17 @@ const useApiData = () => {
   // Function for fetching the weather data with given city parameter
   const getWeatherData = async (lat, lon) => {
     const fetchOptions = {
-      method: "GET",
+      method: 'GET',
     };
     try {
       return await doFetch(
         ApiConfig.weatherApiUrl +
-          "lat=" +
-          lat +
-          "&lon=" +
-          lon +
-          ApiConfig.weatherApiKey,
-        fetchOptions
+        'lat=' +
+        lat +
+        '&lon=' +
+        lon +
+        ApiConfig.weatherApiKey,
+        fetchOptions,
       );
     } catch (e) {
       alert(e.message);
@@ -41,8 +42,8 @@ const useApiData = () => {
 
   const getHslDataByRadius = async (radius) => {
     const fetchOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/graphql" },
+      method: 'POST',
+      headers: {'Content-Type': 'application/graphql'},
       body: radius,
     };
     try {
@@ -54,8 +55,8 @@ const useApiData = () => {
 
   const getHslDataByStop = async (query) => {
     const fetchOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/graphql" },
+      method: 'POST',
+      headers: {'Content-Type': 'application/graphql'},
       body: query,
     };
     try {
@@ -77,7 +78,7 @@ const useApiData = () => {
     }
   };
 
-  const getFazerData = async (date) => {
+  const getFazerData = async (lang, date) => {
     const fetchOptions = {
       method: 'GET',
       headers: {
@@ -85,23 +86,50 @@ const useApiData = () => {
       },
     };
     const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
-      ApiConfig.fazerKaramalmiApiUrl + date)}`;
+      ApiConfig.fazerKaramalmiApiUrl + lang + ApiConfig.fazerEnd +
+      '2022-02-01')}`;
     try {
       let jsonData = await doFetch(url,
         fetchOptions);
       jsonData = JSON.parse(jsonData.contents);
       return jsonData;
-
     } catch (e) {
       alert(e.message);
     }
   };
+  const postGetMetropoliaData = async (requestObject) => {
+    requestObject.apiKey = ApiConfig.apiKey;
+    requestObject.apiUrl = ApiConfig.apiUrl;
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +
+          Buffer.from(`${ApiConfig.apiKey}:`).toString('base64'),
+      },
+      body: JSON.stringify(requestObject),
+    };
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
+      ApiConfig.apiUrl)}`;
+    try {
+      let jsonData = await doFetch(url,
+        fetchOptions);
+      jsonData = JSON.parse(jsonData.contents);
+      console.log(jsonData);
+      return jsonData;
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
   return {
     getWeatherData,
     getHslDataByRadius,
     getHslDataByStop,
     getFazerData,
     getSodexoData,
+    postGetMetropoliaData,
   };
 };
 
