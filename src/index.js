@@ -42,7 +42,7 @@ window.addEventListener('scroll', (event) => {
     getBusses(2132226);
   });
 
-  // ARABIA
+    // ARABIA
   document.getElementById('KaironkatuNorth').addEventListener('click', () => {
     getBusses(1230102);
   });
@@ -60,10 +60,9 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('LiikuntamyllyWest').addEventListener('click', () => {
     getBusses(1454111);
   });
-  document.getElementById('LiikuntamyllyWEast').
-    addEventListener('click', () => {
-      getBusses(1454112);
-    });
+  document.getElementById('LiikuntamyllyWEast').addEventListener('click', () => {
+    getBusses(1454112);
+  });
   document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
     getBusses(1454138);
   });
@@ -116,6 +115,8 @@ const closeNavbar = () => {
 document.querySelectorAll('.main').
   forEach(main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
+
+
 
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
@@ -272,7 +273,7 @@ const setLanguage = () => {
         forEach(text => text.style.display = 'none');
     } else {
       document.getElementById('flexSwitchCheckDefault2').checked = true;
-      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
+      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"').
         forEach(text => text.style.display = 'none');
     }
   }

@@ -52,7 +52,7 @@ body {
 .pwa-weather .image img {
   height: 10vw;
   width: 10vw;
-  margin-right: 1rem;
+  margin-right: 0 !important;
 }
 .image{
   justify-self: end;
@@ -61,14 +61,18 @@ body {
   font-size: var(--regularFont);
   font-size: 4vw;
   margin-bottom: 0;
+  justify-self: center;
 }
 .collapseText{
   position: fixed;
   background-color: #D0D0D0;
   margin-right: 20%;
-  box-shadow: 25px 15px 25px #888888;
-  margin-top: -20vw;
+  box-shadow: 13px 13px 25px #888888;
   z-index: 5;
+  top: 0;
+  bottom:0;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 .linkMarginTop{
   margin-top: 3em ;
@@ -100,7 +104,6 @@ body {
 }
 .toggleFlex{
   display: flex;
-
 }
 .form-switch{
   margin-left: 9vw;
@@ -131,6 +134,17 @@ body {
   font-size: 2vh;
   font-family: var(--regularFont);
   color: #000;
+  margin-bottom: 2%;
+}
+.metropoliaLogo{
+  align-self: end;
+  margin-top: 5%;
+}
+.chooseCampusText{
+  margin-top: 5%;
+  text-align: center;
+  font-family: var(--titleFont);
+  font-size: 7vw;
 }
 
 .lounchText {
@@ -160,6 +174,12 @@ body {
   margin-right: auto;
   border: 2px solid #fff;
   border-radius: 35px;
-  box-shadow: 25px 15px 25px #888888;
+  box-shadow: 13px 13px 25px #888888;
+}
+.metkuKissa{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
 }
 
