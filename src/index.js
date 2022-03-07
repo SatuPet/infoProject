@@ -231,7 +231,6 @@ const changeInEnglish = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inEnglish');
-    getMenus(selectedCampus);
   } else {
     if (inEnglishSetting == 'inEnglish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
@@ -241,7 +240,6 @@ const changeInEnglish = () => {
 
       // Saving preference to storage
       localStorage.setItem('inEnglishSetting', 'inFinnish');
-      getMenus(selectedCampus);
     } else {
       document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
         forEach(text => text.style.display = 'none');
@@ -250,14 +248,12 @@ const changeInEnglish = () => {
 
       // Saving preference to storage
       localStorage.setItem('inEnglishSetting', 'inEnglish');
-      getMenus(selectedCampus);
     }
   }
 };
 
 inEnglishToggleButton.addEventListener('click', function() {
   changeInEnglish();
-  console.log(localStorage.getItem('inEnglishSetting'));
   getMenus(selectedCampus);
 });
 
@@ -266,14 +262,13 @@ const setLanguage = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inFinnish');
-    getMenus(selectedCampus);
   } else {
-    if (inEnglishSetting == 'inFinnish') {
+    if (inEnglishSetting === 'inFinnish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
     } else {
       document.getElementById('flexSwitchCheckDefault2').checked = true;
-      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"').
+      document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
         forEach(text => text.style.display = 'none');
     }
   }

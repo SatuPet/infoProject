@@ -1,7 +1,6 @@
 import {useApiData} from './ApiHooks';
 import {ApiConfig} from './ApiConfig';
 
-
 let selectedCampus = '';
 
 const todayISODate = new Date().toISOString().split('T')[0];
@@ -19,39 +18,39 @@ const boxes = document.querySelectorAll('.lounchText');
 const lunch = document.querySelector('#lunch');
 
 const getMenus = (campus) => {
+  console.log(campus);
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   let lang = 'fi';
   if (inEnglishSetting === 'inEnglish') {
     lang = 'en';
   } else lang = 'fi';
-
-  selectedCampus = campus;
-  console.log(selectedCampus);
-  console.log(lang);
-  console.log(inEnglishSetting);
   lunch.innerHTML = '';
   try {
     let data;
     // Myyrmaki
     if (campus === 'myyrmaki') {
+      selectedCampus = 'myyrmaki';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
-        console.log(result);
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses);
+          console.log(result.courses);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
       // Myllypuro
     } else if (campus === 'myllypuro') {
+      selectedCampus = 'myllypuro';
+
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
     } else if (campus === 'karamalmi') {
+      selectedCampus = 'karamalmi';
       // Karamalmi
       data = useApiData().getFazerData(lang, today);
       data.then(function(result) {
@@ -65,7 +64,7 @@ const getMenus = (campus) => {
   }
 };
 
-const parseSodexo = (lang, resultObject) => {
+const parseSodexo = (lang, resultObject, inEnglishSetting) => {
   for (let i = 0; i <= Object.keys(resultObject).length; i++) {
     if (resultObject[i] !== undefined) {
       if (inEnglishSetting === 'inFinnish') {
