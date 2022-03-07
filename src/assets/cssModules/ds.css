@@ -11,8 +11,8 @@
   body {
     margin: 0 !important;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 1824px;
+    height: 984px;
   }
   iframe {
     position: fixed;
@@ -24,9 +24,9 @@
   }
   .ds-layer {
     display: grid;
-    grid-template-columns: 1fr 2fr 500px;
+    grid-template-columns: 1fr 2fr 450px;
     grid-template-rows: auto;
-    grid-gap: 4% 2%;
+    grid-gap: 3% 1.5%;
     grid-template-areas:
       "time weather menu"
       "hsl hsl menu"
@@ -56,12 +56,12 @@
     text-align: center;
     display: flex;
     align-items: center;
-    border: 0.1rem solid #53565a;
+    border: 0.1rem solid var(--gray);
     border-radius: 0.5rem;
   }
   .time-block p {
     margin: auto;
-    font-size: 7rem;
+    font-size: 6rem;
   }
   .weather-block {
     display: flex;
@@ -69,7 +69,7 @@
     width: 100%;
     background-color: #e4e4e4;
     color: black;
-    border: 0.1rem solid #53565a;
+    border: 0.1rem solid var(--gray);
     border-radius: 0.5rem;
   }
   .location-area {
@@ -82,11 +82,11 @@
     margin: 1rem 0 0 1rem;
   }
   #campus-name {
-    font-size: 4rem;
-    margin-top: 2rem;
-    margin-left: 5rem;
+    font-size: 3rem;
+    text-align: right;
+    margin: 0;
     padding: 0;
-    color: #ff5000;
+    color: var(--orange);
   }
   #campus-name:hover {
     color: #00a0e1;
@@ -102,11 +102,12 @@
     height: 100%;
   }
   .weather .image img {
-    height: 150px;
+    height: 135px;
     margin-right: 1rem;
+    margin-top: 0.8rem;
   }
   .temperature {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-top: 2rem;
   }
 
@@ -114,10 +115,42 @@
     grid-area: menu;
     height: 100%;
     background-color: white;
-    border: 0.1rem solid #53565a;
+    border: 0.1rem solid var(--gray);
     border-radius: 0.5rem;
+    position: relative;
   }
-
+  #text-menu {
+    font-size: 2.5rem;
+    color: var(--orange);
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  #text-open {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .lounchText {
+    font-size: 2vh;
+    padding: 0.3rem 3rem;
+    list-style-type: none;
+  }
+  .lounchText li {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .restaurant-info{
+    position:  absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  }
+  #text-prices {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
   .hsl-block {
     height: 100%;
     width: 100%;
@@ -125,7 +158,7 @@
   }
   #hsl-timetable {
     display: flex;
-    width: 100%;
+    width: 1131px;
     height: 585px;
     font-size: 2rem;
   }
@@ -157,7 +190,7 @@
   #hsl-timetable {
     color: white;
     background-color: #00a0e1;
-    border: 0.1rem solid #53565a;
+    border: 0.1rem solid var(--gray);
     border-radius: 0.5rem;
     padding: 1rem;
     width: auto;
@@ -174,7 +207,7 @@
   #leavingTime {
     min-width: 150px;
     text-align: center;
-    background-color: #53565a;
+    background-color: var(--gray);
   }
   .banner-block {
     grid-area: banner;
@@ -186,7 +219,7 @@
     max-width: 100%;
     overflow: hidden;
     position: relative;
-    background: #ff5000;
+    background: var(--orange);
     color: white;
     border: 0.1rem solid #53565a;
     border-radius: 0.5rem;

@@ -2,7 +2,7 @@ import {useApiData} from './ApiHooks';
 import {ApiConfig} from './ApiConfig';
 
 const selectedCampus = 'karamalmi';
-const lang = 'en';
+const lang = 'fi';
 
 const todayISODate = new Date().toISOString().split('T')[0];
 let today = new Date();
@@ -92,7 +92,7 @@ const parseFazer = (resultObject) => {
         let diets;
         for (let j = 0; j < weekCourses[i].length; j++) {
           wholeMeal += weekCourses[i][j].Name;
-          console.log(weekCourses[i][j].Diets.toString());
+          //console.log(weekCourses[i][j].Diets.toString());
           diets = weekCourses[i][j].Diets.toString();
           if (j + 1 !== weekCourses[i].length) {
             wholeMeal += `(${diets})\n `;
@@ -115,7 +115,7 @@ const addCoursesToList = (course, diets = '') => {
     let list2 = document.createElement('div');
     list2.className = 'line';
     item.append(list);
-    item.append(list2);
+    //item.append(list2);
   });
 };
 
