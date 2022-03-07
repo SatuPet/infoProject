@@ -136,7 +136,7 @@ body {
 .lounchText {
   font-size: 2vh;
   padding: 1em;
-  height: 80vh;
+  height: auto;
   list-style-type: none;
   overflow: scroll;
 }
@@ -154,7 +154,7 @@ body {
   margin-bottom: 20%;
   background-color: #fff;
   width: 85%;
-  height: 80vh;
+  height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;

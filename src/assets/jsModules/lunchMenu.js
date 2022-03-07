@@ -1,8 +1,8 @@
 import {useApiData} from './ApiHooks';
 import {ApiConfig} from './ApiConfig';
 
-const selectedCampus = 'myyrmaki';
-const lang = 'fi';
+const selectedCampus = 'karamalmi';
+const lang = 'en';
 
 const todayISODate = new Date().toISOString().split('T')[0];
 let today = new Date();

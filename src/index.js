@@ -2,10 +2,10 @@ import {weather} from './assets/jsModules/weather';
 import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getMenus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
-import {getReservations} from './assets/jsModules/classes';
+
 
 getMenus();
-// getReservations();
+
 
 let weatherInterval;
 /**
