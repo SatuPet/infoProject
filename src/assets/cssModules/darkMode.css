@@ -39,9 +39,9 @@ body {
 }
 .hslMaps{
   filter: brightness(80%);
-  box-shadow: 25px 15px 25px #222;
+  box-shadow: 13px 13px 25px #222;
 }
 .lounchMenu{
   filter: brightness(80%);
-  box-shadow: 25px 15px 25px #222;
+  box-shadow: 13px 13px 25px #222;
 }

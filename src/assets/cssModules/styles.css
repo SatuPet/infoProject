@@ -65,7 +65,7 @@ body {
 .pwa-weather .image img {
   height: 10vw;
   width: 10vw;
-  margin-right: 1rem;
+  margin-right: 0 !important;
 }
 .image{
   justify-self: end;
@@ -74,12 +74,13 @@ body {
   font-size: var(--regularFont);
   font-size: 4vw;
   margin-bottom: 0;
+  justify-self: center;
 }
 .collapseText{
   position: fixed;
   background-color: #D0D0D0;
   margin-right: 20%;
-  box-shadow: 25px 15px 25px #888888;
+  box-shadow: 13px 13px 25px #888888;
   z-index: 5;
   top: 0;
   bottom:0;
@@ -148,6 +149,10 @@ body {
   color: #000;
   margin-bottom: 2%;
 }
+.metropoliaLogo{
+  align-self: end;
+  margin-top: 5%;
+}
 .chooseCampusText{
   margin-top: 5%;
   text-align: center;
@@ -165,6 +170,6 @@ body {
   margin-right: auto;
   border: 2px solid #fff;
   border-radius: 35px;
-  box-shadow: 25px 15px 25px #888888;
+  box-shadow: 13px 13px 25px #888888;
 }
 
