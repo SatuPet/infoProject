@@ -1,11 +1,9 @@
 import {weather} from './assets/jsModules/weather';
 import {getBusses, getTwoStops} from './assets/jsModules/hsl';
-import {getMenus} from './assets/jsModules/lunchMenu';
+import {getMenus, selectedCampus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
-import {getReservations} from './assets/jsModules/classes';
 
-getMenus();
-// getReservations();
+getMenus('karamalmi');
 
 let weatherInterval;
 /**
@@ -186,6 +184,7 @@ const karamalmiCampus = (event) => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.karamalmiButton').classList.add('selected-nav-link');
+  getMenus('karamalmi');
   hideMaps();
   changeKaramalmiCampus.style.display = 'block';
 };
@@ -196,6 +195,7 @@ const arabiaCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.arabiaButton').classList.add('selected-nav-link');
+  getMenus('arabia');
   hideMaps();
   changeArabiaCampus.style.display = 'block';
 };
@@ -205,6 +205,7 @@ const myllypuroCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myllypuroButton').classList.add('selected-nav-link');
+  getMenus('myllypuro');
   hideMaps();
   changeMyllypuroCampus.style.display = 'block';
 };
@@ -215,6 +216,7 @@ const myyrmakiCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myyrmakiButton').classList.add('selected-nav-link');
+  getMenus('myyrmaki');
   hideMaps();
   changeMyyrmakiCampus.style.display = 'block';
 };
@@ -228,8 +230,8 @@ const changeInEnglish = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inEnglish');
+    getMenus(selectedCampus);
   } else {
-
     if (inEnglishSetting == 'inEnglish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
@@ -238,6 +240,7 @@ const changeInEnglish = () => {
 
       // Saving preference to storage
       localStorage.setItem('inEnglishSetting', 'inFinnish');
+      getMenus(selectedCampus);
     } else {
       document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
         forEach(text => text.style.display = 'none');
@@ -246,21 +249,24 @@ const changeInEnglish = () => {
 
       // Saving preference to storage
       localStorage.setItem('inEnglishSetting', 'inEnglish');
+      getMenus(selectedCampus);
     }
-
   }
-
 };
 
-inEnglishToggleButton.addEventListener('click', changeInEnglish);
+inEnglishToggleButton.addEventListener('click', function() {
+  changeInEnglish();
+  console.log(localStorage.getItem('inEnglishSetting'));
+  getMenus(selectedCampus);
+});
 
 //switch language
 const setLanguage = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inFinnish');
+    getMenus(selectedCampus);
   } else {
-
     if (inEnglishSetting == 'inFinnish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
@@ -269,7 +275,6 @@ const setLanguage = () => {
       document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
         forEach(text => text.style.display = 'none');
     }
-
   }
 };
 

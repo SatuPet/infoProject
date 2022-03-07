@@ -1,6 +1,5 @@
 import {ApiConfig} from './ApiConfig';
 import * as url from 'url';
-import {Buffer} from 'buffer';
 
 const doFetch = async (url, options = {}) => {
   const response = await fetch(url, options);
@@ -87,36 +86,11 @@ const useApiData = () => {
     };
     const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
       ApiConfig.fazerKaramalmiApiUrl + lang + ApiConfig.fazerEnd +
-      '2022-02-01')}`;
+      date)}`;
     try {
       let jsonData = await doFetch(url,
         fetchOptions);
       jsonData = JSON.parse(jsonData.contents);
-      return jsonData;
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-  const postGetMetropoliaData = async (requestObject) => {
-    requestObject.apiKey = ApiConfig.apiKey;
-    requestObject.apiUrl = ApiConfig.apiUrl;
-
-    const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic ' +
-          Buffer.from(`${ApiConfig.apiKey}:`).toString('base64'),
-      },
-      body: JSON.stringify(requestObject),
-    };
-    const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
-      ApiConfig.apiUrl)}`;
-    try {
-      let jsonData = await doFetch(url,
-        fetchOptions);
-      jsonData = JSON.parse(jsonData.contents);
-      console.log(jsonData);
       return jsonData;
     } catch (e) {
       alert(e.message);
@@ -129,7 +103,6 @@ const useApiData = () => {
     getHslDataByStop,
     getFazerData,
     getSodexoData,
-    postGetMetropoliaData,
   };
 };
 
