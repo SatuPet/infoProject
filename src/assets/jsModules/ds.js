@@ -1,6 +1,8 @@
 import {getDsBusses} from './hsl';
 import {weather} from './weather';
-import {getMenus} from './lunchMenu';
+import {getMenus, selectedCampus} from './lunchMenu';
+
+let localCampus = selectedCampus;
 
 console.log('hello from ds.js');
 const timebox = document.getElementById('date-time');
@@ -46,6 +48,7 @@ hslTimer(60.2241077, 24.7565312, 600); //default Karamalmi
 
 document.getElementById('arabia-campus').addEventListener('click', () => {
   getMenus('arabia');
+  localCampus = 'arabia';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Arabia';
   hslTimer(60.2094084, 24.9809358, 500);
@@ -53,6 +56,7 @@ document.getElementById('arabia-campus').addEventListener('click', () => {
 });
 document.getElementById('karamalmi-campus').addEventListener('click', () => {
   getMenus('karamalmi');
+  localCampus = 'karamalmi';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Karamalmi';
   hslTimer(60.2241077, 24.7565312, 600);
@@ -60,6 +64,7 @@ document.getElementById('karamalmi-campus').addEventListener('click', () => {
 });
 document.getElementById('myllypuro-campus').addEventListener('click', () => {
   getMenus('myllypuro');
+  localCampus = 'myllypuro';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Myllypuro';
   hslTimer(60.2234938, 25.0757339, 400);
@@ -67,6 +72,7 @@ document.getElementById('myllypuro-campus').addEventListener('click', () => {
 });
 document.getElementById('myyrmaki-campus').addEventListener('click', () => {
   getMenus('myyrmaki');
+  localCampus = 'myyrmaki';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Myyrmäki';
   hslTimer(60.2588793, 24.8488313, 520);
