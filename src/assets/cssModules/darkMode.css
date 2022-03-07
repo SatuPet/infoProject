@@ -19,6 +19,9 @@ body {
 .nav-link{
   color: var(--background);
 }
+.selected-nav-link{
+  color: var(--orange);
+}
 .nav-link:active{
   background-color: var(--grey);
 }

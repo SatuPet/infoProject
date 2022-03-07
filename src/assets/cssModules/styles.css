@@ -146,6 +146,7 @@ body {
   font-size: 2vh;
   font-family: var(--regularFont);
   color: #000;
+  margin-bottom: 2%;
 }
 .chooseCampusText{
   margin-top: 5%;
