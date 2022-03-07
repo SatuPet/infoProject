@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr 500px;
     grid-template-rows: auto;
-    grid-gap: 2%;
+    grid-gap: 4% 2%;
     grid-template-areas:
       "time weather menu"
       "hsl hsl menu"
@@ -34,10 +34,10 @@
   }
   .ds-canvas {
     display: block;
-    background-color: rgba(220, 220, 220, 0.5);
-    height: 95%;
-    width: 95%;
-    margin: 5% auto 0;
+    background-color: rgba(220, 220, 220, 0);
+    height: 90%;
+    width: 90%;
+    margin: 2% auto;
     padding: 1% 1% 2.8% 1%;
     border-radius: 0.5rem;
   }
@@ -61,7 +61,7 @@
   }
   .time-block p {
     margin: auto;
-    font-size: 5rem;
+    font-size: 7rem;
   }
   .weather-block {
     display: flex;
@@ -82,7 +82,9 @@
     margin: 1rem 0 0 1rem;
   }
   #campus-name {
-    font-size: 3rem;
+    font-size: 4rem;
+    margin-top: 2rem;
+    margin-left: 5rem;
     padding: 0;
     color: #ff5000;
   }

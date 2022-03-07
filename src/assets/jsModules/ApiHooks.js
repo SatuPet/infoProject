@@ -1,6 +1,7 @@
 import {ApiConfig} from './ApiConfig';
 import * as url from 'url';
 
+
 const doFetch = async (url, options = {}) => {
   const response = await fetch(url, options);
   console.log('RESPONSE', response);
@@ -103,6 +104,7 @@ const useApiData = () => {
     getHslDataByStop,
     getFazerData,
     getSodexoData,
+
   };
 };
 
