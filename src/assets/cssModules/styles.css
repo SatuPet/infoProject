@@ -161,6 +161,7 @@ body {
 }
 
 .lounchMenu{
+  position: relative;
   margin-bottom: 20%;
   background-color: #fff;
   width: 85%;
@@ -171,5 +172,10 @@ body {
   border: 2px solid #fff;
   border-radius: 35px;
   box-shadow: 13px 13px 25px #888888;
+}
+.metkuKissa{
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
