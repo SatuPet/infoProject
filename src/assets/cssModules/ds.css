@@ -104,7 +104,7 @@
   .weather .image img {
     height: 135px;
     margin-right: 1rem;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
   }
   .temperature {
     font-size: 3.5rem;
@@ -134,7 +134,7 @@
   .lounchText {
     width: 100%;
     height: 100%;
-    font-size: 2vh;
+    font-size: 1.8vh;
     padding: 0.3rem 3rem;
     list-style-type: none;
     overflow: hidden;
