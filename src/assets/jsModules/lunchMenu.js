@@ -57,7 +57,7 @@ const getMenus = (campus) => {
         parseFazer(result.LunchMenus);
       });
     } else {
-      addCoursesToList('No food served here');
+      addCoursesToList('No menu available for this campus');
     }
   } catch (e) {
     console.log(e.message);
@@ -97,7 +97,7 @@ const parseFazer = (resultObject) => {
           weekCourses.push(temp2[i].Meals);
         }
       }
-      for (let i = 0; i < weekCourses.length; i++) {
+      for (let i = 0; i < weekCourses.length -1; i++) {
         let wholeMeal = '';
         let diets;
         for (let j = 0; j < weekCourses[i].length; j++) {
