@@ -1,11 +1,9 @@
 import {weather} from './assets/jsModules/weather';
 import {getBusses, getTwoStops} from './assets/jsModules/hsl';
-import {getMenus} from './assets/jsModules/lunchMenu';
+import {getMenus, selectedCampus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
 
-
-getMenus();
-
+getMenus('karamalmi');
 
 let weatherInterval;
 /**
@@ -44,7 +42,7 @@ window.addEventListener('scroll', (event) => {
     getBusses(2132226);
   });
 
-  // ARABIA
+    // ARABIA
   document.getElementById('KaironkatuNorth').addEventListener('click', () => {
     getBusses(1230102);
   });
@@ -62,10 +60,9 @@ window.addEventListener('scroll', (event) => {
   document.getElementById('LiikuntamyllyWest').addEventListener('click', () => {
     getBusses(1454111);
   });
-  document.getElementById('LiikuntamyllyWEast').
-    addEventListener('click', () => {
-      getBusses(1454112);
-    });
+  document.getElementById('LiikuntamyllyWEast').addEventListener('click', () => {
+    getBusses(1454112);
+  });
   document.getElementById('MyllypuronTervAs').addEventListener('click', () => {
     getBusses(1454138);
   });
@@ -118,6 +115,8 @@ const closeNavbar = () => {
 document.querySelectorAll('.main').
   forEach(main => main.addEventListener('click', closeNavbar));
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
+
+
 
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
@@ -186,6 +185,7 @@ const karamalmiCampus = (event) => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.karamalmiButton').classList.add('selected-nav-link');
+  getMenus('karamalmi');
   hideMaps();
   changeKaramalmiCampus.style.display = 'block';
 };
@@ -196,6 +196,7 @@ const arabiaCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.arabiaButton').classList.add('selected-nav-link');
+  getMenus('arabia');
   hideMaps();
   changeArabiaCampus.style.display = 'block';
 };
@@ -205,6 +206,7 @@ const myllypuroCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myllypuroButton').classList.add('selected-nav-link');
+  getMenus('myllypuro');
   hideMaps();
   changeMyllypuroCampus.style.display = 'block';
 };
@@ -215,6 +217,7 @@ const myyrmakiCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
   document.querySelector('.myyrmakiButton').classList.add('selected-nav-link');
+  getMenus('myyrmaki');
   hideMaps();
   changeMyyrmakiCampus.style.display = 'block';
 };
@@ -229,7 +232,6 @@ const changeInEnglish = () => {
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inEnglish');
   } else {
-
     if (inEnglishSetting == 'inEnglish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
@@ -247,12 +249,13 @@ const changeInEnglish = () => {
       // Saving preference to storage
       localStorage.setItem('inEnglishSetting', 'inEnglish');
     }
-
   }
-
 };
 
-inEnglishToggleButton.addEventListener('click', changeInEnglish);
+inEnglishToggleButton.addEventListener('click', function() {
+  changeInEnglish();
+  getMenus(selectedCampus);
+});
 
 //switch language
 const setLanguage = () => {
@@ -260,8 +263,7 @@ const setLanguage = () => {
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inFinnish');
   } else {
-
-    if (inEnglishSetting == 'inFinnish') {
+    if (inEnglishSetting === 'inFinnish') {
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
     } else {
@@ -269,7 +271,6 @@ const setLanguage = () => {
       document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').
         forEach(text => text.style.display = 'none');
     }
-
   }
 };
 

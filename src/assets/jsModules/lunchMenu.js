@@ -1,8 +1,7 @@
 import {useApiData} from './ApiHooks';
 import {ApiConfig} from './ApiConfig';
 
-const selectedCampus = 'karamalmi';
-const lang = 'fi';
+let selectedCampus = '';
 
 const todayISODate = new Date().toISOString().split('T')[0];
 let today = new Date();
@@ -10,54 +9,67 @@ let today2 = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
-const weekCourses = [];
-const courses = [];
+
 today = yyyy + '-' + mm + '-' + dd;
 today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
   today2.getFullYear();
-today2 = '2.2.2022';
 const noFood = 'No menu for the day';
+const boxes = document.querySelectorAll('.lounchText');
+const lunch = document.querySelector('#lunch');
 
-const getMenus = () => {
+const getMenus = (campus) => {
+  console.log(campus);
+  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+  let lang = 'fi';
+  if (inEnglishSetting === 'inEnglish') {
+    lang = 'en';
+  } else lang = 'fi';
+  lunch.innerHTML = '';
   try {
     let data;
     // Myyrmaki
-    if (selectedCampus === 'myyrmaki') {
+    if (campus === 'myyrmaki') {
+      selectedCampus = 'myyrmaki';
       data = useApiData().
-        getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, '2022-03-02');
+        getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
-        console.log(result);
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses);
+          console.log(result.courses);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
       // Myllypuro
-    } else if (selectedCampus === 'myllypuro') {
+    } else if (campus === 'myllypuro') {
+      selectedCampus = 'myllypuro';
+
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
-    } else {
+    } else if (campus === 'karamalmi') {
+      selectedCampus = 'karamalmi';
       // Karamalmi
       data = useApiData().getFazerData(lang, today);
       data.then(function(result) {
         parseFazer(result.LunchMenus);
       });
+    } else {
+      addCoursesToList('No food served here');
     }
   } catch (e) {
     console.log(e.message);
   }
 };
 
-const parseSodexo = (lang, resultObject) => {
+const parseSodexo = (lang, resultObject, inEnglishSetting) => {
   for (let i = 0; i <= Object.keys(resultObject).length; i++) {
     if (resultObject[i] !== undefined) {
-      if (lang === 'fi') {
+      if (inEnglishSetting === 'inFinnish') {
         addCoursesToList(resultObject[i].title_fi, resultObject[i].dietcodes);
-      } else if (lang === 'en') {
+      } else if (inEnglishSetting === 'inEnglish') {
         addCoursesToList(resultObject[i].title_en, resultObject[i].dietcodes);
       }
     }
@@ -65,34 +77,31 @@ const parseSodexo = (lang, resultObject) => {
 };
 
 const parseFazer = (resultObject) => {
+  const weekCourses = [];
+  let courses = [];
   const courseGetter = (obj) => {
     for (let i = 0; i <= Object.keys(obj).length; i++) {
       if (obj[i] !== undefined || null) {
         courses.push(obj[i]);
       }
     }
-    console.log(courses);
     looper(courses);
   };
 
   const looper = (courses) => {
     const todaysMenu = courses.filter(x => x.Date === today2);
-    console.log(todaysMenu);
     const temp2 = todaysMenu[0].SetMenus;
-    console.log(temp2);
     if (temp2.length > 0) {
       for (let i = 0; i <= Object.keys(temp2).length; i++) {
         if (temp2[i] !== undefined) {
           weekCourses.push(temp2[i].Meals);
         }
       }
-      console.log(weekCourses);
       for (let i = 0; i < weekCourses.length; i++) {
         let wholeMeal = '';
         let diets;
         for (let j = 0; j < weekCourses[i].length; j++) {
           wholeMeal += weekCourses[i][j].Name;
-          //console.log(weekCourses[i][j].Diets.toString());
           diets = weekCourses[i][j].Diets.toString();
           if (j + 1 !== weekCourses[i].length) {
             wholeMeal += `(${diets})\n `;
@@ -108,7 +117,7 @@ const parseFazer = (resultObject) => {
 };
 
 const addCoursesToList = (course, diets = '') => {
-  const boxes = document.querySelectorAll('.lounchText');
+  console.log(course);
   boxes.forEach((item) => {
     let list = document.createElement('li');
     list.innerText = course + ' ' + diets;
@@ -119,4 +128,4 @@ const addCoursesToList = (course, diets = '') => {
   });
 };
 
-export {getMenus};
+export {getMenus, selectedCampus};

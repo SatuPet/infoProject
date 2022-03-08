@@ -87,7 +87,7 @@ const useApiData = () => {
     };
     const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
       ApiConfig.fazerKaramalmiApiUrl + lang + ApiConfig.fazerEnd +
-      '2022-02-01')}`;
+      date)}`;
     try {
       let jsonData = await doFetch(url,
         fetchOptions);
@@ -97,7 +97,6 @@ const useApiData = () => {
       alert(e.message);
     }
   };
-
 
   return {
     getWeatherData,
