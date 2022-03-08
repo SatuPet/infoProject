@@ -288,4 +288,7 @@
     cursor: pointer;
     text-align: left;
   }
+  .modal-backdrop {
+    z-index: -5 !important;
+  }
 }
