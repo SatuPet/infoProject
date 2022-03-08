@@ -123,7 +123,7 @@
     font-size: 2.5rem;
     color: var(--orange);
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
   #text-open {
@@ -132,12 +132,15 @@
     padding: 0;
   }
   .lounchText {
+    width: 100%;
+    height: 100%;
     font-size: 2vh;
     padding: 0.3rem 3rem;
     list-style-type: none;
+    overflow: hidden;
   }
   .lounchText li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     text-align: center;
   }
   .restaurant-info{
