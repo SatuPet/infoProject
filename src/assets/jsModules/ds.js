@@ -46,10 +46,10 @@ const changeLangOfMenu = () => {
   }
 };
 
-setInterval(changeLangOfMenu, 30000);
+setInterval(changeLangOfMenu, 3000);
 
 let hslInterval;
-/** 
+/**
  *
  * @param {Number} campusLat latitude of campus
  * @param {Number} campusLon longitude of campus

@@ -37,76 +37,54 @@ const getMenus = (campus, caller = '', lang1) => {
     let data;
     // Myyrmaki
     if (campus === 'myyrmaki') {
-      lunch.innerHTML = '';
       selectedCampus = 'myyrmaki';
-      menuText.innerHTML = 'Menu';
-      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
-      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
         if (result.courses !== null || undefined) {
           console.log(result.courses);
-          parseSodexo(lang, result.courses, inEnglishSetting, caller);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
       // Myllypuro
     } else if (campus === 'myllypuro') {
-      lunch.innerHTML = '';
       selectedCampus = 'myllypuro';
-      menuText.innerHTML = 'Menu';
-      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
-      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
+
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses, inEnglishSetting, caller);
+          parseSodexo(lang, result.courses, inEnglishSetting);
         } else addCoursesToList(noFood);
       });
     } else if (campus === 'karamalmi') {
-      lunch.innerHTML = '';
       selectedCampus = 'karamalmi';
       // Karamalmi
-      menuText.innerHTML = 'Menu';
-      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
-      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().getFazerData(lang, today);
       data.then(function(result) {
-        parseFazer(result.LunchMenus, caller);
+        parseFazer(result.LunchMenus);
       });
     } else {
-      addCoursesToList('No menu available for this campus');
+      addCoursesToList('No food served here');
     }
   } catch (e) {
     console.log(e.message);
   }
 };
 
-const parseSodexo = (lang, resultObject, inEnglishSetting, caller) => {
-  console.log('caller 3: ' + caller);
+const parseSodexo = (lang, resultObject, inEnglishSetting) => {
   for (let i = 0; i <= Object.keys(resultObject).length; i++) {
     if (resultObject[i] !== undefined) {
       if (inEnglishSetting === 'inFinnish') {
-        addCoursesToList(resultObject[i].title_fi, resultObject[i].dietcodes,
-          caller,
-          caller);
+        addCoursesToList(resultObject[i].title_fi, resultObject[i].dietcodes);
       } else if (inEnglishSetting === 'inEnglish') {
-        addCoursesToList(resultObject[i].title_en, resultObject[i].dietcodes,
-          caller,
-          caller);
+        addCoursesToList(resultObject[i].title_en, resultObject[i].dietcodes);
       }
     }
   }
 };
 
-const parseFazer = (resultObject, caller) => {
+const parseFazer = (resultObject) => {
   const weekCourses = [];
   let courses = [];
   const courseGetter = (obj) => {
@@ -115,10 +93,10 @@ const parseFazer = (resultObject, caller) => {
         courses.push(obj[i]);
       }
     }
-    looper(courses, caller);
+    looper(courses);
   };
 
-  const looper = (courses, caller) => {
+  const looper = (courses) => {
     const todaysMenu = courses.filter(x => x.Date === today2);
     const temp2 = todaysMenu[0].SetMenus;
     if (temp2.length > 0) {
@@ -127,7 +105,7 @@ const parseFazer = (resultObject, caller) => {
           weekCourses.push(temp2[i].Meals);
         }
       }
-      for (let i = 0; i < weekCourses.length - 1; i++) {
+      for (let i = 0; i < weekCourses.length; i++) {
         let wholeMeal = '';
         let diets;
         for (let j = 0; j < weekCourses[i].length; j++) {
@@ -137,7 +115,7 @@ const parseFazer = (resultObject, caller) => {
             wholeMeal += `(${diets})\n `;
           } else wholeMeal += `(${diets})`;
         }
-        addCoursesToList(wholeMeal, '', caller);
+        addCoursesToList(wholeMeal);
       }
     } else {
       addCoursesToList(noFood);
@@ -146,23 +124,16 @@ const parseFazer = (resultObject, caller) => {
   courseGetter(resultObject);
 };
 
-const addCoursesToList = (course, diets = '', caller = '') => {
-  console.log('caller ' + caller);
-  if (caller === 'ds') {
+const addCoursesToList = (course, diets = '') => {
+  console.log(course);
+  boxes.forEach((item) => {
     let list = document.createElement('li');
     list.innerText = course + ' ' + diets;
     let list2 = document.createElement('div');
     list2.className = 'line';
-    dsBox.append(list);
-  } else {
-    let list = document.createElement('li');
-    list.innerText = course + ' ' + diets;
-    let list2 = document.createElement('div');
-    list2.className = 'line';
-    mobileBox.append(list);
+    item.append(list);
     //item.append(list2);
-  }
-
+  });
 };
 
 export {getMenus, selectedCampus};
