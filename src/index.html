@@ -131,8 +131,8 @@
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            <p lang="fi">Sulje</p>
-            <p lang="en">Close</p>
+            <p class="modalCloseButton" lang="fi">Sulje</p>
+            <p class="modalCloseButton" lang="en">Close</p>
           </button>
         </div>
       </div>
@@ -142,12 +142,16 @@
     <!-- LOUNCH -->
     <section class="main">
       <div class="lounchMenu">
-        <div class="menuText"><span style="font-size: 8vw; font-family: var(--titleFont); color: var(--orange);"> Menu</span>
+        <p id="menuText"></p>
           <div class="lounchText" id="lunch">
             <p lang="fi" class="chooseCampusText"> <span style="color: var(--orange); font-size: 9vw;"> Hei opiskelija</span><br><br> valitse sinun lähin kampuksesi </p>
             <p lang="en" class="chooseCampusText"> <span style="color: var(--orange); font-size: 9vw;"> Hey student</span><br><br> choose your nearest campus </p>
           </div>
-        </div>
+        <!-- </div> -->
+        <p lang="fi" id="menuPricesFi" class="menuInfo"></p>
+        <p lang="en" id="menuPricesEn" class="menuInfo"></p>
+        <p lang="fi" id="restaurantOpenFi" class="menuInfo"></p>
+        <p lang="en" id="restaurantOpenEn" class="menuInfo"></p>
         <img class="metkuKissa" src="./assets/img/metkuKissa.png" alt="metkuKissa" width="200px" height="200px" >
       </div>
     </section>

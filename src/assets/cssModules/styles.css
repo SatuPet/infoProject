@@ -146,7 +146,6 @@ body {
   font-family: var(--titleFont);
   font-size: 7vw;
 }
-
 .lounchText {
   font-size: 2vh;
   padding: 1em;
@@ -166,7 +165,7 @@ body {
   margin-bottom: 20%;
   background-color: #fff;
   width: 85%;
-  height: auto;
+  min-height: 80vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -175,10 +174,14 @@ body {
   box-shadow: 13px 13px 25px #888888;
   z-index: -2;
 }
-.menuText{
+#menuText{
   text-align: center;
+  font-size: 8vw; 
+  font-family: var(--titleFont); 
+  color: var(--orange);
 }
 .lounchText{
+  text-align: center;
   font-family: var(--regularFont);
   line-height: 1%;
   line-height: 2em;
@@ -191,5 +194,15 @@ body {
   opacity: 0.5;
   z-index: -1;
   text-align: center;
+}
+.menuInfo{
+  text-align: center;
+  font-family: var(--regularFont);
+  line-height: 1vw;
+  font-size: 5vw;
+  margin-top: 8%;
+}
+.modalCloseButton{
+  margin-bottom: 0;
 }
 

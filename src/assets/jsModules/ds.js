@@ -33,7 +33,7 @@ const getDateTime = () => {
 };
 
 let hslInterval;
-/**
+/** 
  *
  * @param {Number} campusLat latitude of campus
  * @param {Number} campusLon longitude of campus
