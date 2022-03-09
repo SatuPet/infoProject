@@ -3,7 +3,7 @@ import {getBusses, getTwoStops} from './assets/jsModules/hsl';
 import {getMenus, selectedCampus} from './assets/jsModules/lunchMenu';
 import {getDateTime} from './assets/jsModules/ds';
 
-getMenus('karamalmi');
+// getMenus('karamalmi');
 
 let weatherInterval;
 /**

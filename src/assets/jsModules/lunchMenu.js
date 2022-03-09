@@ -37,7 +37,13 @@ const getMenus = (campus, caller = '', lang1) => {
     let data;
     // Myyrmaki
     if (campus === 'myyrmaki') {
+      lunch.innerHTML = '';
       selectedCampus = 'myyrmaki';
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
@@ -48,8 +54,13 @@ const getMenus = (campus, caller = '', lang1) => {
       });
       // Myllypuro
     } else if (campus === 'myllypuro') {
+      lunch.innerHTML = '';
       selectedCampus = 'myllypuro';
-
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
@@ -58,8 +69,14 @@ const getMenus = (campus, caller = '', lang1) => {
         } else addCoursesToList(noFood);
       });
     } else if (campus === 'karamalmi') {
+      lunch.innerHTML = '';
       selectedCampus = 'karamalmi';
       // Karamalmi
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().getFazerData(lang, today);
       data.then(function(result) {
         parseFazer(result.LunchMenus, caller);
