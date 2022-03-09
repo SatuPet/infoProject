@@ -243,9 +243,9 @@
     border-radius: 0.5rem;
   }
   .scroll-info p {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     position: absolute;
-    width: 800%;
+    width: 1000%;
     height: 100%;
     margin: 0;
     line-height: 90px;
