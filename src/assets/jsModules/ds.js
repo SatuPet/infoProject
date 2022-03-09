@@ -46,7 +46,7 @@ const changeLangOfMenu = () => {
   }
 };
 
-setInterval(changeLangOfMenu, 3000);
+setInterval(changeLangOfMenu, 30000);
 
 let hslInterval;
 /**
