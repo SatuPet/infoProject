@@ -14,17 +14,25 @@ today = yyyy + '-' + mm + '-' + dd;
 today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
   today2.getFullYear();
 const noFood = 'No menu for the day';
-const boxes = document.querySelectorAll('.lounchText');
+const dsBox = document.querySelector('#ds-menu-list');
+const mobileBox = document.querySelector('#lunch');
 
-const getMenus = (campus, caller) => {
-  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+const getMenus = (campus, caller = '', lang1) => {
+  console.log('caller 2: ' + caller);
   let lang = 'fi';
+  let inEnglishSetting;
+
+  if (caller === 'ds') {
+    inEnglishSetting = lang1;
+    dsBox.innerHTML = '';
+  } else {
+    inEnglishSetting = localStorage.getItem('inEnglishSetting');
+    mobileBox.innerHTML = '';
+  }
   if (inEnglishSetting === 'inEnglish') {
     lang = 'en';
   } else lang = 'fi';
-  boxes.forEach(item => {
-    item.innerHTML = '';
-  });
+
   try {
     let data;
     // Myyrmaki
@@ -35,7 +43,7 @@ const getMenus = (campus, caller) => {
       data.then(function(result) {
         if (result.courses !== null || undefined) {
           console.log(result.courses);
-          parseSodexo(lang, result.courses, inEnglishSetting);
+          parseSodexo(lang, result.courses, inEnglishSetting, caller);
         } else addCoursesToList(noFood);
       });
       // Myllypuro
@@ -46,7 +54,7 @@ const getMenus = (campus, caller) => {
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
         if (result.courses !== null || undefined) {
-          parseSodexo(lang, result.courses, inEnglishSetting);
+          parseSodexo(lang, result.courses, inEnglishSetting, caller);
         } else addCoursesToList(noFood);
       });
     } else if (campus === 'karamalmi') {
@@ -54,7 +62,7 @@ const getMenus = (campus, caller) => {
       // Karamalmi
       data = useApiData().getFazerData(lang, today);
       data.then(function(result) {
-        parseFazer(result.LunchMenus);
+        parseFazer(result.LunchMenus, caller);
       });
     } else {
       addCoursesToList('No menu available for this campus');
@@ -64,19 +72,24 @@ const getMenus = (campus, caller) => {
   }
 };
 
-const parseSodexo = (lang, resultObject, inEnglishSetting) => {
+const parseSodexo = (lang, resultObject, inEnglishSetting, caller) => {
+  console.log('caller 3: ' + caller);
   for (let i = 0; i <= Object.keys(resultObject).length; i++) {
     if (resultObject[i] !== undefined) {
       if (inEnglishSetting === 'inFinnish') {
-        addCoursesToList(resultObject[i].title_fi, resultObject[i].dietcodes);
+        addCoursesToList(resultObject[i].title_fi, resultObject[i].dietcodes,
+          caller,
+          caller);
       } else if (inEnglishSetting === 'inEnglish') {
-        addCoursesToList(resultObject[i].title_en, resultObject[i].dietcodes);
+        addCoursesToList(resultObject[i].title_en, resultObject[i].dietcodes,
+          caller,
+          caller);
       }
     }
   }
 };
 
-const parseFazer = (resultObject) => {
+const parseFazer = (resultObject, caller) => {
   const weekCourses = [];
   let courses = [];
   const courseGetter = (obj) => {
@@ -85,10 +98,10 @@ const parseFazer = (resultObject) => {
         courses.push(obj[i]);
       }
     }
-    looper(courses);
+    looper(courses, caller);
   };
 
-  const looper = (courses) => {
+  const looper = (courses, caller) => {
     const todaysMenu = courses.filter(x => x.Date === today2);
     const temp2 = todaysMenu[0].SetMenus;
     if (temp2.length > 0) {
@@ -107,7 +120,7 @@ const parseFazer = (resultObject) => {
             wholeMeal += `(${diets})\n `;
           } else wholeMeal += `(${diets})`;
         }
-        addCoursesToList(wholeMeal);
+        addCoursesToList(wholeMeal, '', caller);
       }
     } else {
       addCoursesToList(noFood);
@@ -116,16 +129,23 @@ const parseFazer = (resultObject) => {
   courseGetter(resultObject);
 };
 
-const addCoursesToList = (course, diets = '') => {
-  console.log(course);
-  boxes.forEach((item) => {
+const addCoursesToList = (course, diets = '', caller = '') => {
+  console.log('caller ' + caller);
+  if (caller === 'ds') {
     let list = document.createElement('li');
     list.innerText = course + ' ' + diets;
     let list2 = document.createElement('div');
     list2.className = 'line';
-    item.append(list);
+    dsBox.append(list);
+  } else {
+    let list = document.createElement('li');
+    list.innerText = course + ' ' + diets;
+    let list2 = document.createElement('div');
+    list2.className = 'line';
+    mobileBox.append(list);
     //item.append(list2);
-  });
+  }
+
 };
 
 export {getMenus, selectedCampus};

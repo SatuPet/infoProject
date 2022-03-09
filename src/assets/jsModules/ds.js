@@ -11,6 +11,8 @@ console.log('hello from ds.js');
 const timebox = document.getElementById('date-time');
 let nameOfCampus = document.getElementById('campus-name');
 
+let menuLang;
+
 /**
  * Get date and time to ds layer
  */
@@ -34,18 +36,17 @@ const getDateTime = () => {
 
 const changeLangOfMenu = () => {
   console.log('menu change called');
-  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
-  if (inEnglishSetting === 'inEnglish') {
-    localStorage.setItem('inEnglishSetting', 'inFinnish');
-    getMenus(selectedCampus);
-  }
-  else {
-    localStorage.setItem('inEnglishSetting', 'inEnglish');
-    getMenus(selectedCampus);
+  console.log(menuLang);
+  if (menuLang === 'inEnglish') {
+    menuLang = 'inFinnish';
+    getMenus(selectedCampus, 'ds', menuLang);
+  } else {
+    menuLang = 'inEnglish';
+    getMenus(selectedCampus, 'ds', menuLang);
   }
 };
 
-setInterval(changeLangOfMenu, 5000);
+setInterval(changeLangOfMenu, 30000);
 
 let hslInterval;
 /**
@@ -68,7 +69,7 @@ document.getElementById('arabia-campus').addEventListener('click', () => {
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 8.00€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-13.30';
-  getMenus('arabia');
+  getMenus('arabia', 'ds');
   localCampus = 'arabia';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Arabia';
@@ -79,7 +80,7 @@ document.getElementById('karamalmi-campus').addEventListener('click', () => {
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€ (Opiskelijat)';
   restaurantOpen.innerHTML = 'Avoinna: 11.00-13.15';
-  getMenus('karamalmi');
+  getMenus('karamalmi', 'ds');
   localCampus = 'karamalmi';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Karamalmi';
@@ -90,7 +91,7 @@ document.getElementById('myllypuro-campus').addEventListener('click', () => {
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
-  getMenus('myllypuro');
+  getMenus('myllypuro', 'ds');
   localCampus = 'myllypuro';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Myllypuro';
@@ -101,7 +102,7 @@ document.getElementById('myyrmaki-campus').addEventListener('click', () => {
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
-  getMenus('myyrmaki');
+  getMenus('myyrmaki', 'ds');
   localCampus = 'myyrmaki';
   console.log('name clicked');
   nameOfCampus.innerHTML = 'Myyrmäki';
