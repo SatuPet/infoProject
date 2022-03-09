@@ -16,7 +16,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url(/assets/img/bgNew.svg);
+  background-image: url(../img/bgNew.svg);
   background-repeat: repeat-y;
   background-position-x: center;
   margin-top: 25vw !important;
@@ -155,14 +155,12 @@ body {
   overflow: scroll;
 }
 
-.line{
+/* .line{
   height: 47px;
   border-bottom: 1px solid black;
   position: relative;
   width: 100%;
-}
-
-
+} */
 .lounchMenu{
   position: relative;
   margin-bottom: 20%;
@@ -175,11 +173,23 @@ body {
   border: 2px solid #fff;
   border-radius: 35px;
   box-shadow: 13px 13px 25px #888888;
+  z-index: -2;
+}
+.menuText{
+  text-align: center;
+}
+.lounchText{
+  font-family: var(--regularFont);
+  line-height: 1%;
+  line-height: 2em;
+  font-size: 4vw;
 }
 .metkuKissa{
   position: absolute;
   bottom: 0;
   right: 0;
   opacity: 0.5;
+  z-index: -1;
+  text-align: center;
 }
 

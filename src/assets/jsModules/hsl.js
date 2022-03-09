@@ -164,8 +164,8 @@ const getDsBusses = (lat, lon, radius) => {
 
       const timedFunction = (i) => {
         setTimeout(() => {
-          console.log("number: ", i);
-          console.log("busse: ", hslDsArray[i]);
+          //console.log("number: ", i);
+          //console.log("busse: ", hslDsArray[i]);
           dsHslPrint.innerHTML += `${hslDsArray[i].oneLine}`;
         }, 1000 * i);
       };
@@ -197,7 +197,7 @@ const getBusses = (stopNumber) => {
       const stop = response.data.stop;
     hslModalLabel.innerHTML = `
     <span id="stopName">${stop.name}</span> <p>${stop.code}</p>`;
-    
+
       const inEnglishSetting = localStorage.getItem('inEnglishSetting');
       if (inEnglishSetting == 'inEnglish') {
         hslPrint.innerHTML =

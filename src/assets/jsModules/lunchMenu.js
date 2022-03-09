@@ -124,7 +124,7 @@ const addCoursesToList = (course, diets = '') => {
     let list2 = document.createElement('div');
     list2.className = 'line';
     item.append(list);
-    item.append(list2);
+    //item.append(list2);
   });
 };
 
