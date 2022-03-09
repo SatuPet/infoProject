@@ -15,16 +15,16 @@ today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
   today2.getFullYear();
 const noFood = 'No menu for the day';
 const boxes = document.querySelectorAll('.lounchText');
-const lunch = document.querySelector('#lunch');
 
-const getMenus = (campus) => {
-  console.log(campus);
+const getMenus = (campus, caller) => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   let lang = 'fi';
   if (inEnglishSetting === 'inEnglish') {
     lang = 'en';
   } else lang = 'fi';
-  lunch.innerHTML = '';
+  boxes.forEach(item => {
+    item.innerHTML = '';
+  });
   try {
     let data;
     // Myyrmaki
@@ -97,7 +97,7 @@ const parseFazer = (resultObject) => {
           weekCourses.push(temp2[i].Meals);
         }
       }
-      for (let i = 0; i < weekCourses.length -1; i++) {
+      for (let i = 0; i < weekCourses.length - 1; i++) {
         let wholeMeal = '';
         let diets;
         for (let j = 0; j < weekCourses[i].length; j++) {

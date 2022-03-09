@@ -26,8 +26,23 @@ const getDateTime = () => {
   let dateAndTime = hours + ':' + minutes;
   //console.log("Päiväys: ", dateAndTime);
   timebox.innerHTML = dateAndTime;
-  setTimeout(getDateTime, 5000);
+  setTimeout(getDateTime, 30000);
 };
+
+const changeLangOfMenu = () => {
+  console.log('menu change called');
+  const inEnglishSetting = localStorage.getItem('inEnglishSetting');
+  if (inEnglishSetting === 'inEnglish') {
+    localStorage.setItem('inEnglishSetting', 'inFinnish');
+    getMenus(selectedCampus);
+  }
+  else {
+    localStorage.setItem('inEnglishSetting', 'inEnglish');
+    getMenus(selectedCampus);
+  }
+};
+
+setInterval(changeLangOfMenu, 5000);
 
 let hslInterval;
 /**
