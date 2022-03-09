@@ -111,4 +111,3 @@ document.getElementById('myyrmaki-campus').addEventListener('click', () => {
 });
 
 export {getDateTime};
-
