@@ -114,6 +114,14 @@ const getMenus = (campus, caller = '', lang1) => {
       });
     } else {
       addCoursesToList('No menu available for this campus');
+      if(lang == 'fi'){
+        menuPrices.innerHTML = 'Hinnat: 2.70€ / 8.00€';
+        restaurantOpen.innerHTML = 'Avoinna: 110.30-13.30';
+      }
+      if(lang == 'en'){
+        menuPrices.innerHTML = 'Prices: 2.70€ / 8.00€';
+        restaurantOpen.innerHTML = 'Open: 10.30-13.30';
+      }
     }
   } catch (e) {
     console.log(e.message);
