@@ -9,6 +9,12 @@ let today2 = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
+let lunch = document.querySelector('#lunch');
+let menuText = document.querySelector('#menuText');
+let menuPricesFi = document.querySelector('#menuPricesFi');
+let restaurantOpenFi = document.querySelector('#restaurantOpenFi');
+let menuPricesEn = document.querySelector('#menuPricesEn');
+let restaurantOpenEn = document.querySelector('#restaurantOpenEn');
 
 today = yyyy + '-' + mm + '-' + dd;
 today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
@@ -39,6 +45,11 @@ const getMenus = (campus, caller = '', lang1) => {
     // Myyrmaki
     if (campus === 'myyrmaki') {
       selectedCampus = 'myyrmaki';
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
@@ -50,6 +61,11 @@ const getMenus = (campus, caller = '', lang1) => {
       // Myllypuro
     } else if (campus === 'myllypuro') {
       selectedCampus = 'myllypuro';
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
@@ -59,6 +75,11 @@ const getMenus = (campus, caller = '', lang1) => {
       });
     } else if (campus === 'karamalmi') {
       selectedCampus = 'karamalmi';
+      menuText.innerHTML = 'Menu';
+      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
+      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
+      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
       // Karamalmi
       console.log(caller);
       data = useApiData().getFazerData(lang, today);

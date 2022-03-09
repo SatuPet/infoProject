@@ -35,7 +35,7 @@ body {
   border-color: transparent;
   color: transparent;
 }
- .navbar-toggler-icon{
+.navbar-toggler-icon{
   font-size: 6vw;
   align-self: flex-start;
 }
@@ -176,11 +176,12 @@ body {
 }
 #menuText{
   text-align: center;
-  font-size: 8vw; 
-  font-family: var(--titleFont); 
+  font-size: 8vw;
+  font-family: var(--titleFont);
   color: var(--orange);
 }
 .lounchText{
+  overflow: hidden !important;
   text-align: center;
   font-family: var(--regularFont);
   line-height: 1%;
