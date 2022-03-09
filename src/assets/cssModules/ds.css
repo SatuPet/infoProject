@@ -143,6 +143,7 @@
     text-align: center;
     margin: 0;
     padding: 0;
+    font-size: 0.9rem;
   }
   .lounchText {
     width: 100%;
@@ -166,6 +167,7 @@
     text-align: center;
     margin: 0;
     padding: 0;
+    font-size: 0.9rem;
   }
   .hsl-block {
     height: 100%;

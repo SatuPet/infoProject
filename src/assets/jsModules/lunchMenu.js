@@ -139,8 +139,8 @@ const parseFazer = (resultObject, caller) => {
           wholeMeal += weekCourses[i][j].Name;
           diets = weekCourses[i][j].Diets.toString();
           if (j + 1 !== weekCourses[i].length) {
-            wholeMeal += `(${diets})\n `;
-          } else wholeMeal += `(${diets})`;
+            wholeMeal += `\n ${diets}\n`;
+          } else wholeMeal += `\n ${diets}\n`;
         }
         addCoursesToList(wholeMeal, '', caller);
       }
