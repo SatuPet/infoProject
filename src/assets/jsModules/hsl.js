@@ -109,14 +109,22 @@ const DsHslData = { getQueryByRadius };
  * Get busses from selected area and print to page
  */
 let hslDsArray = [];
+let language = 'en';
 const getDsBusses = (lat, lon, radius) => {
   dsHslPrint.innerHTML = "";
   hslDsArray = [];
   useApiData()
     .getHslDataByRadius(getQueryByRadius(lat, lon, radius))
     .then((response) => {
-      dsHslPrint.innerHTML =
+      if(language === 'fi'){
+        dsHslPrint.innerHTML =
+        "<tr><th>Line</th><th>Destination</th><th>Stop</th><th>Leaving</th></tr>";
+        language = 'en';
+      }else{
+        dsHslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
+        language = 'fi';
+      }
       const nodes = response.data.stopsByRadius.edges;
       //console.log("radius hsl nodes", nodes);
 
