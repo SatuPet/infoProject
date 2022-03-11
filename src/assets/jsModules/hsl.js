@@ -7,31 +7,6 @@ const hslPrint2 = document.querySelector("#hsl-data-2");
 const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
- * Fetches JSON data from APIs
- *
- * @param {string} url api endpoint url
- * @param {Object} options request options
- *
- * @returns {Object} response json data
- */
-/*
-const fetchData = async (url, options = {}) => {
-  console.log('fechin data');
-  let jsonData;
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-    }
-    jsonData = await response.json();
-  } catch (error) {
-    console.error('fetchData() error', error);
-    jsonData = {};
-  }
-  return jsonData;
-};
-*/
-/**
  * Buss stop query
  *
  * @param {Number} id of buss stop
@@ -162,14 +137,8 @@ const getDsBusses = (lat, lon, radius) => {
         return a.sorttime - b.sorttime;
       });
       let maxPrintValue = 8; // max lines print in screen
-      /* for (const line of hslDsArray) {
-        if (maxPrintValue === 0) {
-          break;
-        }
-        dsHslPrint.innerHTML += line.oneLine;
-        maxPrintValue--;
-      } */
 
+      //Timed print function
       const timedFunction = (i) => {
         setTimeout(() => {
           //console.log("number: ", i);
@@ -189,7 +158,6 @@ const getDsBusses = (lat, lon, radius) => {
  *
  * @param {Number} stopNumber get stop number from user
  */
-
 const getBusses = (stopNumber) => {
   hslModalLabel.innerHTML = "";
   hslPrint.innerHTML = "";

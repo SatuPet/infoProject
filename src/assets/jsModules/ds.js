@@ -35,6 +35,9 @@ const getDateTime = () => {
   setTimeout(getDateTime, 30000);
 };
 
+/**
+ * Timer to change lunch menu language
+ */
 const changeLangOfMenu = () => {
   console.log('menu change called');
   console.log(menuLang);
@@ -51,6 +54,7 @@ setInterval(changeLangOfMenu, 30000);
 
 let hslInterval;
 /**
+ *HSL time table timer 30 sec
  *
  * @param {Number} campusLat latitude of campus
  * @param {Number} campusLon longitude of campus
@@ -66,6 +70,7 @@ const hslTimer = (campusLat, campusLon, campusRad) => {
 };
 hslTimer(60.2241077, 24.7565312, 600); //default Karamalmi
 
+//DS campus listeners
 document.getElementById('arabia-campus').addEventListener('click', () => {
   dsMenuTexts.style.lineHeight = 'normal';
   dsMenuList.innerHTML = '';
