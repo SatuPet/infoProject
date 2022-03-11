@@ -9,8 +9,6 @@ const ApiConfig = {
   fazerEnd: '&restaurantPageId=270540&weekDate=',
   sodexoMyyrmakiApiUrl: 'https://www.sodexo.fi/ruokalistat/output/daily_json/152/',
   sodexoMyllypuroApiUrl: 'https://www.sodexo.fi/ruokalistat/output/daily_json/158/',
-  apiUrl: 'https://opendata.metropolia.fi/r1/reservation/search',
-  apiKey: '74zO2rvdIMGGLa1Fuj56',
 };
 
 export {ApiConfig};

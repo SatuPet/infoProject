@@ -34,6 +34,9 @@ const getDateTime = () => {
   setTimeout(getDateTime, 30000);
 };
 
+/**
+ * Changes menu's language
+ */
 const changeLangOfMenu = () => {
   console.log('menu change called');
   console.log(menuLang);
@@ -46,6 +49,9 @@ const changeLangOfMenu = () => {
   }
 };
 
+/**
+ * Call language changer every 30 seconds
+ */
 setInterval(changeLangOfMenu, 30000);
 
 let hslInterval;
