@@ -23,7 +23,7 @@ weatherTimer(60.2241077, 24.7565312); //default Karamalmi
 
 getDateTime();
 
-// parallax Y postition moving
+// HSL stops
 window.addEventListener('scroll', (event) => {
   // KARAMALMI
   document.getElementById('karanristiEast').addEventListener('click', () => {
@@ -117,7 +117,7 @@ document.querySelectorAll('.main').
 document.querySelector('.metroMeno').addEventListener('click', closeNavbar);
 
 
-
+//darkMode
 const darkModeToggleButton = document.querySelector('#flexSwitchCheckDefault1');
 let darkModeStyleSheet;
 
@@ -151,7 +151,7 @@ const changeDarkMode = () => {
 };
 
 darkModeToggleButton.addEventListener('click', changeDarkMode);
-
+//set right theme
 const setTheme = () => {
   const darkModeSetting = localStorage.getItem('darkModeSetting');
   if (darkModeSetting === null) {
@@ -181,6 +181,7 @@ const hideMaps = () => {
   hideAllMaps.forEach(map => map.style.display = 'none');
 };
 //choosing different campus
+//karamalmi
 const karamalmiCampus = (event) => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
@@ -191,7 +192,7 @@ const karamalmiCampus = (event) => {
 };
 document.querySelector('.karamalmiButton').
   addEventListener('click', karamalmiCampus);
-
+//arabia
 const arabiaCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
@@ -201,7 +202,7 @@ const arabiaCampus = () => {
   changeArabiaCampus.style.display = 'block';
 };
 document.querySelector('.arabiaButton').addEventListener('click', arabiaCampus);
-
+//myllypuro
 const myllypuroCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
@@ -212,7 +213,7 @@ const myllypuroCampus = () => {
 };
 document.querySelector('.myllypuroButton').
   addEventListener('click', myllypuroCampus);
-
+//myyrmäki
 const myyrmakiCampus = () => {
   document.querySelectorAll('.nav-link').
     forEach(link => link.classList.remove('selected-nav-link'));
@@ -224,15 +225,17 @@ const myyrmakiCampus = () => {
 document.querySelector('.myyrmakiButton').
   addEventListener('click', myyrmakiCampus);
 
+//inEnglish button
 const inEnglishToggleButton = document.querySelector(
   '#flexSwitchCheckDefault2');
-
+//creating inEnglishSettings
 const changeInEnglish = () => {
   const inEnglishSetting = localStorage.getItem('inEnglishSetting');
   if (inEnglishSetting === null) {
     localStorage.setItem('inEnglishSetting', 'inEnglish');
   } else {
     if (inEnglishSetting == 'inEnglish') {
+      //all you can change is p, a and div element
       document.querySelectorAll('p[lang="en"], a[lang="en"], div[lang="en"]').
         forEach(text => text.style.display = 'none');
       document.querySelectorAll('p[lang="fi"], a[lang="fi"], div[lang="fi"]').

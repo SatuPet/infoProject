@@ -252,6 +252,7 @@
     <!--pwa layer ends-->
     <!--ds layer starts-->
     <div class="ds-background">
+      <!--ds iframe background video-->
       <iframe
         src="https://www.youtube.com/embed/LMZQ7eFhm58?autoplay=1&mute=1&wmode=transparent&amp;rel=0"
         title="YouTube video player"
@@ -262,10 +263,12 @@
       </iframe>
       <div class="ds-canvas">
         <div class="ds-layer">
+          <!--ds time & weather-->
+          <!--ds time-->
           <section class="time-block">
             <p id="date-time">--:--</p>
           </section>
-
+          <!--ds weather-->
           <section class="weather-block">
             <div class="location-area">
               <img
@@ -273,12 +276,12 @@
               src="./assets/images/metropolia_s_oranssi.png"
               alt="metropolia logo"
             />
-            <!-- Campus name trigger modal -->
+            <!-- ds campus name trigger modal -->
             <p  id="campus-name"  data-bs-toggle="modal" data-bs-target="#exampleModal">
               Karamalmi
             </p>
 
-            <!-- Modal -->
+            <!-- modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -310,6 +313,7 @@
             </div>
 
             </div>
+            <!--ds weather inputs-->
             <div class="weather">
               <div id="weather-flex">
                 <div class="image"></div>
@@ -317,22 +321,23 @@
               </div>
             </div>
           </section>
-          <!-- Lunch menu -->
+          <!-- ds lunch menu -->
           <section class="menu-block">
                 <p id="text-menu">Menu</p>
                 <div class="lounchText" id="ds-menu-list">
                 </div>
                 <div class="restaurant-info">
                   <p id="text-prices">Hinnat: 1.90€ / 2.70€ / 5.71€ (Opiskelijat)</p>
-                <p id="text-open">Avoinna: 11.00-13.15</p>
+                  <p id="text-open">Avoinna: 11.00-13.15</p>
                 </div>
           </section>
+          <!-- ds hsl time table -->
           <section class="hsl-block">
             <div id="hsl-timetable">
-              <!-- <h3>HSL KARAPORTTI LÄHTEVÄT</h3> -->
               <table id="ds-hsl-karanristi-all-data"></table>
             </div>
           </section>
+          <!-- ds korona info-->
           <section class="banner-block">
             <div class="scroll-info">
               <p>

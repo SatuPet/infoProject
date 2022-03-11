@@ -7,31 +7,6 @@ const hslPrint2 = document.querySelector("#hsl-data-2");
 const dsHslPrint = document.querySelector("#ds-hsl-karanristi-all-data");
 
 /**
- * Fetches JSON data from APIs
- *
- * @param {string} url api endpoint url
- * @param {Object} options request options
- *
- * @returns {Object} response json data
- */
-/*
-const fetchData = async (url, options = {}) => {
-  console.log('fechin data');
-  let jsonData;
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-    }
-    jsonData = await response.json();
-  } catch (error) {
-    console.error('fetchData() error', error);
-    jsonData = {};
-  }
-  return jsonData;
-};
-*/
-/**
  * Buss stop query
  *
  * @param {Number} id of buss stop
@@ -109,14 +84,22 @@ const DsHslData = { getQueryByRadius };
  * Get busses from selected area and print to page
  */
 let hslDsArray = [];
+let language = 'en';
 const getDsBusses = (lat, lon, radius) => {
   dsHslPrint.innerHTML = "";
   hslDsArray = [];
   useApiData()
     .getHslDataByRadius(getQueryByRadius(lat, lon, radius))
     .then((response) => {
-      dsHslPrint.innerHTML =
+      if(language === 'fi'){
+        dsHslPrint.innerHTML =
+        "<tr><th>Line</th><th>Destination</th><th>Stop</th><th>Leaving</th></tr>";
+        language = 'en';
+      }else{
+        dsHslPrint.innerHTML =
         "<tr><th>Linja</th><th>Määränpää</th><th>Pysäkki</th><th>Lähtee</th></tr>";
+        language = 'fi';
+      }
       const nodes = response.data.stopsByRadius.edges;
       //console.log("radius hsl nodes", nodes);
 
@@ -154,14 +137,8 @@ const getDsBusses = (lat, lon, radius) => {
         return a.sorttime - b.sorttime;
       });
       let maxPrintValue = 8; // max lines print in screen
-      /* for (const line of hslDsArray) {
-        if (maxPrintValue === 0) {
-          break;
-        }
-        dsHslPrint.innerHTML += line.oneLine;
-        maxPrintValue--;
-      } */
 
+      //Timed print function
       const timedFunction = (i) => {
         setTimeout(() => {
           //console.log("number: ", i);
@@ -181,7 +158,6 @@ const getDsBusses = (lat, lon, radius) => {
  *
  * @param {Number} stopNumber get stop number from user
  */
-
 const getBusses = (stopNumber) => {
   hslModalLabel.innerHTML = "";
   hslPrint.innerHTML = "";

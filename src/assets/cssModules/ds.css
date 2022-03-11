@@ -90,7 +90,7 @@
     margin: 1rem 0 0 1rem;
   }
   #campus-name {
-    font-size: 3rem;
+    font-size: 2.8rem;
     text-align: right;
     margin: 0;
     padding: 0;
@@ -143,11 +143,13 @@
     text-align: center;
     margin: 0;
     padding: 0;
+    font-size: 0.9rem;
   }
   .lounchText {
     width: 100%;
     height: 100%;
     font-size: 1rem;
+    line-height: normal;
     padding: 0.3rem 3rem;
     list-style-type: none;
     overflow: hidden;
@@ -166,6 +168,7 @@
     text-align: center;
     margin: 0;
     padding: 0;
+    font-size: 0.9rem;
   }
   .hsl-block {
     height: 100%;
@@ -191,7 +194,7 @@
   }
   #bussDestination {
     font-size: 2rem;
-    min-width: 500px;
+    min-width: 520px;
     padding-left: 2rem;
   }
   #stopName {
@@ -241,9 +244,9 @@
     border-radius: 0.5rem;
   }
   .scroll-info p {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     position: absolute;
-    width: 800%;
+    width: 1000%;
     height: 100%;
     margin: 0;
     line-height: 90px;

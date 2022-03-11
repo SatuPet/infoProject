@@ -15,6 +15,8 @@ let menuPricesFi = document.querySelector('#menuPricesFi');
 let restaurantOpenFi = document.querySelector('#restaurantOpenFi');
 let menuPricesEn = document.querySelector('#menuPricesEn');
 let restaurantOpenEn = document.querySelector('#restaurantOpenEn');
+const restaurantOpen = document.querySelector('#text-open');
+const menuPrices = document.querySelector('#text-prices');
 
 today = yyyy + '-' + mm + '-' + dd;
 today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
@@ -46,10 +48,18 @@ const getMenus = (campus, caller = '', lang1) => {
     if (campus === 'myyrmaki') {
       selectedCampus = 'myyrmaki';
       menuText.innerHTML = 'Menu';
-      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
-      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
+      if(lang == 'fi'){
+        menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
+        restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
+      }
+      if(lang == 'en'){
+        menuPrices.innerHTML = 'Prices: 2.70€ / 5.50€ / 6.70€';
+        restaurantOpen.innerHTML = 'Open: 10.30-14.00';
+      }
+      menuPricesFi.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 10.30-14.00';
+      menuPricesEn.innerHTML = 'Price: 2.70€ / 5.50€ / 6.70€';
+      restaurantOpenEn.innerHTML = 'Open: 10.30-14.00';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyyrmakiApiUrl, todayISODate);
       data.then(function(result) {
@@ -62,10 +72,18 @@ const getMenus = (campus, caller = '', lang1) => {
     } else if (campus === 'myllypuro') {
       selectedCampus = 'myllypuro';
       menuText.innerHTML = 'Menu';
-      menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
-      menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
-      restaurantOpenEn.innerHTML = 'Open: 11.00 - 13.15';
+      if(lang == 'fi'){
+        menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
+        restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
+      }
+      if(lang == 'en'){
+        menuPrices.innerHTML = 'Prices: 2.70€ / 5.50€ / 6.70€';
+        restaurantOpen.innerHTML = 'Open: 10.30-14.00';
+      }
+      menuPricesFi.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
+      restaurantOpenFi.innerHTML = 'Avoinna: 10.30-14.00';
+      menuPricesEn.innerHTML = 'Price: 2.70€ / 5.50€ / 6.70€';
+      restaurantOpenEn.innerHTML = 'Open: 10.30-14.00';
       data = useApiData().
         getSodexoData(ApiConfig.sodexoMyllypuroApiUrl, todayISODate);
       data.then(function(result) {
@@ -76,6 +94,14 @@ const getMenus = (campus, caller = '', lang1) => {
     } else if (campus === 'karamalmi') {
       selectedCampus = 'karamalmi';
       menuText.innerHTML = 'Menu';
+      if(lang == 'fi'){
+        menuPrices.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€ (Opiskelijat)';
+        restaurantOpen.innerHTML = 'Avoinna: 11.00 - 13.15';
+      }
+      if(lang == 'en'){
+        menuPrices.innerHTML = 'Prices: 1.90€ / 2.70€ / 5.71€ (Students)';
+        restaurantOpen.innerHTML = 'Open: 11.00 - 13.15';
+      }
       menuPricesFi.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€';
       restaurantOpenFi.innerHTML = 'Avoinna: 11.00 - 13.15';
       menuPricesEn.innerHTML = 'Price: 1.90€ / 2.70€ / 5.71€';
@@ -88,6 +114,14 @@ const getMenus = (campus, caller = '', lang1) => {
       });
     } else {
       addCoursesToList('No menu available for this campus');
+      if(lang == 'fi'){
+        menuPrices.innerHTML = 'Hinnat: 2.70€ / 8.00€';
+        restaurantOpen.innerHTML = 'Avoinna: 110.30-13.30';
+      }
+      if(lang == 'en'){
+        menuPrices.innerHTML = 'Prices: 2.70€ / 8.00€';
+        restaurantOpen.innerHTML = 'Open: 10.30-13.30';
+      }
     }
   } catch (e) {
     console.log(e.message);
@@ -139,8 +173,8 @@ const parseFazer = (resultObject, caller) => {
           wholeMeal += weekCourses[i][j].Name;
           diets = weekCourses[i][j].Diets.toString();
           if (j + 1 !== weekCourses[i].length) {
-            wholeMeal += `(${diets})\n `;
-          } else wholeMeal += `(${diets})`;
+            wholeMeal += `\n ${diets}\n`;
+          } else wholeMeal += `\n ${diets}\n`;
         }
         addCoursesToList(wholeMeal, '', caller);
       }

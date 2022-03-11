@@ -153,13 +153,6 @@ body {
   list-style-type: none;
   overflow: scroll;
 }
-
-/* .line{
-  height: 47px;
-  border-bottom: 1px solid black;
-  position: relative;
-  width: 100%;
-} */
 .lounchMenu{
   position: relative;
   margin-bottom: 20%;

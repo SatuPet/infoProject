@@ -6,6 +6,7 @@ let localCampus = selectedCampus;
 const dsMenuList = document.getElementById('ds-menu-list');
 const restaurantOpen = document.querySelector('#text-open');
 const menuPrices = document.querySelector('#text-prices');
+const dsMenuTexts = document.getElementById('ds-menu-list');
 
 console.log('hello from ds.js');
 const timebox = document.getElementById('date-time');
@@ -56,6 +57,7 @@ setInterval(changeLangOfMenu, 30000);
 
 let hslInterval;
 /**
+ *HSL time table timer 30 sec
  *
  * @param {Number} campusLat latitude of campus
  * @param {Number} campusLon longitude of campus
@@ -71,7 +73,9 @@ const hslTimer = (campusLat, campusLon, campusRad) => {
 };
 hslTimer(60.2241077, 24.7565312, 600); //default Karamalmi
 
+//DS campus listeners
 document.getElementById('arabia-campus').addEventListener('click', () => {
+  dsMenuTexts.style.lineHeight = 'normal';
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 8.00€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-13.30';
@@ -83,6 +87,7 @@ document.getElementById('arabia-campus').addEventListener('click', () => {
   weather(60.2094084, 24.9809358);
 });
 document.getElementById('karamalmi-campus').addEventListener('click', () => {
+  dsMenuTexts.style.lineHeight = 'normal';
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€ (Opiskelijat)';
   restaurantOpen.innerHTML = 'Avoinna: 11.00-13.15';
@@ -94,6 +99,7 @@ document.getElementById('karamalmi-campus').addEventListener('click', () => {
   weather(60.2241077, 24.7565312);
 });
 document.getElementById('myllypuro-campus').addEventListener('click', () => {
+  dsMenuTexts.style.lineHeight = 'normal';
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
@@ -105,6 +111,7 @@ document.getElementById('myllypuro-campus').addEventListener('click', () => {
   weather(60.2234938, 25.0757339);
 });
 document.getElementById('myyrmaki-campus').addEventListener('click', () => {
+  dsMenuTexts.style.lineHeight = 'normal';
   dsMenuList.innerHTML = '';
   menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
   restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
