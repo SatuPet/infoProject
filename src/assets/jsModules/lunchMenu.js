@@ -17,7 +17,6 @@ let menuPricesEn = document.querySelector('#menuPricesEn');
 let restaurantOpenEn = document.querySelector('#restaurantOpenEn');
 const restaurantOpen = document.querySelector('#text-open');
 const menuPrices = document.querySelector('#text-prices');
-
 today = yyyy + '-' + mm + '-' + dd;
 today2 = today2.getDate() + '.' + (today2.getMonth() + 1) + '.' +
   today2.getFullYear();
@@ -25,6 +24,13 @@ const noFood = 'No menu for the day';
 const dsBox = document.querySelector('#ds-menu-list');
 const mobileBox = document.querySelector('#lunch');
 
+/**
+ * Handles getting the menu from the API and displaying it
+ * @param campus
+ * @param caller determines if method is called from ds view or not, since
+ * ds calls are automated every 30s, and we don't want it to affect mobile view
+ * @param lang1 Determines if menu is called in english or finnish
+ */
 const getMenus = (campus, caller = '', lang1) => {
   console.log(campus);
   console.log('caller 2: ' + caller);
@@ -38,21 +44,23 @@ const getMenus = (campus, caller = '', lang1) => {
     inEnglishSetting = localStorage.getItem('inEnglishSetting');
     mobileBox.innerHTML = '';
   }
+  // Handles display language with local variable
   if (inEnglishSetting === 'inEnglish') {
     lang = 'en';
   } else lang = 'fi';
 
+  // Fetch all the data and call other functions to parse and display it
   try {
     let data;
     // Myyrmaki
     if (campus === 'myyrmaki') {
       selectedCampus = 'myyrmaki';
       menuText.innerHTML = 'Menu';
-      if(lang == 'fi'){
+      if (lang === 'fi') {
         menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
         restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
       }
-      if(lang == 'en'){
+      if (lang === 'en') {
         menuPrices.innerHTML = 'Prices: 2.70€ / 5.50€ / 6.70€';
         restaurantOpen.innerHTML = 'Open: 10.30-14.00';
       }
@@ -72,11 +80,11 @@ const getMenus = (campus, caller = '', lang1) => {
     } else if (campus === 'myllypuro') {
       selectedCampus = 'myllypuro';
       menuText.innerHTML = 'Menu';
-      if(lang == 'fi'){
+      if (lang === 'fi') {
         menuPrices.innerHTML = 'Hinnat: 2.70€ / 5.50€ / 6.70€';
         restaurantOpen.innerHTML = 'Avoinna: 10.30-14.00';
       }
-      if(lang == 'en'){
+      if (lang === 'en') {
         menuPrices.innerHTML = 'Prices: 2.70€ / 5.50€ / 6.70€';
         restaurantOpen.innerHTML = 'Open: 10.30-14.00';
       }
@@ -94,11 +102,11 @@ const getMenus = (campus, caller = '', lang1) => {
     } else if (campus === 'karamalmi') {
       selectedCampus = 'karamalmi';
       menuText.innerHTML = 'Menu';
-      if(lang == 'fi'){
+      if (lang === 'fi') {
         menuPrices.innerHTML = 'Hinnat: 1.90€ / 2.70€ / 5.71€ (Opiskelijat)';
         restaurantOpen.innerHTML = 'Avoinna: 11.00 - 13.15';
       }
-      if(lang == 'en'){
+      if (lang === 'en') {
         menuPrices.innerHTML = 'Prices: 1.90€ / 2.70€ / 5.71€ (Students)';
         restaurantOpen.innerHTML = 'Open: 11.00 - 13.15';
       }
@@ -114,11 +122,10 @@ const getMenus = (campus, caller = '', lang1) => {
       });
     } else {
       addCoursesToList('No menu available for this campus');
-      if(lang == 'fi'){
+      if (lang === 'fi') {
         menuPrices.innerHTML = 'Hinnat: 2.70€ / 8.00€';
         restaurantOpen.innerHTML = 'Avoinna: 110.30-13.30';
-      }
-      if(lang == 'en'){
+      } else if (lang === 'en') {
         menuPrices.innerHTML = 'Prices: 2.70€ / 8.00€';
         restaurantOpen.innerHTML = 'Open: 10.30-13.30';
       }
@@ -128,6 +135,13 @@ const getMenus = (campus, caller = '', lang1) => {
   }
 };
 
+/**
+ * Handles data gotten from the fetch in case of Sodexo
+ * @param lang not really sure if this does anything but right now I'm afraid to remove it
+ * @param resultObject raw object passed from fetch
+ * @param inEnglishSetting wanted result language
+ * @param caller passes caller forward
+ */
 const parseSodexo = (lang, resultObject, inEnglishSetting, caller) => {
   console.log('caller 3: ' + caller);
   for (let i = 0; i <= Object.keys(resultObject).length; i++) {
@@ -145,9 +159,18 @@ const parseSodexo = (lang, resultObject, inEnglishSetting, caller) => {
   }
 };
 
+/**
+ * Handles data gotten from the fetch in case of Fazer
+ * @param resultObject raw object passed from fetch
+ * @param caller passes caller forward
+ */
 const parseFazer = (resultObject, caller) => {
   const weekCourses = [];
   let courses = [];
+  /**
+   * gets the object and makes nice local version of it in form of array, so it can be looped
+   * @param obj
+   */
   const courseGetter = (obj) => {
     for (let i = 0; i <= Object.keys(obj).length; i++) {
       if (obj[i] !== undefined || null) {
@@ -157,6 +180,11 @@ const parseFazer = (resultObject, caller) => {
     looper(courses, caller);
   };
 
+  /**
+   * Loops through the passed array and displays them
+   * @param courses
+   * @param caller passes caller forward
+   */
   const looper = (courses, caller) => {
     const todaysMenu = courses.filter(x => x.Date === today2);
     const temp2 = todaysMenu[0].SetMenus;
@@ -185,6 +213,12 @@ const parseFazer = (resultObject, caller) => {
   courseGetter(resultObject);
 };
 
+/**
+ * Displays 1 given whole meal and it's diets
+ * @param course
+ * @param diets
+ * @param caller determines where the meal is displayed/updated
+ */
 const addCoursesToList = (course, diets = '', caller = '') => {
   console.log('caller ' + caller);
   if (caller === 'ds') {

@@ -1,7 +1,12 @@
 import {ApiConfig} from './ApiConfig';
 import * as url from 'url';
 
-
+/**
+ * Basic fetch method and error handling
+ * @param url
+ * @param options
+ * @returns {Promise<any>}
+ */
 const doFetch = async (url, options = {}) => {
   const response = await fetch(url, options);
   console.log('RESPONSE', response);
@@ -18,9 +23,17 @@ const doFetch = async (url, options = {}) => {
   }
 };
 
-// Function for all the API calls
+/**
+ * Function for all the different API calls
+ * @returns {{getHslDataByRadius: ((function(*): Promise<*|undefined>)|*), getSodexoData: ((function(*, *): Promise<*|undefined>)|*), getWeatherData: ((function(*, *): Promise<*|undefined>)|*), getHslDataByStop: ((function(*): Promise<*|undefined>)|*), getFazerData: ((function(*, *): Promise<*|undefined>)|*)}}
+ */
 const useApiData = () => {
-  // Function for fetching the weather data with given city parameter
+  /**
+   * Function for fetching the weather data with given coordinates
+   * @param lat
+   * @param lon
+   * @returns {Promise<*>}
+   */
   const getWeatherData = async (lat, lon) => {
     const fetchOptions = {
       method: 'GET',
@@ -40,6 +53,13 @@ const useApiData = () => {
     }
   };
 
+
+  /**
+   * Function for fetching HSL stops and their schedules
+   * within certain radius and position
+   * @param radius
+   * @returns {Promise<*>}
+   */
   const getHslDataByRadius = async (radius) => {
     const fetchOptions = {
       method: 'POST',
@@ -53,6 +73,11 @@ const useApiData = () => {
     }
   };
 
+  /**
+   * Function for fetching HSL schedules for specific stop
+   * @param query
+   * @returns {Promise<*>}
+   */
   const getHslDataByStop = async (query) => {
     const fetchOptions = {
       method: 'POST',
@@ -66,6 +91,12 @@ const useApiData = () => {
     }
   };
 
+  /**
+   * Function for fetching Sodexo data
+   * @param campus selected campus
+   * @param date
+   * @returns {Promise<*>}
+   */
   const getSodexoData = async (campus, date) => {
     const fetchOptions = {
       method: 'GET',
@@ -78,6 +109,12 @@ const useApiData = () => {
     }
   };
 
+  /**
+   * Function for fetching Fazer data
+   * @param lang language
+   * @param date wanted date
+   * @returns {Promise<*>}
+   */
   const getFazerData = async (lang, date) => {
     const fetchOptions = {
       method: 'GET',
